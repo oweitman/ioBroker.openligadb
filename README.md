@@ -16,7 +16,12 @@
 
 ## Todo
 
-* ...
+* validation in widget if user selected the right datapoint
+* highlight favorite club
+* new widget: next x games of club
+* translation
+* documentation adapter / widget 
+* ~~controllable gameday in the gameday widget
 
 ## Changelog
 ### 0.0.1
