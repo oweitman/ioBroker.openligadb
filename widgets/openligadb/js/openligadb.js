@@ -18,7 +18,7 @@ if (vis.editMode) {
 
 
 vis.binds["openligadb"] = {
-    version: "0.0.1",
+    version: "0.0.2",
     showVersion: function () {
         if (vis.binds["openligadb"].version) {
             console.log('Version openligadb: ' + vis.binds["openligadb"].version);
@@ -35,9 +35,15 @@ vis.binds["openligadb"] = {
                     vis.binds["openligadb"].gameday.createWidget(widgetID, view, data, style);
                 }, 100);
             }
-            var gameday = data.oid ? JSON.parse(vis.states.attr(data.oid + '.val')) : {};
+            
+            var allmatches = data.allmatches ? JSON.parse(vis.states.attr(data.allmatches + '.val')) : {};
+            var currgameday = data.currgameday ? JSON.parse(vis.states.attr(data.currgameday + '.val')) : {};
+            var showgameday = data.showgameday || '';
+
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
+            
+            var gameday = this.filterGameDay(allmatches,showgameday || currgameday || '');            
             
             var text ='';
 
@@ -113,7 +119,13 @@ vis.binds["openligadb"] = {
             
             
             $('#' + widgetID).html(text);
-        }
+        },
+        filterGameDay: function(allmatches,gameday) {
+            return allmatches.reduce(function(result,item){
+                if (item.Group.GroupOrderID == gameday) result.push(item);
+                return result;
+            },[]);            
+        },
     },            
     table: {
         createWidget: function (widgetID, view, data, style) {

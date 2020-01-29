@@ -21,6 +21,8 @@
 ## Changelog
 ### 0.0.1
 * initial release
+### 0.0.2
+* add controlable gameday logic to gameday widget and adapter
 
 ## License
 MIT License
