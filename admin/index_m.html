@@ -1,0 +1,206 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+
+    <script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+    <script type="text/javascript" src="../../js/translate.js"></script>
+    <script type="text/javascript" src="../../lib/js/materialize.js"></script>
+    <script type="text/javascript" src="../../js/adapter-settings.js"></script>
+    <script type="text/javascript" src="words.js"></script>
+
+    <!-- Load our own files -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="words.js"></script>
+
+    <script type="text/javascript">
+
+        // This will be called by the admin adapter when the settings page loads
+        function load(settings, onChange) {
+            // example: select elements with id=key and class=value and insert value
+            if (!settings) return;
+            $('.value').each(function () {
+                var $key = $(this);
+                var id = $key.attr('id');
+                if ($key.attr('type') === 'checkbox') {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.prop('checked', settings[id])
+                        .on('change', () => onChange())
+                        ;
+                } else {
+                    // do not call onChange direct, because onChange could expect some arguments
+                    $key.val(settings[id])
+                        .on('change', () => onChange())
+                        .on('keyup', () => onChange())
+                        ;
+                }
+            });
+            onChange(false);
+            document.getElementById('leagueform').addEventListener (
+                "submit", 
+                function (evt) {
+                    var league = $('#league').val() || '';
+                    var season = $('#season').val() || '';
+                    if (league !=  '' && season != '') {
+                        var leagues = JSON.parse($('#leagues').val());
+                        const found = leagues.some(el => el.league === league && el.season === season);
+                        onChange(true);
+                        if (!found) leagues.push({league,season});
+                        $('#leagues').val(JSON.stringify(leagues));
+                        $('#league').val('');
+                        $('#season').val('');
+                        updatetable(onChange);
+                    }
+
+                    evt.preventDefault();
+                    //
+            });
+
+            // reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+            if (M) M.updateTextFields();
+            updatetable(onChange);
+
+        }
+        function deleteitem(onChange, league,season) {
+            var leagues = JSON.parse($('#leagues').val());
+            leagues = $.grep(leagues, function(e){ 
+                 return !(e.league == league && e.season == season); 
+            });            
+            $('#leagues').val(JSON.stringify(leagues));
+            onChange(true);
+            updatetable(onChange);
+        }
+        function updatetable(onChange) {
+            var tablebody = $('#oldb-data');
+            var leagues = JSON.parse($('#leagues').val());
+            tablebody.html('');
+            leagues.forEach(function(onChange,item){
+                var text='';
+                text += '<tr>';
+                text += '<td class="wizard-table-league">'+item.league+'</td>';
+                text += '<td class="wizard-table-season">'+item.season+'</td>';
+                text += '<td class="wizard-table-delete">';
+                text += '<a class="waves-effect waves-light btn"><i class="material-icons">delete</i></a>';
+                text += '</td>';
+                text += '</tr>';
+                var newtr = $(text);
+                newtr.find('a').click(deleteitem.bind(this,onChange,item.league,item.season));
+                tablebody.append(newtr);
+            }.bind(this,onChange));
+        }
+        // This will be called by the admin adapter when the user presses the save button
+        function save(callback) {
+            // example: select elements with class=value and build settings object
+            var obj = {};
+            $('.value').each(function () {
+                var $this = $(this);
+                if ($this.attr('type') === 'checkbox') {
+                    obj[$this.attr('id')] = $this.prop('checked');
+                } else {
+                    obj[$this.attr('id')] = $this.val();
+                }
+            });
+            callback(obj);
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="m adapter-container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s2"><a href="#tab-main"  class="translate active">Main settings</a></li>
+                </ul>
+            </div>
+            <div id="tab-main" class="col s12 page">
+                <div class="row valign-wrapper">
+                    <div class="col" style="background-color: black;">
+                        <img class="responsive-img valign" src="openligadb.png" width="64" height="64">
+                    </div>
+                    <div class="col">
+                        <h3 class="translate">Logitech SqueezeboxRPC main settings</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s2">
+                        <input class="value" id="refresh" type="text" />
+                        <label class="translate" for="refresh">Refresh (Minutes):</label>
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="col s4">
+                        <h5 class="translate">Adding Leagues and Seasons</h5>
+                    </div>
+                </div>                
+                <div class="row">
+                    <form id="leagueform">
+                        <div class="input-field col s1">
+                            <input class="value" id="league" type="text" />
+                            <label class="translate" for="league">League:</label>
+                        </div>
+                        <div class="input-field col s1">
+                            <input class="value" id="season" type="text" />
+                            <label class="translate" for="season">Season:</label>
+                        </div>
+                        <div class="input-field col s1">
+                            <button class="btn waves-effect waves-light blue table-button-add" type="submit" name="action">
+                                <i class="material-icons">add</i>
+                            </button>
+                        </div>
+                    <form>
+                </div>
+                <div class="row">
+                    <div class="col s3">
+                        <table class="wizard-table">
+                            <thead>
+                            <tr>
+                                <th class="translate wizard-table-league">League</th>
+                                <th class="translate wizard-table-season">Season</th>
+                                <th class="translate wizard-table-delete"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="oldb-data">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row hide">
+                    <div class="input-field col s1">
+                        <input class="value" id="leagues" type="text" />
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

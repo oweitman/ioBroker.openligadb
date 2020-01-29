@@ -1,0 +1,96 @@
+{
+    "common": {
+        "name": "openligadb",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "Initial"
+            }
+        },
+        "title": "OpenLigaDB",
+        "titleLang": {
+            "en": "OpenLigaDB",
+            "de": "OpenLigaDB",
+            "ru": "OpenLigaDB",
+            "pt": "OpenLigaDB",
+            "nl": "OpenLigaDB",
+            "fr": "OpenLigaDB",
+            "it": "OpenLigaDB",
+            "es": "OpenLigaDB",
+            "pl": "OpenLigaDB",
+            "zh-cn": "OpenLigaDB"
+        },
+        "desc": {
+            "en": "OpenLigaDB",
+            "de": "OpenLigaDB",
+            "ru": "OpenLigaDB",
+            "pt": "OpenLigaDB",
+            "nl": "OpenLigaDB",
+            "fr": "OpenLigaDB",
+            "it": "OpenLigaDB",
+            "es": "OpenLigaDB",
+            "pl": "OpenLigaDB",
+            "zh-cn": "OpenLigaDB"
+        },
+        "authors": [
+            "oweitman <oweitman@gmx.de>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "openligadb.js",
+        "icon": "openligadb.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb.png",
+        "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
+        "loglevel": "debug",
+        "mode": "daemon",
+        "type": "multimedia",
+        "compact": true,
+        "materialize": true,
+        "restartAdapters": [
+            "vis"
+        ],
+        "dependencies": [
+            {
+                "admin": ">=3.0.0"
+            },
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "leagues": "[]",
+        "refresh": 10
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

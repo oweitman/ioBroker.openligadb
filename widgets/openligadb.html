@@ -1,0 +1,42 @@
+<!--
+    ioBroker.vis openligadb Widget-Set
+
+    version: "0.1"
+
+    Copyright 2020 oweitman oweitman@gmx.de
+-->
+<!-- here you can include so many css as you want -->
+<link rel="stylesheet" href="widgets/openligadb/css/style.css" />
+<!-- here you can include so many js-files as you want -->
+<script type="text/javascript" src="widgets/openligadb/js/openligadb.js"></script>
+
+<script id="tplOLiDBTable"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img src="widgets/openligadb/img/table.png"></img>'
+        data-vis-attrs="oid;maxicon[25],number;shortname/checkbox;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="true"
+        data-vis-update-style="false"
+        data-vis-name="Table">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.table.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+
+<script id="tplOLiDBGameDay"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img src="widgets/openligadb/img/gameday.png"></img>'
+        data-vis-attrs="oid;maxicon[25],number;shortname/checkbox;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="true"
+        data-vis-update-style="false"
+        data-vis-name="GameDay">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.gameday.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+              
