@@ -43,6 +43,8 @@ vis.binds["openligadb"] = {
 
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
+            var highlight = data.highlight || '';
+            
             
             var gameday = this.filterGameDay(allmatches,showgameday || currgameday || '');            
             
@@ -93,6 +95,8 @@ vis.binds["openligadb"] = {
                 
                 var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(team1name,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
+                if (vis.binds["openligadb"].checkHighlite(team2name,highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
                 var team1result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam1 : '-';
                 var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
                 
@@ -110,7 +114,7 @@ vis.binds["openligadb"] = {
                 text += '           <td>'+ team2name +'</td>';                
                 text += '        </tr>';
 
-            });
+            }.bind(this));
             
             
             
@@ -141,6 +145,7 @@ vis.binds["openligadb"] = {
             var table = data.oid ? JSON.parse(vis.states.attr(data.oid + '.val')) : {};
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
+            var highlight = data.highlight || '';
             
             var text ='';
 
@@ -193,6 +198,8 @@ vis.binds["openligadb"] = {
             table.forEach(function(team, index) {
 
                 var teamname = shortname ? team.ShortName : team.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(teamname,highlight)) teamname = '<b class="favorite">' + teamname + '</b>';
+
                 
                 text += '        <tr>';
                 text += '            <td class="oldb-center oldb-rank">';
@@ -230,6 +237,14 @@ vis.binds["openligadb"] = {
             $('#' + widgetID).html(text);
         }
     },
+    checkHighlite: function(value,highlights) {
+        var highlight = highlights.split(';');
+        return highlight.reduce(function(acc,cur){
+            if (cur=='') return acc;
+            return acc || value.toLowerCase().indexOf(cur.toLowerCase())>=0; 
+        },false);
+    },
+   
     favorites : {
 
         createWidget: function (widgetID, view, data, style) {
