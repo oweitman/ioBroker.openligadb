@@ -17,12 +17,12 @@
 ## Todo
 
 * validation in widget if user didnt select the right datapoint
-* widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that)
 * discuss and fix? issue for dynamic with of club column
-* Replacement value for edit mode if showgameday is set with binding
 * new widget: next x games of club
 * translation
 * documentation adapter / widget 
+* ~~widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that)~~
+* ~~Replacement value for edit mode if showgameday is set with binding~~
 * ~~highlight favorite club~~
 * ~~controllable gameday in the gameday widget~~
 
