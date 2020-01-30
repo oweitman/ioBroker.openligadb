@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "NPM deployment and preperation for the latest repository"
+            },
             "0.0.5": {
                 "en": "highlight favorite club, Replacement value for edit mode if showgameday is set with binding, widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that) and some documentation and remove unused code, new widget: next x games of club, fix issue for dynamic with of club column"
             },
