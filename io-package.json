@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "news": {
+            "0.0.3": {
+                "en": "fixed getting oids in vis runtime"
+            },
             "0.0.2": {
                 "en": "add controlable gameday logic to gameday widget and adapter"
             },

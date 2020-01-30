@@ -28,6 +28,8 @@
 * initial release
 ### 0.0.2
 * add controlable gameday logic to gameday widget and adapter
+### 0.0.3
+* fixed getting oids in vis runtime
 
 ## License
 MIT License
