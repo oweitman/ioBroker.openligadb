@@ -26,6 +26,109 @@ vis.binds["openligadb"] = {
             vis.binds["openligadb"].version = null;
         }
     },
+    favgames: {
+        createWidget: function (widgetID, view, data, style) {
+            
+            var $div = $('#' + widgetID);
+            // if nothing found => wait
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["openligadb"].favgames.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+            var showgameday = data.showgameday || '';
+            if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
+            if (showgameday==0) showgameday='';
+            var showgamedaycount = data.showgamedaycount || 9999;
+            if (showgamedaycount==0) showgamedaycount = 9999;
+
+            var maxicon = data.maxicon || 25;
+            var shortname = data.shortname || false;
+            var highlight = data.highlight || '';
+            
+            var favgames = this.filterFavGames(allmatches,showgameday || currgameday || '', showgamedaycount, currgameday, highlight);  
+
+            
+            const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const time_options = { hour: '2-digit', minute: '2-digit' };            
+            var text ='';
+            
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-icon {\n';
+            text += '   max-height: ' + maxicon + 'px; \n';
+            text += '   max-width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tdicon {\n';
+            text += '   width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 50%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-center {\n';
+            text += '   text-align: center;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-right {\n';
+            text += '   text-align: right;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-left {\n';
+            text += '   text-align: left;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-datetime {\n';
+            text += '       font-weight: bold;\n';
+            text += '} \n';            
+            text += '</style> \n';
+            
+            
+            text += '<table class="oldb-tt">';
+
+            favgames.forEach(function(match, index) {
+                var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
+                var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
+                
+                text += '        <tr>';
+                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
+                text += '           <td class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
+                text += '           </td>';
+                text += '           <td class="oldb-full">'+ team1name +'</td>';
+                text += '           <td class="oldb-left">:</td>';
+                text += '           <td class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-left oldb-icon" src="'+match.Team2.TeamIconUrl+'">';
+                text += '           </td>';
+                text += '           <td class="oldb-full">'+ team2name +'</td>';                
+                text += '        </tr>';
+            });
+            text += '</table>            ';            
+            $('#' + widgetID).html(text);            
+
+            
+        },
+        filterFavGames: function(allmatches,gameday,gamedaycount,currgameday,highlight) {
+            gameday = parseInt(gameday);
+            gamedaycount = parseInt(gamedaycount);
+            currgameday = parseInt(currgameday);
+            
+            return allmatches.reduce(function(result,item){
+                var found;
+                if (gameday > 0 && item.Group.GroupOrderID >= gameday && item.Group.GroupOrderID < gameday + gamedaycount ) found=item;
+                if (gameday < 0 && item.Group.GroupOrderID >= currgameday + gameday && item.Group.GroupOrderID < currgameday + gameday + gamedaycount) found=item;
+                if (found && (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlight) || vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlight)) ) result.push(item);
+                return result;
+            },[]);            
+        },
+        
+    },     
+
+
     gameday: {
         createWidget: function (widgetID, view, data, style) {
             
@@ -65,6 +168,12 @@ vis.binds["openligadb"] = {
             text += '#'+widgetID + ' .oldb-tt {\n';
             text += '   width: 100%;\n';
             text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 50%;\n';
+            text += '} \n';            
             text += '#'+widgetID + ' .oldb-center {\n';
             text += '   text-align: center;\n';
             text += '} \n';
@@ -105,7 +214,7 @@ vis.binds["openligadb"] = {
                 var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
                 
                 text += '        <tr>';
-                text += '           <td class="oldb-right">'+ team1name +'</td>';
+                text += '           <td class="oldb-right oldb-full">'+ team1name +'</td>';
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
                 text += '           </td>';
@@ -115,7 +224,7 @@ vis.binds["openligadb"] = {
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-center oldb-icon" src="'+match.Team2.TeamIconUrl+'">';
                 text += '           </td>';
-                text += '           <td>'+ team2name +'</td>';                
+                text += '           <td class="oldb-left oldb-full">'+ team2name +'</td>';                
                 text += '        </tr>';
 
             }.bind(this));
@@ -166,6 +275,12 @@ vis.binds["openligadb"] = {
             text += '#'+widgetID + ' .oldb-tt {\n';
             text += '   width: 100%;\n';
             text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';                        
             text += '#'+widgetID + ' .oldb-center {\n';
             text += '   text-align: center;\n';
             text += '} \n';
@@ -216,7 +331,7 @@ vis.binds["openligadb"] = {
                 text += '            <td class="oldb-center">';
                 text += '                <img class="oldb-icon" src="'+team.TeamIconUrl+'">';
                 text += '            </td>';
-                text += '            <td class="oldb-teamname">';
+                text += '            <td class="oldb-teamname oldb-full">';
                 text += '                <span>'+teamname+'</span>';
                 text += '            </td>';
                 text += '            <td class="oldb-center oldb-games">';

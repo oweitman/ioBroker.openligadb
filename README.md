@@ -17,10 +17,10 @@
 ## Todo
 
 * validation in widget if user didnt select the right datapoint
-* discuss and fix? issue for dynamic with of club column
-* new widget: next x games of club
 * translation
 * documentation adapter / widget 
+* ~~fix issue for dynamic with of club column~~
+* ~~new widget: next x games of club~~
 * ~~widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that)~~
 * ~~Replacement value for edit mode if showgameday is set with binding~~
 * ~~highlight favorite club~~
@@ -35,6 +35,14 @@
 * fixed getting oids in vis runtime
 ### 0.0.4
 * fixed more oids in vis runtime
+### 0.0.5
+* highlight favorite club, 
+* Replacement value for edit mode if showgameday is set with binding, 
+* widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that) 
+* some documentation 
+* remove unused code
+* new widget: next x games of club
+* fix issue for dynamic with of club column
 
 ## License
 MIT License
