@@ -5,9 +5,7 @@
 [![Number of Installations](http://iobroker.live/badges/openligadb-installed.svg)](https://github.com/oweitman/ioBroker.openligadb)
 [![NPM version](http://img.shields.io/npm/v/iobroker.openligadb.svg)](https://www.npmjs.com/package/iobroker.openligadb)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.openligadb.svg)](https://www.npmjs.com/package/iobroker.openligadb)
-<!--
 [![Travis](https://img.shields.io/travis/oweitman/ioBroker.openligadb.svg)](https://travis-ci.org/oweitman/ioBroker.openligadb/)
--->
 [![AppVeyor Build Status](https://img.shields.io/appveyor/ci/oweitman/iobroker-openligadb.svg)](https://ci.appveyor.com/project/oweitman/iobroker-openligadb)
 [![GitHub issues](https://img.shields.io/github/issues/oweitman/ioBroker.openligadb.svg)](https://github.com/oweitman/ioBroker.openligadb/issues)
 
