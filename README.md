@@ -30,6 +30,8 @@
 * add controlable gameday logic to gameday widget and adapter
 ### 0.0.3
 * fixed getting oids in vis runtime
+### 0.0.4
+* fixed more oids in vis runtime
 
 ## License
 MIT License

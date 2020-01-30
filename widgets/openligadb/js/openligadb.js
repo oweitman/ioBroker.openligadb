@@ -12,8 +12,8 @@
 // add translations for edit mode
 if (vis.editMode) {
     $.extend(true, systemDictionary, {
-        "oid1": {"en": "allmatches", "de": "allmatches", "ru": "allmatches"},
-        "oid2": {"en": "currgameday", "de": "currgameday", "ru": "currgameday"},        
+        "allmatches_oid": {"en": "allmatches", "de": "allmatches", "ru": "allmatches"},
+        "currgameday_oid": {"en": "currgameday", "de": "currgameday", "ru": "currgameday"},        
         });
 }
 
@@ -37,8 +37,8 @@ vis.binds["openligadb"] = {
                 }, 100);
             }
             
-            var allmatches  = data.oid1 ? JSON.parse(vis.states.attr(data.oid1 + '.val')) : {};
-            var currgameday = data.oid2 ? JSON.parse(vis.states.attr(data.oid2 + '.val')) : {};
+            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
             var showgameday = data.showgameday || '';
 
             var maxicon = data.maxicon || 25;
