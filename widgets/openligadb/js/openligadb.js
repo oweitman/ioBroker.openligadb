@@ -41,6 +41,7 @@ vis.binds["openligadb"] = {
             var showgameday = data.showgameday || '';
             if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
             if (showgameday==0) showgameday='';
+            showgameday = showgameday || currgameday || '';
             var showgamedaycount = data.showgamedaycount || 9999;
             if (showgamedaycount==0) showgamedaycount = 9999;
 
@@ -48,7 +49,7 @@ vis.binds["openligadb"] = {
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
             
-            var favgames = this.filterFavGames(allmatches,showgameday || currgameday || '', showgamedaycount, currgameday, highlight);  
+            var favgames = this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight);  
 
             
             const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
