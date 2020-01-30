@@ -40,6 +40,7 @@ vis.binds["openligadb"] = {
             var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
             var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
             var showgameday = data.showgameday || '';
+            if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
 
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;

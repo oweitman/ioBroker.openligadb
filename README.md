@@ -20,10 +20,10 @@
 * widget gameday setting for start gameday an length (-1,3 = show previous gameday and 3 gamedays after that)
 * discuss and fix? issue for dynamic with of club column
 * Replacement value for edit mode if showgameday is set with binding
-* highlight favorite club
 * new widget: next x games of club
 * translation
 * documentation adapter / widget 
+* ~~highlight favorite club~~
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
