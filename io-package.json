@@ -65,7 +65,7 @@
         "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
         "loglevel": "debug",
         "mode": "daemon",
-        "type": "multimedia",
+        "type": "misc-data",        
         "compact": true,
         "materialize": true,
         "restartAdapters": [
