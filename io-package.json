@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "new widget games of favorite clubs with multi league support as replacement for the old one"
+            },
             "0.0.7": {
                 "en": "close connections and remove observers (timeouts/intervals)"
             },

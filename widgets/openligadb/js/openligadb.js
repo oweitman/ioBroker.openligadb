@@ -26,6 +26,133 @@ vis.binds["openligadb"] = {
             vis.binds["openligadb"].version = null;
         }
     },
+    
+    
+    favgames2: {
+        createWidget: function (widgetID, view, data, style) {
+            
+            var $div = $('#' + widgetID);
+            // if nothing found => wait
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["openligadb"].favgames2.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+            var favgames = [];
+            var showabbreviation = data.showabbreviation || false;
+            var showresult = data.showresult || false;
+            var maxicon = data.maxicon || 25;
+
+            for (let i = 1; i <= data.lCount; i++) {
+
+                var allmatches  = data['allmatches_oid'+i] ? JSON.parse(vis.states.attr( data['allmatches_oid'+i] + '.val')) : {};
+                var currgameday = data['currgameday_oid'+i] ? JSON.parse(vis.states.attr(data['currgameday_oid'+i] + '.val')) : {};
+                var showgameday = data['showgameday'+i] || '';
+                if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
+                if (showgameday==0) showgameday='';
+                showgameday = showgameday || currgameday || '';
+                var showgamedaycount = data['showgamedaycount'+i] || 9999;
+                if (showgamedaycount==0) showgamedaycount = 9999;
+
+                var abbreviation = data['abbreviation'+i] || '';
+                var shortname = data['shortname'+i] || false;
+                var highlight = data['highlight'+i] || '';
+
+                favgames=favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight,abbreviation));  
+            }
+            favgames = this.sortFavGames(favgames);
+
+            const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const time_options = { hour: '2-digit', minute: '2-digit' };            
+            var text ='';
+            
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-icon {\n';
+            text += '   max-height: ' + maxicon + 'px; \n';
+            text += '   max-width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tdicon {\n';
+            text += '   width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 50%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-center {\n';
+            text += '   text-align: center;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-right {\n';
+            text += '   text-align: right;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-left {\n';
+            text += '   text-align: left;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-datetime {\n';
+            text += '       font-weight: bold;\n';
+            text += '} \n';            
+            text += '</style> \n';
+            
+            text += '<table class="oldb-tt">';
+
+            favgames.forEach(function(match, index) {
+                var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
+                var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
+                var team1result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam1 : '-';
+                var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
+                
+                text += '        <tr>';
+                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
+                if (showabbreviation) text += '           <td class="oldb-left">'+ match.abbreviation +'</td>';
+                text += '           <td class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
+                text += '           </td>';
+                text += '           <td class="oldb-full">'+ team1name +'</td>';
+                if (showresult) text += '           <td class="oldb-left">'+team1result+'</td>';
+                text += '           <td class="oldb-left">:</td>';
+                if (showresult) text += '           <td class="oldb-left">'+team2result+'</td>';
+                text += '           <td class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-left oldb-icon" src="'+match.Team2.TeamIconUrl+'">';
+                text += '           </td>';
+                text += '           <td class="oldb-full">'+ team2name +'</td>';                
+                text += '        </tr>';
+            });
+            if (highlight == '') text += '<tr><td>Not filter set</td></tr>';
+            text += '</table>            ';            
+            $('#' + widgetID).html(text);            
+
+        },
+        filterFavGames: function(allmatches,gameday,gamedaycount,currgameday,highlight,abbreviation) {
+            gameday = parseInt(gameday);
+            gamedaycount = parseInt(gamedaycount);
+            currgameday = parseInt(currgameday);
+            
+            return allmatches.reduce(function(result,item){
+                var found;
+                item.abbreviation = abbreviation;
+                if (gameday > 0 && item.Group.GroupOrderID >= gameday && item.Group.GroupOrderID < gameday + gamedaycount ) found=item;
+                if (gameday < 0 && item.Group.GroupOrderID >= currgameday + gameday && item.Group.GroupOrderID < currgameday + gameday + gamedaycount) found=item;
+                if (found && (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlight) || vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlight)) ) result.push(item);
+                return result;
+            },[]);            
+        },
+        sortFavGames: function(favgames) {
+            return favgames.sort(function(a,b){
+                let comp = 0;
+                if (new Date(a.MatchDateTime).getTime()>new Date(b.MatchDateTime).getTime()) comp=1;
+                if (new Date(a.MatchDateTime).getTime()<new Date(b.MatchDateTime).getTime()) comp=-1;
+                return comp;
+            });
+        },
+        
+        
+    },         
+    
     favgames: {
         createWidget: function (widgetID, view, data, style) {
             
@@ -108,6 +235,7 @@ vis.binds["openligadb"] = {
                 text += '           <td class="oldb-full">'+ team2name +'</td>';                
                 text += '        </tr>';
             });
+            if (highlight == '') text += '<tr><td>Not filter set</td></tr>';
             text += '</table>            ';            
             $('#' + widgetID).html(text);            
 

@@ -35,7 +35,7 @@ This widget display the acual ranking of your league
 All games of the actual or selected gameday. There are many widget-attributes to configure the amount of the displayed data
 
 ### FavGame
-Display the all, actual or futer games of your favorite clubs
+Display the all, actual or futur games of your favorite clubs
 
 Documentation for the vis-widgets are available inside vis or [Widget-Documentation/german](https://htmlpreview.github.io/?https://github.com/oweitman/ioBroker.openligadb/blob/master/widgets/openligadb/doc.html)
 
@@ -72,6 +72,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * NPM deployment and preperation for the latest repository
 ### 0.0.7
 * close connections and remove observers (timeouts/intervals)
+### 0.0.8
+* new widget games of favorite clubs with multi league support as replacement for the old one
 
 ## License
 MIT License
