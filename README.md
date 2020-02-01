@@ -70,6 +70,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * fix issue for dynamic with of club column
 ### 0.0.6
 * NPM deployment and preperation for the latest repository
+### 0.0.7
+* close connections and remove observers (timeouts/intervals)
 
 ## License
 MIT License
