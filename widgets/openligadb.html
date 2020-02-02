@@ -28,7 +28,7 @@
         type="text/ejs"
         class="vis-tpl"
 		data-vis-prev='<img src="widgets/openligadb/img/gameday.png"></img>'
-        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;showgameday;showgamedaycount;maxicon[25],number;shortname/checkbox;highlight;"
+        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;showgameday;showgamedaycount;maxicon[25],number;shortname/checkbox;showweekday/checkbox;highlight;"
         data-vis-set="openligadb"
         data-vis-type="val"
         data-vis-beta="true"
@@ -42,7 +42,7 @@
         type="text/ejs"
         class="vis-tpl"
 		data-vis-prev='<img src="widgets/openligadb/img/favgames.png"></img>'
-        data-vis-attrs="lCount[1]/number;maxicon[25],number;showresult/checkbox;showabbreviation/checkbox;"
+        data-vis-attrs="lCount[1]/number;maxicon[25],number;showresult/checkbox;showabbreviation/checkbox;showweekday/checkbox;"
         data-vis-attrs0="group.leagues/byindex;allmatches_oid(1-lCount)/id;currgameday_oid(1-lCount)/id;showgameday(1-lCount);showgamedaycount(1-lCount);shortname(1-lCount)/checkbox;abbreviation(1-lCount);highlight(1-lCount);"
         data-vis-set="openligadb"
         data-vis-type="val"
@@ -67,4 +67,4 @@
         vis.binds.openligadb.favgames.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
-    
+   

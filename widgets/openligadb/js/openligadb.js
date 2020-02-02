@@ -40,6 +40,7 @@ vis.binds["openligadb"] = {
             }
             var favgames = [];
             var showabbreviation = data.showabbreviation || false;
+            var showweekday = data.showweekday || false;
             var showresult = data.showresult || false;
             var maxicon = data.maxicon || 25;
 
@@ -62,6 +63,7 @@ vis.binds["openligadb"] = {
             }
             favgames = this.sortFavGames(favgames);
 
+            const weekday_options = { weekday: 'short' };
             const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             const time_options = { hour: '2-digit', minute: '2-digit' };            
             var text ='';
@@ -102,10 +104,13 @@ vis.binds["openligadb"] = {
             favgames.forEach(function(match, index) {
                 var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(team1name,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
+                if (vis.binds["openligadb"].checkHighlite(team2name,highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
                 var team1result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam1 : '-';
                 var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
                 
                 text += '        <tr>';
+                if (showweekday) text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,weekday_options)  +'</td>';
                 text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
                 text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
                 if (showabbreviation) text += '           <td class="oldb-left">'+ match.abbreviation +'</td>';
@@ -276,6 +281,7 @@ vis.binds["openligadb"] = {
             if (showgameday==0) showgameday='';
             var showgamedaycount = data.showgamedaycount || 1;
             if (showgamedaycount==0) showgamedaycount = 1;
+            var showweekday = data.showweekday || false;
 
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
@@ -322,7 +328,7 @@ vis.binds["openligadb"] = {
             text += '<table class="oldb-tt">';
 
             var curDate,oldDate ='' ;
-            const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
             const time_options = { hour: '2-digit', minute: '2-digit' };
             gameday.forEach(function(match, index) {
                 curDate = new Date(match.MatchDateTime);

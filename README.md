@@ -14,8 +14,8 @@
 Adapter to request game data for soccer or other games form openligadb.de
 
 
-## Configuration**
-Add an insace of the adapter and click on the wrench symbol
+## Configuration
+Add an instance of the adapter and click on the wrench symbol
 In the form you can add the shortcut from a league and a season.
 Please visit openligadb.de for available leagues,seasons and shortcuts
 If a season is spread over two years, please enter only the start year.
@@ -23,7 +23,7 @@ If a season is spread over two years, please enter only the start year.
 Example data for 1. German Bundliga is
 shortcut = bl1     season = 2019
 
-If you saved and closed the configuration, a short while after this ther must be new datapoints for your league and season.
+If you saved and closed the configuration, a short while after this there must be new datapoints for your league and season.
 
 ## vis and Widgets 
 Actually there are 3 widgets available. Please enter openligadb in the widget filter
@@ -35,7 +35,7 @@ This widget display the acual ranking of your league
 All games of the actual or selected gameday. There are many widget-attributes to configure the amount of the displayed data
 
 ### FavGame
-Display the all, actual or futur games of your favorite clubs
+Display all, actual or future games of your favorite clubs
 
 Documentation for the vis-widgets are available inside vis or [Widget-Documentation/german](https://htmlpreview.github.io/?https://github.com/oweitman/ioBroker.openligadb/blob/master/widgets/openligadb/doc.html)
 
@@ -74,6 +74,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * close connections and remove observers (timeouts/intervals)
 ### 0.0.8
 * new widget games of favorite clubs with multi league support as replacement for the old one
+### 0.0.9
+* optional weekday for widgets: gameday and gamesoffavclub,highlight the clubname in gamesoffavclub
 
 ## License
 MIT License
