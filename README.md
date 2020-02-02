@@ -76,6 +76,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * new widget games of favorite clubs with multi league support as replacement for the old one
 ### 0.0.9
 * optional weekday for widgets: gameday and gamesoffavclub,highlight the clubname in gamesoffavclub
+### 0.0.10
+* widget gameday: optional you can show informations about the goalgetters
 
 ## License
 MIT License

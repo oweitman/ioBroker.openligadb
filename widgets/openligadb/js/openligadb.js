@@ -282,6 +282,7 @@ vis.binds["openligadb"] = {
             var showgamedaycount = data.showgamedaycount || 1;
             if (showgamedaycount==0) showgamedaycount = 1;
             var showweekday = data.showweekday || false;
+            var showgoals = data.showgoals || false;
 
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
@@ -306,6 +307,13 @@ vis.binds["openligadb"] = {
             text += '#'+widgetID + ' .oldb-tt td{\n';
             text += '   white-space: nowrap;\n';
             text += '} \n';
+            text += '#'+widgetID + ' .oldb-wrap {\n';
+            text += '   white-space: normal !important;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-goal {\n';
+            text += '   white-space: nowrap;\n';
+            text += '   display: inline-block;\n';
+            text += '} \n';
             text += '#'+widgetID + ' .oldb-full {\n';
             text += '   width: 50%;\n';
             text += '} \n';            
@@ -321,8 +329,6 @@ vis.binds["openligadb"] = {
             text += '#'+widgetID + ' .oldb-datetime {\n';
             text += '       font-weight: bold;\n';
             text += '} \n';
-
-            
             text += '</style> \n';
             
             text += '<table class="oldb-tt">';
@@ -362,15 +368,16 @@ vis.binds["openligadb"] = {
                 text += '           <td class="oldb-left oldb-full">'+ team2name +'</td>';                
                 text += '        </tr>';
 
+                var goals = this.getGoals(match);
+                if (showgoals && goals !='' ) {
+                    text += '        <tr>';
+                    text += '           <td class="oldb-center oldb-wrap" colspan="7"><small>'+ this.getGoals(match) +'</small></td>';                                
+                    text += '        </tr>';
+                }
             }.bind(this));
-            
-            
-            
-            
+
             text += '</table>            ';
 
-            
-            
             $('#' + widgetID).html(text);
         },
         filterGameDay: function(allmatches,gameday,gamedaycount,currgameday) {
@@ -384,6 +391,18 @@ vis.binds["openligadb"] = {
                 return result;
             },[]);            
         },
+        getGoals: function(match) {
+            var goals = [];
+            match.Goals.forEach(function(match, index,arr) {
+                var goal = '';
+                goal += match.ScoreTeam1+':'+match.ScoreTeam2+' '+match.GoalGetterName+' '+'('+match.MatchMinute+')';
+                goal += (match.IsPenalty) ? ' (Elfmeter)' : '';
+                goal += (match.IsOwnGoal) ? ' (Eigentor)' : '';
+                goal += index < arr.length-1 ? ', ' : '';
+                goals += '<span class="oldb-goal">' + goal + '</span>';
+            });
+            return goals;
+        }       
     },            
     table: {
         createWidget: function (widgetID, view, data, style) {
