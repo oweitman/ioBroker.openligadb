@@ -386,7 +386,7 @@ vis.binds["openligadb"] = {
             currgameday = parseInt(currgameday);
             
             return allmatches.reduce(function(result,item){
-                if (item.Group.GroupOrderID == gameday) result.push(item);
+                if (gameday > 0 && item.Group.GroupOrderID >= gameday && item.Group.GroupOrderID < gameday + gamedaycount ) result.push(item);
                 if (gameday < 0 && item.Group.GroupOrderID >= currgameday + gameday && item.Group.GroupOrderID < currgameday + gameday + gamedaycount) result.push(item);
                 return result;
             },[]);            

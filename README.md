@@ -78,6 +78,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * optional weekday for widgets: gameday and gamesoffavclub,highlight the clubname in gamesoffavclub
 ### 0.0.10
 * widget gameday: optional you can show informations about the goalgetters
+### 0.0.11
+* widget gameday: fix issue with not working gamedaycount
 
 ## License
 MIT License
