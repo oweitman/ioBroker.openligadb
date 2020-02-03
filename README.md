@@ -1,4 +1,4 @@
-![Logo](admin/openligadb.png)
+![Logo](admin/openligadb_b.png)
 
 # ioBroker Adapter to get soccer sport match results from OpenLigaDB
 
@@ -80,6 +80,9 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * widget gameday: optional you can show informations about the goalgetters
 ### 0.0.11
 * widget gameday: fix issue with not working gamedaycount
+### 0.8.0
+* push version for latest repository. fix some typos. fix a problem with date handling on different OS
+
 
 ## License
 MIT License

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h2><a name="Attribute" ></a>Dokumentation openligadb Widgets</h2>
+<h2><a name="Attribute" ></a>Dokumentation OpenLigaDB Widgets</h2>
 
 <h3><a name="tplOLiDBTable" ></a>League Table</h3>
 <img src="img/table.png"/><br>
@@ -14,14 +14,14 @@ Sp=Anzahl gespielter Spiele, S=Siege, U=Unentschieden, N=Niederlagen, Tore=Torve
 <h4>Attribute</h4>
 <h5>Attribute Object ID</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung table ausgewählt werden.
-Dieser Datenpunkt wird nach dem anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Datenpunkt enthält alle Daten einer Liga/Season im JSON-Format
 <h5>Attribute maxicon</h5>
 Maximale Größe des Manschaftsicons in x oder y-Richtung.
 <h5>Attribute shortname</h5>
 Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vorliegenden Daten gepflegt wurde.
 <h5>Attribute highlight</h5>
-Hier kann ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen.
+Hier können ein oder mehrere Begriffe mit Semikolon (;) getrennt eingegeben werden die hervorgehoben werden sollen.
 Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
 Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
 <br><br>
@@ -32,25 +32,25 @@ Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
 <h4>Attribute</h4>
 <h5>Attribute allmatches</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches ausgewählt werden.
-Dieser Datenpunkt wird nach dem anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Datenpunkt enthält alle Spiele und Ergebnisse einer Liga/Season im JSON-Format
 <h5>Attribute currgameday</h5>
 Hier ist ein Datenpunk zu wählen, der mit currgameday benannt ist.
-Dieser Datenpunkt wird nach dem anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
-Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur hälfte der Zeit 
-zwischen dem letzten Spielt der vorherigen Spieltags und dem ersten Speil des folgenden Spieltages.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur Hälfte der Zeit 
+zwischen dem letzten Spielt der vorherigen Spieltags und dem ersten Spiel des folgenden Spieltages.
 <h5>Attribute showgameday</h5>
 Wenn dieses Feld leer bleibt, wird immer der aktuelle Spieltag angezeigt.<br>
 Trägt man eine positive Zahl ein, dann wird, falls vorhanden, der ausgewählte Spieltag angezeigt.<br>
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag dieser angezeigt (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für relativ berechneten Spieltag:<br>
-Vorheriger Speiltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
+Vorheriger Spieltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
 Nachfolgender Spieltag {a:openligadb.0.bl1.2019.currgameday;a+1}<br>
-Da das Binding nicht im vis editmode berechnet wird, wird bei verwendung von Binding immer der aktuelle Spieltag angezeigt.<br>
+Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding immer der aktuelle Spieltag angezeigt.<br>
 <h5>Attribute showgamedaycount</h5>
 Üblicherweise bleibt dieses Feld leer oder enthält 1.<br>
-Dadruch wird genau ein Spieltag angezeigt.<br>
+Dadurch wird genau ein Spieltag angezeigt.<br>
 Wird hier eine andere Zahl angezeigt, dann wird diese Anzahl von Spieltagen, ausgehend von der 'Einstellung in showgameday angezeigt.<br>
 <h5>Attribute maxicon</h5>
 Maximale Größe des Manschaftsicons in x oder y-Richtung.
@@ -61,7 +61,7 @@ Informationen zu den Torschützen wird angezeigt.
 <h5>Attribute showweekday</h5>
 Zeigt vor dem Datum wahlweise den Wochentag an.
 <h5>Attribute highlight</h5>
-Hier kann ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen.
+Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen.
 Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
 Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
 <br><br>
@@ -90,24 +90,24 @@ Zeigt vor dem Datum wahlweise den Wochentag an.
 
 <h5>Attribute allmatches - Gruppe Liga</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches ausgewählt werden.
-Dieser Datenpunkt wird nach dem anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Datenpunkt enthält alle Spiele und Ergebnisse einer Liga/Season im JSON-Format
 <h5>Attribute currgameday - Gruppe Liga</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung currgameday ausgewählt werden.
-Dieser Datenpunkt wird nach dem anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
-Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur hälfte der Zeit 
-zwischen dem letzten Spielt der vorherigen Spieltags und dem ersten Speil des folgenden Spieltages.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur Hälfte der Zeit 
+zwischen dem letzten Spielt der vorherigen Spieltags und dem ersten Spiel des folgenden Spieltages.
 <h5>Attribute showgameday - Gruppe Liga</h5>
 Wenn dieses Feld leer bleibt, wird immer vom aktuelle Spieltag ausgegangen.<br>
 Trägt man eine positive Zahl ein, dann wird, falls vorhanden, vom ausgewählte Spieltag ausgegangen.<br>
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag ausgegangen (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für einen relativ berechneten Spieltag:<br>
-Vorheriger Speiltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
+Vorheriger Spieltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
 Nachfolgender Spieltag {a:openligadb.0.bl1.2019.currgameday;a+1}<br>
 Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding immer vom aktuellen Spieltag ausgegangen.<br>
 <h5>Attribute showgamedaycount - Gruppe Liga</h5>
-Hier kann angegeben werden für wieviele Spieltage die Spiele angezeigt werden sollen.
+Hier kann angegeben werden für wie viele Spieltage die Spiele angezeigt werden sollen.
 Wenn das Feld leer bleibt, dann werden alle restlichen Spieltage angezeigt (max 9999 Spieltage)
 Wird hier eine andere Zahl angezeigt, dann werden alle Spiele für diese Anzahl von Spieltagen, ausgehend von der 'Einstellung in showgameday angezeigt.<br>
 <h5>Attribute shortname - Gruppe Liga</h5>
@@ -115,7 +115,7 @@ Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vo
 <h5>Attribute abbreviation - Gruppe Liga</h5>
 Abkürzung die für diese Liga angezeigt werden soll, sofern showabbreviation ausgewählt wurde.
 <h5>Attribute highlight - Gruppe Liga</h5>
-Hier kann ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, um die Lieblingsmanschaften zu finden.
+Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, um die Lieblingsmanschaften zu finden.
 Die Suche erfolgt nur in den Mannschaftsnamen. Eine besondere Hervorhebung wie bei den anderen Widgets gibt es hier nicht.
 <br><br>
 

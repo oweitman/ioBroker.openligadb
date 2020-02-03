@@ -110,9 +110,10 @@ vis.binds["openligadb"] = {
                 var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
                 
                 text += '        <tr>';
-                if (showweekday) text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,weekday_options)  +'</td>';
-                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
-                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
+                
+                if (showweekday) text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,weekday_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
                 if (showabbreviation) text += '           <td class="oldb-left">'+ match.abbreviation +'</td>';
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
@@ -149,8 +150,8 @@ vis.binds["openligadb"] = {
         sortFavGames: function(favgames) {
             return favgames.sort(function(a,b){
                 let comp = 0;
-                if (new Date(a.MatchDateTime).getTime()>new Date(b.MatchDateTime).getTime()) comp=1;
-                if (new Date(a.MatchDateTime).getTime()<new Date(b.MatchDateTime).getTime()) comp=-1;
+                if (vis.binds["openligadb"].getDateFromJSON(a.MatchDateTime).getTime()>vis.binds["openligadb"].getDateFromJSON(b.MatchDateTime).getTime()) comp=1;
+                if (vis.binds["openligadb"].getDateFromJSON(a.MatchDateTime).getTime()<vis.binds["openligadb"].getDateFromJSON(b.MatchDateTime).getTime()) comp=-1;
                 return comp;
             });
         },
@@ -227,8 +228,8 @@ vis.binds["openligadb"] = {
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
                 
                 text += '        <tr>';
-                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
-                text += '           <td class="oldb-left">'+ new Date(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
+                text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
                 text += '           </td>';
@@ -337,13 +338,13 @@ vis.binds["openligadb"] = {
             const date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
             const time_options = { hour: '2-digit', minute: '2-digit' };
             gameday.forEach(function(match, index) {
-                curDate = new Date(match.MatchDateTime);
+                curDate = vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime);
                 if (curDate.toString() != oldDate.toString()) {
                     oldDate=curDate;
                     text += '        <tr>';
-                    text += '           <td class="oldb-right oldb-datetime" colspan="3">'+ new Date(curDate).toLocaleString(vis.language,date_options) +'</td>';
+                    text += '           <td class="oldb-right oldb-datetime" colspan="3">'+ curDate.toLocaleString(vis.language,date_options) +'</td>';
                     text += '           <td class=""></td>';
-                    text += '           <td class="oldb-left oldb-datetime" colspan="3">'+ new Date(curDate).toLocaleString(vis.language,time_options) +'</td>';
+                    text += '           <td class="oldb-left oldb-datetime" colspan="3">'+ curDate.toLocaleString(vis.language,time_options) +'</td>';
                     text += '        </tr>';
                 }
                 
@@ -520,6 +521,11 @@ vis.binds["openligadb"] = {
             if (cur=='') return acc;
             return acc || value.toLowerCase().indexOf(cur.toLowerCase())>=0; 
         },false);
+    },
+    getDateFromJSON: function(datestring) {
+        var aDate = datestring.split("T")[0].split("-");
+        var aTime = datestring.split("T")[1].split(":");
+        return new Date(aDate[0],aDate[1]-1,aDate[2],aTime[0],aTime[1]);
     },
 }
 vis.binds["openligadb"].showVersion();
