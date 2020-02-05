@@ -106,11 +106,14 @@ vis.binds["openligadb"] = {
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
                 if (vis.binds["openligadb"].checkHighlite(team1name,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
                 if (vis.binds["openligadb"].checkHighlite(team2name,highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
-                var team1result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam1 : '-';
-                var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
+                var result = vis.binds["openligadb"].getResult(match.MatchResults);
+                var team1result = result.hasOwnProperty('PointsTeam1') ? result.PointsTeam1 : '-';
+                var team2result = result.hasOwnProperty('PointsTeam2') ? result.PointsTeam2 : '-';
                 
-                text += '        <tr>';
-                
+                var today = new Date();
+                var mdate = vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime);
+                (vis.binds["openligadb"].compareDate(today,mdate)) ? text += '        <tr class="todaygame">' : text += '        <tr>';
+
                 if (showweekday) text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,weekday_options)  +'</td>';
                 text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,date_options)  +'</td>';
                 text += '           <td class="oldb-left">'+ vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime).toLocaleString(vis.language,time_options)  +'</td>';
@@ -338,13 +341,17 @@ vis.binds["openligadb"] = {
             const date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
             const time_options = { hour: '2-digit', minute: '2-digit' };
             gameday.forEach(function(match, index) {
-                curDate = vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime);
-                if (curDate.toString() != oldDate.toString()) {
-                    oldDate=curDate;
-                    text += '        <tr>';
-                    text += '           <td class="oldb-right oldb-datetime" colspan="3">'+ curDate.toLocaleString(vis.language,date_options) +'</td>';
+
+                var today = new Date();
+                var mdate = vis.binds["openligadb"].getDateFromJSON(match.MatchDateTime);
+
+                
+                if (mdate.toString() != oldDate.toString()) {
+                    oldDate=mdate;
+                    (vis.binds["openligadb"].compareDate(today,mdate)) ? text += '        <tr class="todaygameheader">' : text += '        <tr>';                    
+                    text += '           <td class="oldb-right oldb-datetime" colspan="3">'+ mdate.toLocaleString(vis.language,date_options) +'</td>';
                     text += '           <td class=""></td>';
-                    text += '           <td class="oldb-left oldb-datetime" colspan="3">'+ curDate.toLocaleString(vis.language,time_options) +'</td>';
+                    text += '           <td class="oldb-left oldb-datetime" colspan="3">'+ mdate.toLocaleString(vis.language,time_options) +'</td>';
                     text += '        </tr>';
                 }
                 
@@ -352,10 +359,12 @@ vis.binds["openligadb"] = {
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
                 if (vis.binds["openligadb"].checkHighlite(team1name,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
                 if (vis.binds["openligadb"].checkHighlite(team2name,highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
-                var team1result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam1 : '-';
-                var team2result = match.MatchResults[0] ? match.MatchResults[0].PointsTeam2 : '-';
+
+                var result = vis.binds["openligadb"].getResult(match.MatchResults);
+                var team1result = result.hasOwnProperty('PointsTeam1') ? result.PointsTeam1 : '-';
+                var team2result = result.hasOwnProperty('PointsTeam2') ? result.PointsTeam2 : '-';
                 
-                text += '        <tr>';
+                (vis.binds["openligadb"].compareDate(today,mdate)) ? text += '        <tr class="todaygame">' : text += '        <tr>';  
                 text += '           <td class="oldb-right oldb-full">'+ team1name +'</td>';
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-icon" src="'+match.Team1.TeamIconUrl+'">';
@@ -515,8 +524,8 @@ vis.binds["openligadb"] = {
             $('#' + widgetID).html(text);
         }
     },
-    checkHighlite: function(value,highlights) {
-        var highlight = highlights.split(';');
+    checkHighlite: function(value,highlights,sep=";") {
+        var highlight = highlights.split(sep);
         return highlight.reduce(function(acc,cur){
             if (cur=='') return acc;
             return acc || value.toLowerCase().indexOf(cur.toLowerCase())>=0; 
@@ -527,6 +536,44 @@ vis.binds["openligadb"] = {
         var aTime = datestring.split("T")[1].split(":");
         return new Date(aDate[0],aDate[1]-1,aDate[2],aTime[0],aTime[1]);
     },
+    getResult: function(results) {
+        if (results.length==0) return {};
+        results = results.reduce(function(acc,cur){
+            if (!acc) acc = cur;
+            if (acc.ResultOrderID<cur.ResultOrderID) acc = cur;
+            return acc;
+        });
+        return results;
+    },
+    compareDate: function(adate,bdate) {
+        return adate.getDate() == bdate.getDate() && 
+               adate.getMonth() == bdate.getMonth() && 
+               adate.getYear() == bdate.getYear();
+    },
+    checkTodayFavorite: function(oid,highlite) {
+        //debugger;
+        if (oid) {
+            var json = vis.states.attr( oid + '.val');
+            if (json) {
+                var matches = JSON.parse(json);
+                if (matches) {
+                    var today = new Date();
+                    matches[0].MatchDateTime = "2020-02-05T20:30:00";
+                    return matches.reduce(function(result,item){
+                        var mdate = vis.binds["openligadb"].getDateFromJSON(item.MatchDateTime);
+                        var test =  vis.binds["openligadb"].compareDate(today,mdate) &&
+                            (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlite,",") ||
+                            vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlite,","));
+                        if (test) {
+                            console.debug(item.MatchDateTime + " " + item.Team1.TeamName + " " + item.Team2.TeamName);                            
+                        } 
+                        return result || test;
+                    },false);
+                }
+            }
+        }
+        return result;
+    },    
 }
 vis.binds["openligadb"].showVersion();
       

@@ -7,6 +7,24 @@
 
 <h2><a name="Attribute" ></a>Dokumentation OpenLigaDB Widgets</h2>
 
+<h3><a ></a>Besondere Funktionen</h3>
+<h4>vis.binds["openligadb"].checkTodayFavorite(ObjectID,Favorites)</h4>
+Funktion zur Überprüfung, ob am heutigen Tag für ein oder mehrere Mannschaften ein Spiel statt findet.<br>
+Diese Funktion kann über vis binding verwendet werden. Aufgrund der Anforderung des Bindings sind hier ein paar Dinge zu beachten.<br>
+<br>
+Diese Funktion kann im Binding bspw. wie folgt verwendet werden.<br>
+Zum Test kann die folgende Notation in ein HTML-widget eingetragen werden. Als Ergebnis wird dann entweder ja oder nein ausgegeben,
+je nachdem ob am heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden wurde.<br>
+Alle einfachen Anführungszeichen müssen exakt so eingegeben werden.
+<br><br>
+<b><i>{a:oid1;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}</i></b><br>
+<br>
+<b>Bedeutung der Parameter</b><br>
+oid = ein beliebiger Datenpunkt, der nur aufgrund der Notation des Bindings ausgewählt werden muss. Dieser Datenpunkt darf kein JSON zurückgeben.<br><br>
+oid_allmatches = Bezeichnung eines Datenpunktes allmatches der jeweiligen Liga/Saison.<br><br>
+clubsucheX = ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten. <br>
+Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.<br>
+
 <h3><a name="tplOLiDBTable" ></a>League Table</h3>
 <img src="img/table.png"/><br>
 Das ist die klassische Tabellenansicht. Die Tabelle enthält verschiedene Spalten.<br>
@@ -34,6 +52,7 @@ Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches ausgewählt werden.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Datenpunkt enthält alle Spiele und Ergebnisse einer Liga/Season im JSON-Format
+Wenn der Spieltag am heutigen Tag statt findet, dann wird das Datum (todaygameheader) und das jeweilige Spiel (todaygame) mit CSS-Klassen versehen.
 <h5>Attribute currgameday</h5>
 Hier ist ein Datenpunk zu wählen, der mit currgameday benannt ist.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
@@ -75,6 +94,7 @@ Dieses Widget wird gelöscht. Bitte nur noch Games of favorite clubs 2 benutzen
 Diese Widget zeigt die nächsten Spiele deiner Lieblingsmannschaften aus ein oder mehrerer Ligen an.
 Durch die Auswahl der Anzahl der anzuzeigenden Ligen, wird für jede Liga eine separate Konfigurationsgruppe angezeigt, 
 in der die folgenden Einstellungen vorgenommen werden können.
+Wenn das Spiel am heutigen Tag statt findet, dann wird das jeweilige Spiel (todaygame) mit CSS-Klassen versehen.
 <h4>Attribute</h4>
 <h5>Attribute Anzahl Liga - Gruppe Allgemein</h5>
 Hier kann die Anzahl der abzufragenden Ligen eingetragen werden. Für jede Liga wird ein separate Konfigurationsgruppe angezeigt.
