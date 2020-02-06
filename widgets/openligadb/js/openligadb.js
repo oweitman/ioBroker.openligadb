@@ -539,10 +539,9 @@ vis.binds["openligadb"] = {
     getResult: function(results) {
         if (results.length==0) return {};
         results = results.reduce(function(acc,cur){
-            if (!acc) acc = cur;
-            if (acc.ResultOrderID<cur.ResultOrderID) acc = cur;
+            if (cur.ResultTypeID==2) acc = cur;
             return acc;
-        });
+        },{});
         return results;
     },
     compareDate: function(adate,bdate) {

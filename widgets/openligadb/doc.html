@@ -1,29 +1,38 @@
 <html>
 <head>
-    <link rel="stylesheet" href="../../css/doc.css" />
+    <link rel="stylesheet" href="css/doc.css" />
     <title>Dokumentation OpenLigaDB Widgets</title>
 </head>
 <body>
 
 <h2><a name="Attribute" ></a>Dokumentation OpenLigaDB Widgets</h2>
 
-<h3><a ></a>Besondere Funktionen</h3>
+<h3>Besondere Funktionen</h3>
 <h4>vis.binds["openligadb"].checkTodayFavorite(ObjectID,Favorites)</h4>
-Funktion zur Überprüfung, ob am heutigen Tag für ein oder mehrere Mannschaften ein Spiel statt findet.<br>
+Javascript-Funktion zur Überprüfung, ob am heutigen Tag für ein oder mehrere Mannschaften ein Spiel statt findet.<br>
 Diese Funktion kann über vis binding verwendet werden. Aufgrund der Anforderung des Bindings sind hier ein paar Dinge zu beachten.<br>
 <br>
 Diese Funktion kann im Binding bspw. wie folgt verwendet werden.<br>
 Zum Test kann die folgende Notation in ein HTML-widget eingetragen werden. Als Ergebnis wird dann entweder ja oder nein ausgegeben,
 je nachdem ob am heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden wurde.<br>
-Alle einfachen Anführungszeichen müssen exakt so eingegeben werden.
+Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werden.
 <br><br>
 <b><i>{a:oid1;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}</i></b><br>
 <br>
 <b>Bedeutung der Parameter</b><br>
-oid = ein beliebiger Datenpunkt, der nur aufgrund der Notation des Bindings ausgewählt werden muss. Dieser Datenpunkt darf kein JSON zurückgeben.<br><br>
-oid_allmatches = Bezeichnung eines Datenpunktes allmatches der jeweiligen Liga/Saison.<br><br>
-clubsucheX = ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten. <br>
-Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.<br>
+<table>
+<tr>
+<td>oid</td><td>ein beliebiger Datenpunkt, der nur aufgrund der Notation des Bindings ausgewählt werden muss. Dieser Datenpunkt darf kein JSON zurückgeben.</td>
+</tr>
+<tr>
+<td>oid_allmatches</td><td>Bezeichnung eines Datenpunktes allmatches der jeweiligen Liga/Saison.</td>
+</tr>
+<tr>
+<td>clubsucheX</td><td>ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten.<br>Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.</td>
+</tr>
+</table>
+<br>
+
 
 <h3><a name="tplOLiDBTable" ></a>League Table</h3>
 <img src="img/table.png"/><br>
@@ -64,18 +73,18 @@ Trägt man eine positive Zahl ein, dann wird, falls vorhanden, der ausgewählte 
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag dieser angezeigt (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für relativ berechneten Spieltag:<br>
-Vorheriger Spieltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
-Nachfolgender Spieltag {a:openligadb.0.bl1.2019.currgameday;a+1}<br>
-Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding immer der aktuelle Spieltag angezeigt.<br>
+<b>Vorheriger Spieltag</b><br>      <b><i>{a:openligadb.0.bl1.2019.currgameday;a-1}</i></b> oder<br>
+<b>Nachfolgender Spieltag</b><br>   <b><i>{a:openligadb.0.bl1.2019.currgameday;a+1}</i></b><br>
+Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.<br>
 <h5>Attribute showgamedaycount</h5>
 Üblicherweise bleibt dieses Feld leer oder enthält 1.<br>
 Dadurch wird genau ein Spieltag angezeigt.<br>
-Wird hier eine andere Zahl angezeigt, dann wird diese Anzahl von Spieltagen, ausgehend von der 'Einstellung in showgameday angezeigt.<br>
+Wird hier eine andere Zahl eingegeben, dann wird diese Anzahl von Spieltagen, ausgehend von der 'Einstellung in showgameday angezeigt.<br>
 <h5>Attribute maxicon</h5>
 Maximale Größe des Manschaftsicons in x oder y-Richtung.
 <h5>Attribute shortname</h5>
 Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vorliegenden Daten gepflegt wurde.
-<h5>Attribute shortgoals</h5>
+<h5>Attribute showgoals</h5>
 Informationen zu den Torschützen wird angezeigt.
 <h5>Attribute showweekday</h5>
 Zeigt vor dem Datum wahlweise den Wochentag an.
@@ -95,6 +104,14 @@ Diese Widget zeigt die nächsten Spiele deiner Lieblingsmannschaften aus ein ode
 Durch die Auswahl der Anzahl der anzuzeigenden Ligen, wird für jede Liga eine separate Konfigurationsgruppe angezeigt, 
 in der die folgenden Einstellungen vorgenommen werden können.
 Wenn das Spiel am heutigen Tag statt findet, dann wird das jeweilige Spiel (todaygame) mit CSS-Klassen versehen.
+<b>Beispiel</b><br><br>
+.todaygame {<br>
+    color:red;<br>
+}<br>
+.todaygameheader {<br>
+    color: yellow;<br>
+}<br>
+<br>
 <h4>Attribute</h4>
 <h5>Attribute Anzahl Liga - Gruppe Allgemein</h5>
 Hier kann die Anzahl der abzufragenden Ligen eingetragen werden. Für jede Liga wird ein separate Konfigurationsgruppe angezeigt.
@@ -123,9 +140,9 @@ Trägt man eine positive Zahl ein, dann wird, falls vorhanden, vom ausgewählte 
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag ausgegangen (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für einen relativ berechneten Spieltag:<br>
-Vorheriger Spieltag {a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
-Nachfolgender Spieltag {a:openligadb.0.bl1.2019.currgameday;a+1}<br>
-Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding immer vom aktuellen Spieltag ausgegangen.<br>
+<b>Vorheriger Spieltag</b><br>      <b><i>{a:openligadb.0.bl1.2019.currgameday;a-1}</i></b> oder<br>
+<b>Nachfolgender Spieltag</b><br>   <b><i>{a:openligadb.0.bl1.2019.currgameday;a+1}</i></b><br>
+Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.<br>
 <h5>Attribute showgamedaycount - Gruppe Liga</h5>
 Hier kann angegeben werden für wie viele Spieltage die Spiele angezeigt werden sollen.
 Wenn das Feld leer bleibt, dann werden alle restlichen Spieltage angezeigt (max 9999 Spieltage)
