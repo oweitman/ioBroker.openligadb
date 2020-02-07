@@ -84,6 +84,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * push version for latest repository. fix some typos. fix a problem with date handling on different OS
 ### 0.9.0
 * new Function for vis Binding to search for games at the actual day for favorite clubs, css-classes für games at actual day, fix bug to show the right match results, 
+### 0.9.1
+* fix bugs in calculation matchresults and highlight clubs in favgames 
 
 
 ## License
