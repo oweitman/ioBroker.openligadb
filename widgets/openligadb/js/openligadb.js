@@ -43,6 +43,7 @@ vis.binds["openligadb"] = {
             var showweekday = data.showweekday || false;
             var showresult = data.showresult || false;
             var maxicon = data.maxicon || 25;
+            var nohighlight = '';
 
             for (let i = 1; i <= data.lCount; i++) {
 
@@ -59,7 +60,8 @@ vis.binds["openligadb"] = {
                 var shortname = data['shortname'+i] || false;
                 var highlight = data['highlight'+i] || '';
 
-                favgames=favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight,abbreviation));  
+                favgames=favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight,shortname,abbreviation));  
+                if (highlight=='') nohighlight += 'group'+i+' ';
             }
             favgames = this.sortFavGames(favgames);
 
@@ -102,8 +104,8 @@ vis.binds["openligadb"] = {
             text += '<table class="oldb-tt">';
 
             favgames.forEach(function(match, index) {
-                var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
-                var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
+                var team1name = match.shortname ? match.Team1.ShortName : match.Team1.TeamName;
+                var team2name = match.shortname ? match.Team2.ShortName : match.Team2.TeamName;
                 if (vis.binds["openligadb"].checkHighlite(team1name,match.highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
                 if (vis.binds["openligadb"].checkHighlite(team2name,match.highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
                 var result = vis.binds["openligadb"].getResult(match.MatchResults);
@@ -131,12 +133,13 @@ vis.binds["openligadb"] = {
                 text += '           <td class="oldb-full">'+ team2name +'</td>';                
                 text += '        </tr>';
             });
-            if (highlight == '') text += '<tr><td>Not filter set</td></tr>';
+            if (nohighlight != '') text += '<tr><td>No filter set for: ' + nohighlight + '</td></tr>';
             text += '</table>            ';            
             $('#' + widgetID).html(text);            
 
         },
-        filterFavGames: function(allmatches,gameday,gamedaycount,currgameday,highlight,abbreviation) {
+        filterFavGames: function(allmatches,gameday,gamedaycount,currgameday,highlight,shortname, abbreviation) {
+            if (!Array.isArray(allmatches)) return [];
             gameday = parseInt(gameday);
             gamedaycount = parseInt(gamedaycount);
             currgameday = parseInt(currgameday);
@@ -147,6 +150,7 @@ vis.binds["openligadb"] = {
                 if (gameday > 0 && item.Group.GroupOrderID >= gameday && item.Group.GroupOrderID < gameday + gamedaycount ) found=item;
                 if (gameday < 0 && item.Group.GroupOrderID >= currgameday + gameday && item.Group.GroupOrderID < currgameday + gameday + gamedaycount) found=item;
                 item.highlight=highlight;
+                item.shortname=shortname;
                 if (found && (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlight) || vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlight)) ) result.push(item);
                 return result;
             },[]);            
