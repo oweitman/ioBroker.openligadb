@@ -104,8 +104,8 @@ vis.binds["openligadb"] = {
             favgames.forEach(function(match, index) {
                 var team1name = shortname ? match.Team1.ShortName : match.Team1.TeamName;
                 var team2name = shortname ? match.Team2.ShortName : match.Team2.TeamName;
-                if (vis.binds["openligadb"].checkHighlite(team1name,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
-                if (vis.binds["openligadb"].checkHighlite(team2name,highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
+                if (vis.binds["openligadb"].checkHighlite(team1name,match.highlight)) team1name = '<b class="favorite">' + team1name + '</b>';
+                if (vis.binds["openligadb"].checkHighlite(team2name,match.highlight)) team2name = '<b class="favorite">' + team2name + '</b>';
                 var result = vis.binds["openligadb"].getResult(match.MatchResults);
                 var team1result = result.hasOwnProperty('PointsTeam1') ? result.PointsTeam1 : '-';
                 var team2result = result.hasOwnProperty('PointsTeam2') ? result.PointsTeam2 : '-';
@@ -146,6 +146,7 @@ vis.binds["openligadb"] = {
                 item.abbreviation = abbreviation;
                 if (gameday > 0 && item.Group.GroupOrderID >= gameday && item.Group.GroupOrderID < gameday + gamedaycount ) found=item;
                 if (gameday < 0 && item.Group.GroupOrderID >= currgameday + gameday && item.Group.GroupOrderID < currgameday + gameday + gamedaycount) found=item;
+                item.highlight=highlight;
                 if (found && (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlight) || vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlight)) ) result.push(item);
                 return result;
             },[]);            
