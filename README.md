@@ -88,6 +88,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * fix bugs in calculation matchresults and highlight clubs in favgames 
 ### 0.9.2
 * next try to fix the experimental javascript binding function 
+### 0.9.3
+* Remove ES6 features due to compatibility with older browsers 
 
 
 ## License

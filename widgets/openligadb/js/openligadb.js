@@ -42,7 +42,7 @@ vis.binds["openligadb"] = {
             var maxicon = data.maxicon || 25;
             var nohighlight = '';
 
-            for (let i = 1; i <= data.lCount; i++) {
+            for (var i = 1; i <= data.lCount; i++) {
 
                 var allmatches  = data['allmatches_oid'+i] ? JSON.parse(vis.states.attr( data['allmatches_oid'+i] + '.val')) : {};
                 var currgameday = data['currgameday_oid'+i] ? JSON.parse(vis.states.attr(data['currgameday_oid'+i] + '.val')) : {};
@@ -62,9 +62,9 @@ vis.binds["openligadb"] = {
             }
             favgames = this.sortFavGames(favgames);
 
-            const weekday_options = { weekday: 'short' };
-            const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            const time_options = { hour: '2-digit', minute: '2-digit' };            
+            var weekday_options = { weekday: 'short' };
+            var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var time_options = { hour: '2-digit', minute: '2-digit' };            
             var text ='';
             
             text += '<style> \n';
@@ -154,7 +154,7 @@ vis.binds["openligadb"] = {
         },
         sortFavGames: function(favgames) {
             return favgames.sort(function(a,b){
-                let comp = 0;
+                var comp = 0;
                 if (vis.binds["openligadb"].getDateFromJSON(a.MatchDateTime).getTime()>vis.binds["openligadb"].getDateFromJSON(b.MatchDateTime).getTime()) comp=1;
                 if (vis.binds["openligadb"].getDateFromJSON(a.MatchDateTime).getTime()<vis.binds["openligadb"].getDateFromJSON(b.MatchDateTime).getTime()) comp=-1;
                 return comp;
@@ -187,8 +187,8 @@ vis.binds["openligadb"] = {
             
             var favgames = this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight);  
             
-            const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            const time_options = { hour: '2-digit', minute: '2-digit' };            
+            var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var time_options = { hour: '2-digit', minute: '2-digit' };            
             var text ='';
             
             text += '<style> \n';
@@ -335,8 +335,8 @@ vis.binds["openligadb"] = {
             text += '<table class="oldb-tt">';
 
             var curDate,oldDate ='' ;
-            const date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
-            const time_options = { hour: '2-digit', minute: '2-digit' };
+            var date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var time_options = { hour: '2-digit', minute: '2-digit' };
             gameday.forEach(function(match, index) {
 
                 var today = new Date();
@@ -521,7 +521,8 @@ vis.binds["openligadb"] = {
             $('#' + widgetID).html(text);
         }
     },
-    checkHighlite: function(value,highlights,sep=";") {
+    checkHighlite: function(value,highlights,sep) {
+        sep = typeof sep !== 'undefined' ? sep : ";";
         var highlight = highlights.split(sep);
         return highlight.reduce(function(acc,cur){
             if (cur=='') return acc;
