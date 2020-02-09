@@ -3,9 +3,6 @@
 
     Copyright 2020 oweitman oweitman@gmx.de
     
-    
- 
-    
 */
 "use strict";
 
@@ -19,7 +16,7 @@ if (vis.editMode) {
 
 
 vis.binds["openligadb"] = {
-    version: "0.0.2",
+    version: "0.0.3",
     showVersion: function () {
         if (vis.binds["openligadb"].version) {
             console.log('Version openligadb: ' + vis.binds["openligadb"].version);
@@ -163,8 +160,6 @@ vis.binds["openligadb"] = {
                 return comp;
             });
         },
-        
-        
     },         
     
     favgames: {
@@ -191,7 +186,6 @@ vis.binds["openligadb"] = {
             var highlight = data.highlight || '';
             
             var favgames = this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight);  
-
             
             const date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
             const time_options = { hour: '2-digit', minute: '2-digit' };            
@@ -227,7 +221,6 @@ vis.binds["openligadb"] = {
             text += '       font-weight: bold;\n';
             text += '} \n';            
             text += '</style> \n';
-            
             
             text += '<table class="oldb-tt">';
 
@@ -270,7 +263,6 @@ vis.binds["openligadb"] = {
         },
         
     },     
-
 
     gameday: {
         createWidget: function (widgetID, view, data, style) {
@@ -555,10 +547,10 @@ vis.binds["openligadb"] = {
                adate.getYear() == bdate.getYear();
     },
     checkTodayFavorite: function(oid,highlite) {
-        //debugger;
         if (oid) {
             var json = vis.states.attr( oid + '.val');
-            if (json) {
+            if ((json) && json!='null') {
+                console.debug('statedo:'+oid);
                 var matches = JSON.parse(json);
                 if (matches) {
                     var today = new Date();
@@ -569,15 +561,24 @@ vis.binds["openligadb"] = {
                             (vis.binds["openligadb"].checkHighlite(item.Team1.TeamName,highlite,",") ||
                             vis.binds["openligadb"].checkHighlite(item.Team2.TeamName,highlite,","));
                         if (test) {
-                            console.debug(item.MatchDateTime + " " + item.Team1.TeamName + " " + item.Team2.TeamName);                            
+                            console.debug('Match for:' + oid + ' and ' + highlite+ " " + item.MatchDateTime + " " + item.Team1.TeamName + " " + item.Team2.TeamName);
                         } 
                         return result || test;
                     },false);
                 }
+            } else {
+                var a = [];
+                a.push(oid);
+                vis.conn.gettingStates=0;
+                console.debug('stateask:'+oid);                    
+                vis.conn.getStates(a, function (error, data) {
+                    console.debug('stateget:'+oid);                    
+                    vis.updateStates(data);
+                });                             
             }
         }
-        return result;
-    },    
+        return false;
+    },  
 }
 vis.binds["openligadb"].showVersion();
       
