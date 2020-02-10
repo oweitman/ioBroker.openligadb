@@ -34,15 +34,18 @@ Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werd
 <br>
 
 
-<h3><a name="tplOLiDBTable" ></a>League Table</h3>
+<h3><a name="tplOLiDBTable2" ></a>League Table</h3>
 <img src="img/table.png"/><br>
 Das ist die klassische Tabellenansicht. Die Tabelle enthält verschiedene Spalten.<br>
 Sp=Anzahl gespielter Spiele, S=Siege, U=Unentschieden, N=Niederlagen, Tore=Torverhältnis, Punkte=Punktestand<br>
 <h4>Attribute</h4>
 <h5>Attribute Object ID</h5>
-Hier muss ein Datenpunkt mit der Bezeichnung table ausgewählt werden.
+Hier muss ein Datenpunkt mit der Bezeichnung allmatches (Achtung im alten widget musste hier noch table ausgewählt werden) ausgewählt werden.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
-Der Datenpunkt enthält alle Daten einer Liga/Season im JSON-Format
+Der Datenpunkt enthält alle Spieldaten einer Liga/Season im JSON-Format. Aus diesen Daten wird dann auf Basis des Modus die 
+Tabellen für Gesamt(1total), Heim (2home) oder Auswärts (3away) berechnet.
+<h5>Attribute mode</h5>
+Auswahl in welchem Modus die Tabelle angezeigt werden soll zur Auswahl steht Gesamt(1total), Heim (2home) oder Auswärts (3away).
 <h5>Attribute maxicon</h5>
 Maximale Größe des Manschaftsicons in x oder y-Richtung.
 <h5>Attribute shortname</h5>
@@ -51,6 +54,11 @@ Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vo
 Hier können ein oder mehrere Begriffe mit Semikolon (;) getrennt eingegeben werden die hervorgehoben werden sollen.
 Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
 Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
+<br><br>
+
+<h3><a name="tplOLiDBTable" ></a>League Table</h3>
+<img src="img/table.png"/><br>
+Dieses Widget wird gelöscht. Bitte nur noch Table 2 benutzen
 <br><br>
 
 <h3><a name="tplOLiDBGameDay" ></a>Games of Gameday</h3>

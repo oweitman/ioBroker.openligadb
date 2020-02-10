@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.9.3",
+        "version": "0.10.0",
         "news": {
+            "0.10.0": {
+                "en": "New widget Table 2 that  includes the calculation of the total, home and away results. the previous widget is now deprecated, due to the different datapoint (allmatches) to be selected."
+            },
             "0.9.3": {
                 "en": "Remove ES6 features due to compatibility with older browsers"
             },
