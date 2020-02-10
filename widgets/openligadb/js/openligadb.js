@@ -582,4 +582,4 @@ vis.binds["openligadb"] = {
     },  
 }
 vis.binds["openligadb"].showVersion();
-      
+
