@@ -164,5 +164,23 @@ Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben wer
 Die Suche erfolgt nur in den Mannschaftsnamen. Eine besondere Hervorhebung wie bei den anderen Widgets gibt es hier nicht.
 <br><br>
 
+<h3>Rezepte zur Wiederverwendung</h3>
+<h4>Steuerung des Tabellenmodus über Knöpfe</h4>
+
+<ol>
+<li>Ein Widgets table v2 anlegen. und wie hier in der Hilfe beschrieben konfigurieren</li>
+<li>Bei Widgeteinstellungen in der Gruppe Sichtbarkeit bei Datenpunkt deinen erstellten Datenpunk eintragen</li>
+<li>Dieses Widget kopieren und nebeneinander einfügen, so das es insgesamt 3 mal im view existiert</li>
+<li>Bei Widgeteinstellungen in der Gruppe Sichtbarkeit den "Wert für die Bedingung dann bei jedem der 3 Widgets jeweils nur einen der folgenden Werte eintragen total,home,away</li>
+<li>Dann ein neues Widget anlegen: Radiobuttons ValueList (ist in der Standardinstallation von vis schon enthalten</li>
+<li>In diesem Widget in Gruppe Allgemein deinen angelegten ObjectID auswählen</li>
+<li>Bei Werte das folgende eintragen: total;home;away (dies muss mit dem was du unter sichtbarkeit bei den widgets eingetragen hast zusammenpassen</li>
+<li>Bei Texte das folgende eintragen: Gesamt;Heim;Auswärts</li>
+<br>
+Dann in den vis runtime gehen und ausprobieren
+<br><br>
+<li>Wenn alles funktioniert zum Schluss noch die widgets exakt übereinander legen, so das es wie eines aussieht</li>
+</ol>
+<br>
 </body>
 </html>
