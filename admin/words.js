@@ -2,17 +2,17 @@
 'use strict';
 
 systemDictionary = {
-    'squeezeboxrpc adapter settings': {
-        'en': 'Adapter settings for squeezeboxrpc',
-        'de': 'Adaptereinstellungen für squeezeboxrpc',
-        'ru': 'Настройки адаптера для squeezeboxrpc',
-        'pt': 'Configurações do adaptador para squeezeboxrpc',
-        'nl': 'Adapterinstellingen voor squeezeboxrpc',
-        'fr': "Paramètres d'adaptateur pour squeezeboxrpc",
-        'it': "Impostazioni dell'adattatore per squeezeboxrpc",
-        'es': 'Ajustes del adaptador para squeezeboxrpc',
-        'pl': 'Ustawienia adaptera dla squeezeboxrpc',
-        'zh-cn': 'squeezeboxrpc的适配器设置'
+    'openligadb adapter settings': {
+        'en': 'Adapter settings for openligadb',
+        'de': 'Adaptereinstellungen für openligadb',
+        'ru': 'Настройки адаптера для openligadb',
+        'pt': 'Configurações do adaptador para openligadb',
+        'nl': 'Adapterinstellingen voor openligadb',
+        'fr': "Paramètres d'adaptateur pour openligadb",
+        'it': "Impostazioni dell'adattatore per openligadb",
+        'es': 'Ajustes del adaptador para openligadb',
+        'pl': 'Ustawienia adaptera dla openligadb',
+        'zh-cn': 'openligadb的适配器设置'
     },
     'option1': {
         'en': 'option1',
@@ -38,4 +38,4 @@ systemDictionary = {
         'pl': 'Opcja 2',
         'zh-cn': '选项2'
     }
-};
+}; 

@@ -52,6 +52,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
+### 0.10.1
+* Improve documentation with more recipes and syntax highgighting, improve code to get and subscribe states
 ### 0.10.0
 * New widget Table 2 that  includes the calculation of the total, home and away results. the previous widget is now deprecated, due to the different datapoint (allmatches) to be selected.
 ### 0.9.3

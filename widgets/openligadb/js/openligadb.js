@@ -10,10 +10,15 @@
 if (vis.editMode) {
     $.extend(true, systemDictionary, {
         "allmatches_oid": {"en": "allmatches", "de": "allmatches", "ru": "allmatches"},
-        "currgameday_oid": {"en": "currgameday", "de": "currgameday", "ru": "currgameday"},        
+        "currgameday_oid": {"en": "currgameday", "de": "currgameday", "ru": "currgameday"},
+        "showgameday": {"en": "showgameday", "de": "showgameday", "ru": "showgameday"},
+        "showgamedaycount": {"en": "showgamedaycount", "de": "showgamedaycount", "ru": "showgamedaycount"},
+        "maxicon": {"en": "maxicon", "de": "maxicon", "ru": "maxicon"},
+        "shortname": {"en": "shortname", "de": "shortname", "ru": "shortname"},
+        "showgoals": {"en": "showgoals", "de": "showgoals", "ru": "showgoals"},
+        "showweekday": {"en": "showweekday", "de": "showweekday", "ru": "showweekday"},
         });
 }
-
 
 vis.binds["openligadb"] = {
     version: "0.5.0",
@@ -23,7 +28,6 @@ vis.binds["openligadb"] = {
             vis.binds["openligadb"].version = null;
         }
     },
-    
     
     favgames2: {
         createWidget: function (widgetID, view, data, style) {
@@ -786,10 +790,23 @@ vis.binds["openligadb"] = {
             var json = vis.states.attr( oid + '.val');
             if ((json) && json!='null') {
                 console.debug('statedo:'+oid);
+                if (!vis.subscribing.IDs.includes(oid)) {
+                    vis.subscribing.IDs.push(oid);
+                    var a = [];
+                    a.push(oid);
+                    vis.conn.gettingStates=0;
+                    console.debug('stateask:'+oid);                    
+                    vis.conn.getStates(a, function (error, data) {
+                        console.debug('stateget:'+oid);                    
+                        vis.updateStates(data);
+                        var a = [];
+                        a.push(oid);                    
+                        vis.conn.subscribe(a);
+                    });                                                 
+                }
                 var matches = JSON.parse(json);
                 if (matches) {
                     var today = new Date();
-                    matches[0].MatchDateTime = "2020-02-05T20:30:00";
                     return matches.reduce(function(result,item){
                         var mdate = vis.binds["openligadb"].getDateFromJSON(item.MatchDateTime);
                         var test =  vis.binds["openligadb"].compareDate(today,mdate) &&
@@ -802,6 +819,7 @@ vis.binds["openligadb"] = {
                     },false);
                 }
             } else {
+                if(!vis.subscribing.IDs.includes(oid)) vis.subscribing.IDs.push(oid);
                 var a = [];
                 a.push(oid);
                 vis.conn.gettingStates=0;
@@ -809,6 +827,9 @@ vis.binds["openligadb"] = {
                 vis.conn.getStates(a, function (error, data) {
                     console.debug('stateget:'+oid);                    
                     vis.updateStates(data);
+                    var a = [];
+                    a.push(oid);                    
+                    vis.conn.subscribe(a);
                 });                             
             }
         }

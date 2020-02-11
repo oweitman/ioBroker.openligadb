@@ -1,6 +1,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="css/doc.css" />
+    <link rel="stylesheet" href="css/agate.css">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>    
     <title>Dokumentation OpenLigaDB Widgets</title>
 </head>
 <body>
@@ -16,8 +19,11 @@ Diese Funktion kann im Binding bspw. wie folgt verwendet werden.<br>
 Zum Test kann die folgende Notation in ein HTML-widget eingetragen werden. Als Ergebnis wird dann entweder ja oder nein ausgegeben,
 je nachdem ob am heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden wurde.<br>
 Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werden.
-<br><br>
-<b><i>{a:oid1;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}</i></b><br>
+<pre>
+<code class="javascript hljs">
+{a:oid1;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}
+</code>
+</pre>
 <br>
 <b>Bedeutung der Parameter</b><br>
 <table>
@@ -34,7 +40,7 @@ Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werd
 <br>
 
 
-<h3><a name="tplOLiDBTable2" ></a>League Table</h3>
+<h3><a name="tplOLiDBTable2" ></a>League Table 2</h3>
 <img src="img/table.png"/><br>
 Das ist die klassische Tabellenansicht. Die Tabelle enthält verschiedene Spalten.<br>
 Sp=Anzahl gespielter Spiele, S=Siege, U=Unentschieden, N=Niederlagen, Tore=Torverhältnis, Punkte=Punktestand<br>
@@ -81,8 +87,16 @@ Trägt man eine positive Zahl ein, dann wird, falls vorhanden, der ausgewählte 
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag dieser angezeigt (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für relativ berechneten Spieltag:<br>
-<b>Vorheriger Spieltag</b><br>      <b><i>{a:openligadb.0.bl1.2019.currgameday;a-1}</i></b> oder<br>
-<b>Nachfolgender Spieltag</b><br>   <b><i>{a:openligadb.0.bl1.2019.currgameday;a+1}</i></b><br>
+<pre>
+<code class="javascript hljs">
+<b>Vorheriger Spieltag</b><br>
+{a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
+<b>Nachfolgender Spieltag</b><br>
+{a:openligadb.0.bl1.2019.currgameday;a+1}<br>
+</code>
+</pre>
+
+
 Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.<br>
 <h5>Attribute showgamedaycount</h5>
 Üblicherweise bleibt dieses Feld leer oder enthält 1.<br>
@@ -113,12 +127,17 @@ Durch die Auswahl der Anzahl der anzuzeigenden Ligen, wird für jede Liga eine s
 in der die folgenden Einstellungen vorgenommen werden können.
 Wenn das Spiel am heutigen Tag statt findet, dann wird das jeweilige Spiel (todaygame) mit CSS-Klassen versehen.
 <b>Beispiel</b><br><br>
-.todaygame {<br>
-    color:red;<br>
-}<br>
-.todaygameheader {<br>
-    color: yellow;<br>
-}<br>
+<pre>
+<code class="css hljs">
+.todaygame {
+    color:red;
+}
+
+.todaygameheader {
+    color: yellow;
+}
+</code>
+</pre>
 <br>
 <h4>Attribute</h4>
 <h5>Attribute Anzahl Liga - Gruppe Allgemein</h5>
@@ -148,8 +167,14 @@ Trägt man eine positive Zahl ein, dann wird, falls vorhanden, vom ausgewählte 
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag ausgegangen (bspw -1 entspricht dem vorherigen Spieltag)<br>
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.<br>
 Beispiele für einen relativ berechneten Spieltag:<br>
-<b>Vorheriger Spieltag</b><br>      <b><i>{a:openligadb.0.bl1.2019.currgameday;a-1}</i></b> oder<br>
-<b>Nachfolgender Spieltag</b><br>   <b><i>{a:openligadb.0.bl1.2019.currgameday;a+1}</i></b><br>
+<pre>
+<code class="json hljs">
+<b>Vorheriger Spieltag</b><br>
+{a:openligadb.0.bl1.2019.currgameday;a-1} oder<br>
+<b>Nachfolgender Spieltag</b><br>
+{a:openligadb.0.bl1.2019.currgameday;a+1}<br>
+</code>
+</pre>
 Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.<br>
 <h5>Attribute showgamedaycount - Gruppe Liga</h5>
 Hier kann angegeben werden für wie viele Spieltage die Spiele angezeigt werden sollen.
@@ -182,5 +207,31 @@ Dann in den vis runtime gehen und ausprobieren
 <li>Wenn alles funktioniert zum Schluss noch die widgets exakt übereinander legen, so das es wie eines aussieht</li>
 </ol>
 <br>
+<h4>Laufschrift skrollen einer Widgetzeile</h4>
+sieht nur schön aus, wenn nur eine oder wenige Zeilen angezeigt werden bspw bei dem FavGame-widget<br>
+#w00000 ist die ID des widgets, das animiert werden soll.<br>
+<br>
+<pre>
+<code class="css hljs">
+
+#w00000 .oldb-tt {
+		max-width: 100vw; /* iOS braucht das */
+		overflow: hidden;
+	}
+ 
+#w00000 .oldb-tt tbody {
+		display: inline-block;
+		padding-left: 100%;
+		animation: marquee 10s linear infinite;
+	}
+ 
+	/* Make it move */
+	@keyframes marquee {
+		0%   { transform: translateX(0); }
+		100% { transform: translateX(-100%); }
+	}
+
+</code>
+</pre>
 </body>
 </html>
