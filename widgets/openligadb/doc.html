@@ -92,7 +92,7 @@ je nachdem ob am heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden w
 Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werden.
 <pre>
 <code class="javascript hljs">
-{a:oid1;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}
+{a:oid;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}
 </code>
 </pre>
 <br>
@@ -140,7 +140,48 @@ Dieses Widget wird gelöscht. Bitte nur noch Table 2 benutzen
 
 <h3><a name="tplOLiDBGameDay" ></a>Games of Gameday</h3>
 <img src="img/gameday.png"/><br>
+Dieses Widget zeigt den Spieltage an. Je nach Einstellung kann immer der aktuelle, relativ zum aktuellen oder ein bestimmter Spieltag angezeigt werden. <br>
+Darüber hinaus kann auch die Menge der angezeigten Spieltage festgelegt werden.<br>
+Bestimmte Elemente der Anzeige wurden mit <b>CSS-Klassen</b> versehenm, für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:<br>
+<table>
+<tr><th>CSS-Klasse</th><th>Formatierung betrifft welches Element</td><th>Anmerkung</th><th>Beispiel</th></tr>
+<tr><th>favorite</th><td>im Anzeigekopf eines Spieltages (Datum/Uhrzeit)</td><td>Hier kann Datum und Uhrzeit formatiert werden, wenn die Lieblingsmannschaft am Spieltag spielt. ggfs. kann es auch mit der CSS-Klasse "todaygameheader" verbunden werden.</td>
+<td><pre>
+<code class="css hljs">
+.oldb-tt tr.favorite {
+    color: yellow;
+}
+</code>
+</pre>
+</td></tr>
+<tr><th>favorite</th><td>Mannschaftsname</td><td>Hier kann der Mannschaftsname entsprechend formatiert werden.</td>
+<td><pre>
+<code class="css hljs">
+.oldb-tt b.favorite {
+    color: blue;
+}
+</code>
+</pre></td></tr>
+<tr><th>todaygame</th><td>Die komplette Zeile eines Spiels</td><td>Wird markiert, wenn das Spiel am heutigen Tag statt findet.</td>
+<td><pre>
+<code class="css hljs">
+.oldb-tt .todaygame {
+    color:red;
+}
+</code>
+</pre>
+</td></tr>
+<tr><th>todaygameheader</th><td>im Anzeigekopf eines Spieltages (Datum/Uhrzeit)</td><td>Wird markiert, wenn das Spieltagsdatum am heutigen Tag ist</td>
+<td><pre>
+<code class="css hljs">
+.oldb-tt .todaygameheader  {
+    color: lightgreen;
+}
 
+</code>
+</pre>
+</td></tr>
+</table>
 <h4>Attribute</h4>
 <h5>Attribute allmatches</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches ausgewählt werden.

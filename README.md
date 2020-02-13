@@ -52,6 +52,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
+### 0.10.3
+* change computing and output logic of gameday widget to mark gameday header with favorite class
 ### 0.10.2
 * Add data column goaldiff to table widget, improve more documentation (systax highlighting,copy code function), add example to control gameday with buttons,
 ### 0.10.1
