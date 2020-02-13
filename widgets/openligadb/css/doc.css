@@ -152,4 +152,12 @@ td {
 table.data th, table.data td {
   text-align: left;
 }
-
+.spoiler .header {
+     cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+}
+.spoiler .content {
+    display: none;
+    padding : 5px;
+}

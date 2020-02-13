@@ -597,6 +597,9 @@ vis.binds["openligadb"] = {
             text += '        <th class="oldb-center oldb-goals">';
             text += '            Tore';
             text += '        </th>';
+            text += '        <th class="oldb-center oldb-goaldiff">';
+            text += '            Diff';
+            text += '        </th>';
             text += '        <th class="oldb-center oldb-points">';
             text += '            Punkte';
             text += '        </th>';
@@ -634,6 +637,9 @@ vis.binds["openligadb"] = {
                 text += '            </td>';
                 text += '            <td class="oldb-center oldb-goals">';
                 text += team.Goals + ':' + team.OpponentGoals;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-goaldiff">';
+                text += team.GoalDiff;
                 text += '            </td>';
                 text += '            <td class="oldb-center oldb-points">';
                 text += '                <strong>'+team.Points+'</strong>';
