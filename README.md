@@ -44,11 +44,11 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * validation in widget if user didnt select the right datapoint
 * translation
 * extend table modes with 1st round,2nd round,
-* extend table to calculate with x last games
-* extend table to calculate ranking for a defined gameday 
 * extend table with trend sign (arrow up/down, point for no change)
 * new widget pivot table of played games
 * new widget goal getter ranking with sort function
+* ~~extend table to calculate with x last games~~
+* ~~extend table to calculate ranking for a defined gameday~~ 
 * ~~documentation adapter / widget~~
 * ~~fix issue for dynamic with of club column~~
 * ~~new widget: next x games of club~~

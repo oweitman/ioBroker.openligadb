@@ -460,6 +460,256 @@ vis.binds["openligadb"] = {
             return goals;
         }       
     },
+    table3: {
+        createWidget: function (widgetID, view, data, style) {        
+            var $div = $('#' + widgetID);
+            // if nothing found => wait
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["openligadb"].table3.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+            var allmatches = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+
+            var showgameday = data.showgameday || '';
+            if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
+            if (showgameday==0) showgameday='';
+            showgameday = showgameday || currgameday || '';
+            var lastgamecount = data['lastgamecount'] || showgameday;
+            if (lastgamecount==0) lastgamecount = showgameday;
+            
+
+            var mode = data.mode || '1home';
+            var mymode=mode[0];
+
+            var table = allmatches.reduce(function(result,item){
+                var team1name = item.Team1.TeamName;
+                var shortname1 = item.Team1.ShortName;
+                var teamiconurl1 = item.Team1.TeamIconUrl;
+                var team2name = item.Team2.TeamName;
+                var shortname2 = item.Team2.ShortName;
+                var teamiconurl2 = item.Team2.TeamIconUrl;
+                
+                if (result.hasOwnProperty(team1name)) {
+                    var team1 =result[team1name];
+                } else {
+                    var team1 = {
+                        "TeamName":         team1name,
+                        "ShortName":        shortname1,
+                        "TeamIconUrl":      teamiconurl1,
+                        "Points":           0,
+                        "OpponentGoals":    0,
+                        "Goals":            0,
+                        "Matches":          0,
+                        "Won":              0,
+                        "Lost":             0,
+                        "Draw":             0,
+                        "GoalDiff":         0
+                        
+                    }
+                }
+                if (result.hasOwnProperty(team2name)) {
+                    var team2 =result[team2name];
+                } else {
+                    var team2 = {
+                        "TeamName":         team2name,
+                        "ShortName":        shortname2,
+                        "TeamIconUrl":      teamiconurl2,
+                        "Points":           0,
+                        "OpponentGoals":    0,
+                        "Goals":            0,
+                        "Matches":          0,
+                        "Won":              0,
+                        "Lost":             0,
+                        "Draw":             0,
+                        "GoalDiff":         0
+
+                    }
+                }
+                var matchresult = vis.binds["openligadb"].getResult(item.MatchResults);
+                if (matchresult.hasOwnProperty('PointsTeam1') && item.Group.GroupOrderID<=showgameday && item.Group.GroupOrderID>showgameday-lastgamecount) {
+
+                    if (matchresult.PointsTeam1>matchresult.PointsTeam2) {
+                        if (mymode==1 || mymode ==2) {
+                            team1.Points        += 3;
+                            team1.OpponentGoals += matchresult.PointsTeam2;
+                            team1.Goals         += matchresult.PointsTeam1;
+                            team1.Matches       += 1;
+                            team1.Won           += 1;
+                            team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
+                        }
+
+                        if (mymode==1 || mymode ==3) {
+                            team2.Points        += 0;
+                            team2.OpponentGoals += matchresult.PointsTeam1;
+                            team2.Goals         += matchresult.PointsTeam2;
+                            team2.Matches       += 1;
+                            team2.Lost          += 1;
+                            team2.GoalDiff      = team2.Goals-team2.OpponentGoals;
+                        }                        
+                    }
+                    if (matchresult.PointsTeam1==matchresult.PointsTeam2) {
+                        if (mymode==1 || mymode ==2) {
+                            team1.Points        += 1;
+                            team1.OpponentGoals += matchresult.PointsTeam2;
+                            team1.Goals         += matchresult.PointsTeam1;
+                            team1.Matches       += 1;
+                            team1.Draw          += 1;
+                            team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
+                        }
+
+                        if (mymode==1 || mymode ==3) {
+                            team2.Points        += 1;
+                            team2.OpponentGoals += matchresult.PointsTeam1;
+                            team2.Goals         += matchresult.PointsTeam2;
+                            team2.Matches       += 1;
+                            team2.Draw          += 1;
+                            team2.GoalDiff      = team2.Goals-team2.OpponentGoals;
+                        }
+                    }
+                    if (matchresult.PointsTeam1<matchresult.PointsTeam2) {
+                        if (mymode==1 || mymode ==2) {
+                            team1.Points        += 0;
+                            team1.OpponentGoals += matchresult.PointsTeam2;
+                            team1.Goals         += matchresult.PointsTeam1;
+                            team1.Matches       += 1;
+                            team1.Lost          += 1;
+                            team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
+                        }
+
+                        if (mymode==1 || mymode ==3) {
+                            team2.Points        += 3;
+                            team2.OpponentGoals += matchresult.PointsTeam1;
+                            team2.Goals         += matchresult.PointsTeam2;
+                            team2.Matches       += 1;
+                            team2.Won           += 1;
+                            team2.GoalDiff      = team2.Goals-team2.OpponentGoals;
+                        }
+                    }
+                }
+                result[team1name]=team1;
+                result[team2name]=team2;
+                
+                return result;
+            },[]);            
+            var newtable = new Array();
+            for (var items in table){
+                newtable.push( table[items] );
+            }
+            table = newtable.sort(function(a,b) {
+                return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
+            }); 
+
+            var maxicon = data.maxicon || 25;
+            var shortname = data.shortname || false;
+            var showtrend = data.showtrend || false;            
+            var highlight = data.highlight || '';
+            
+            var text ='';
+
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-icon {\n';
+            text += '   max-height: ' + maxicon + 'px; \n';
+            text += '   max-width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';                        
+            text += '#'+widgetID + ' .oldb-center {\n';
+            text += '   text-align: center;\n';
+            text += '} \n';
+            text += '</style> \n';
+            
+            text += '<table class="oldb-tt">';
+            text += '    <thead>';
+            text += '    <tr >';            
+            text += '        <th class="oldb-center oldb-rank">';
+            text += '            #';
+            text += '        </th>';
+            text += '        <th colspan="2" class="oldb-clubheader" style="text-align: left;">';
+            text += '            Club';
+            text += '        </th>';
+            text += '';
+            text += '        <th class="oldb-center oldb-games">';
+            text += '            Sp';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-won">';
+            text += '            S';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-draw">';
+            text += '            U';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-lost">';
+            text += '            N';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-goals">';
+            text += '            Tore';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-goaldiff">';
+            text += '            Diff';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-points">';
+            text += '            Punkte';
+            text += '        </th>';
+            text += '    </tr>';
+            text += '    </thead>';
+
+            text += '    <tbody class="oldb-tb">';
+            
+            table.forEach(function(team, index) {
+
+                var teamname = shortname ? team.ShortName : team.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(teamname,highlight)) teamname = '<b class="favorite">' + teamname + '</b>';
+                
+                text += '        <tr>';
+                text += '            <td class="oldb-center oldb-rank">';
+                text += index +1;
+                text += '            </td>';
+                text += '            <td class="oldb-center">';
+                text += '                <img class="oldb-icon" src="'+team.TeamIconUrl+'">';
+                text += '            </td>';
+                text += '            <td class="oldb-teamname oldb-full">';
+                text += '                <span>'+teamname+'</span>';
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-games">';
+                text += team.Matches;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-won">';
+                text += team.Won;
+                text += '           </td>';
+                text += '            <td class="oldb-center oldb-draw">';
+                text += team.Draw;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-lost">';
+                text += team.Lost;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-goals">';
+                text += team.Goals + ':' + team.OpponentGoals;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-goaldiff">';
+                text += team.GoalDiff;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-points">';
+                text += '                <strong>'+team.Points+'</strong>';
+                text += '            </td>';
+                text += '        </tr>';
+            });
+            text += '    </tbody>';
+            text += '</table>            ';
+            
+            $('#' + widgetID).html(text);
+        }            
+            
+            
+            
+    },
     table2: {
         createWidget: function (widgetID, view, data, style) {        
             var $div = $('#' + widgetID);
