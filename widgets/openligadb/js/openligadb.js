@@ -478,12 +478,165 @@ vis.binds["openligadb"] = {
             showgameday = showgameday || currgameday || '';
             var lastgamecount = data['lastgamecount'] || showgameday;
             if (lastgamecount==0) lastgamecount = showgameday;
-            
+            var showtrend = data.showtrend || false;
 
+            var iconup = data.iconup || 'widgets/openligadb/img/trend_up.png';
+            var icondn = data.icondn || 'widgets/openligadb/img/trend_dn.png';
+            var iconst = data.iconst || 'widgets/openligadb/img/trend_st.png';
+            
             var mode = data.mode || '1home';
             var mymode=mode[0];
+            
+            var table = this.calcTable(allmatches, mymode, showgameday, lastgamecount);
+                
+            var newtable = new Array();
+            for (var items in table){
+                newtable.push( table[items] );
+            }
+            table = newtable.sort(function(a,b) {
+                return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
+            }); 
 
+            var maxicon = data.maxicon || 25;
+            var shortname = data.shortname || false;
+            var highlight = data.highlight || '';
+            
+            var text ='';
+
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-icon {\n';
+            text += '   max-height: ' + maxicon + 'px; \n';
+            text += '   max-width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';                        
+            text += '#'+widgetID + ' .oldb-center {\n';
+            text += '   text-align: center;\n';
+            text += '} \n';
+            text += '</style> \n';
+            
+            text += '<table class="oldb-tt">';
+            text += '    <thead>';
+            text += '    <tr >';            
+            text += '        <th class="oldb-center oldb-rank">';
+            text += '            #';
+            text += '        </th>';
+            text += '        <th colspan="2" class="oldb-clubheader" style="text-align: left;">';
+            text += '            Club';
+            text += '        </th>';
+            text += '';
+            text += '        <th class="oldb-center oldb-games">';
+            text += '            Sp';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-won">';
+            text += '            S';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-draw">';
+            text += '            U';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-lost">';
+            text += '            N';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-goals">';
+            text += '            Tore';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-goaldiff">';
+            text += '            Diff';
+            text += '        </th>';
+            text += '        <th class="oldb-center oldb-points">';
+            text += '            Punkte';
+            text += '        </th>'; 
+            if (showtrend) text += '        <th class="oldb-center oldb-trend">';
+            if (showtrend) text += '            T';
+            if (showtrend) text += '        </th>';
+            
+            text += '    </tr>';
+            text += '    </thead>';
+
+            text += '    <tbody class="oldb-tb">';
+            
+            table.forEach(function(team, index) {
+
+                var teamname = shortname ? team.ShortName : team.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(teamname,highlight)) teamname = '<b class="favorite">' + teamname + '</b>';
+                
+                text += '        <tr>';
+                text += '            <td class="oldb-center oldb-rank">';
+                text += index +1;
+                text += '            </td>';
+                text += '            <td class="oldb-center">';
+                text += '                <img class="oldb-icon" src="'+team.TeamIconUrl+'">';
+                text += '            </td>';
+                text += '            <td class="oldb-teamname oldb-full">';
+                text += '                <span>'+teamname+'</span>';
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-games">';
+                text += team.Matches;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-won">';
+                text += team.Won;
+                text += '           </td>';
+                text += '            <td class="oldb-center oldb-draw">';
+                text += team.Draw;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-lost">';
+                text += team.Lost;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-goals">';
+                text += team.Goals + ':' + team.OpponentGoals;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-goaldiff">';
+                text += team.GoalDiff;
+                text += '            </td>';
+                text += '            <td class="oldb-center oldb-points">';
+                text += '                <strong>'+team.Points+'</strong>';
+                text += '            </td>';
+                var ticon='';
+                if (showtrend) {
+                    if (team.ranking[team.ranking.length-1]<team.ranking[team.ranking.length-2]) ticon = iconup;
+                    if (team.ranking[team.ranking.length-1]>team.ranking[team.ranking.length-2]) ticon = icondn;
+                    if (team.ranking[team.ranking.length-1]==team.ranking[team.ranking.length-2]) ticon = iconst;
+                }
+
+                if (showtrend) text += '            <td class="oldb-center oldb-points">';
+                if (showtrend) text += '                <img class="oldb-icon" src="'+ticon+'">';
+                if (showtrend) text += '            </td>';
+
+                text += '        </tr>';
+            });
+            text += '    </tbody>';
+            text += '</table>            ';
+            
+            $('#' + widgetID).html(text);
+        },
+        addRanking: function(table, prevgd) {
+                var newtable = new Array();
+                for (var items in table){
+                    newtable.push( table[items] );
+                }
+                newtable = newtable.sort(function(a,b) {
+                    return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
+                });
+                newtable.forEach(function(team, index) {
+                    table[team.TeamName].ranking[prevgd]=index+1;
+                });
+        },
+        calcTable: function(allmatches, mymode, showgameday,lastgamecount) {
+            
+            var prevgd=0
+            var self = this;
             var table = allmatches.reduce(function(result,item){
+                if(item.Group.GroupOrderID!=prevgd && item.Group.GroupOrderID<=showgameday) {
+                    self.addRanking(result,prevgd);
+                }
+                prevgd=item.Group.GroupOrderID;
                 var team1name = item.Team1.TeamName;
                 var shortname1 = item.Team1.ShortName;
                 var teamiconurl1 = item.Team1.TeamIconUrl;
@@ -499,6 +652,7 @@ vis.binds["openligadb"] = {
                         "ShortName":        shortname1,
                         "TeamIconUrl":      teamiconurl1,
                         "Points":           0,
+                        "ranking":          [],
                         "OpponentGoals":    0,
                         "Goals":            0,
                         "Matches":          0,
@@ -517,6 +671,7 @@ vis.binds["openligadb"] = {
                         "ShortName":        shortname2,
                         "TeamIconUrl":      teamiconurl2,
                         "Points":           0,
+                        "ranking":          [],
                         "OpponentGoals":    0,
                         "Goals":            0,
                         "Matches":          0,
@@ -592,122 +747,11 @@ vis.binds["openligadb"] = {
                 result[team2name]=team2;
                 
                 return result;
-            },[]);            
-            var newtable = new Array();
-            for (var items in table){
-                newtable.push( table[items] );
-            }
-            table = newtable.sort(function(a,b) {
-                return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
-            }); 
+            },[]);   
+            this.addRanking(table,showgameday);
+            return table;
 
-            var maxicon = data.maxicon || 25;
-            var shortname = data.shortname || false;
-            var showtrend = data.showtrend || false;            
-            var highlight = data.highlight || '';
-            
-            var text ='';
-
-            text += '<style> \n';
-            text += '#'+widgetID + ' .oldb-icon {\n';
-            text += '   max-height: ' + maxicon + 'px; \n';
-            text += '   max-width: ' + maxicon + 'px; \n';
-            text += '} \n';
-            text += '#'+widgetID + ' .oldb-tt {\n';
-            text += '   width: 100%;\n';
-            text += '} \n';
-            text += '#'+widgetID + ' .oldb-tt td{\n';
-            text += '   white-space: nowrap;\n';
-            text += '} \n';
-            text += '#'+widgetID + ' .oldb-full {\n';
-            text += '   width: 100%;\n';
-            text += '} \n';                        
-            text += '#'+widgetID + ' .oldb-center {\n';
-            text += '   text-align: center;\n';
-            text += '} \n';
-            text += '</style> \n';
-            
-            text += '<table class="oldb-tt">';
-            text += '    <thead>';
-            text += '    <tr >';            
-            text += '        <th class="oldb-center oldb-rank">';
-            text += '            #';
-            text += '        </th>';
-            text += '        <th colspan="2" class="oldb-clubheader" style="text-align: left;">';
-            text += '            Club';
-            text += '        </th>';
-            text += '';
-            text += '        <th class="oldb-center oldb-games">';
-            text += '            Sp';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-won">';
-            text += '            S';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-draw">';
-            text += '            U';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-lost">';
-            text += '            N';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-goals">';
-            text += '            Tore';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-goaldiff">';
-            text += '            Diff';
-            text += '        </th>';
-            text += '        <th class="oldb-center oldb-points">';
-            text += '            Punkte';
-            text += '        </th>';
-            text += '    </tr>';
-            text += '    </thead>';
-
-            text += '    <tbody class="oldb-tb">';
-            
-            table.forEach(function(team, index) {
-
-                var teamname = shortname ? team.ShortName : team.TeamName;
-                if (vis.binds["openligadb"].checkHighlite(teamname,highlight)) teamname = '<b class="favorite">' + teamname + '</b>';
-                
-                text += '        <tr>';
-                text += '            <td class="oldb-center oldb-rank">';
-                text += index +1;
-                text += '            </td>';
-                text += '            <td class="oldb-center">';
-                text += '                <img class="oldb-icon" src="'+team.TeamIconUrl+'">';
-                text += '            </td>';
-                text += '            <td class="oldb-teamname oldb-full">';
-                text += '                <span>'+teamname+'</span>';
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-games">';
-                text += team.Matches;
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-won">';
-                text += team.Won;
-                text += '           </td>';
-                text += '            <td class="oldb-center oldb-draw">';
-                text += team.Draw;
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-lost">';
-                text += team.Lost;
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-goals">';
-                text += team.Goals + ':' + team.OpponentGoals;
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-goaldiff">';
-                text += team.GoalDiff;
-                text += '            </td>';
-                text += '            <td class="oldb-center oldb-points">';
-                text += '                <strong>'+team.Points+'</strong>';
-                text += '            </td>';
-                text += '        </tr>';
-            });
-            text += '    </tbody>';
-            text += '</table>            ';
-            
-            $('#' + widgetID).html(text);
-        }            
-            
-            
+        },    
             
     },
     table2: {
