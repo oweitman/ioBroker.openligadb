@@ -830,6 +830,10 @@ vis.binds["openligadb"] = {
             
             var prevgd=0
             var self = this;
+            var maxgameday = allmatches.reduce(function(a, b) {
+              return Math.max(a, b.Group.GroupOrderID);
+            },0);
+
             var table = allmatches.reduce(function(result,item){
                 if(item.Group.GroupOrderID!=prevgd && item.Group.GroupOrderID<=showgameday) {
                     self.addRanking(result,prevgd);
@@ -881,10 +885,11 @@ vis.binds["openligadb"] = {
                     }
                 }
                 var matchresult = vis.binds["openligadb"].getResult(item.MatchResults);
+                console.debug(item.Group.GroupOrderID,(mymode ==4 && item.Group.GroupOrderID<=maxgameday/2)?'4':'',(mymode ==5 && item.Group.GroupOrderID>maxgameday/2)?'5':'');
                 if (matchresult.hasOwnProperty('PointsTeam1') && item.Group.GroupOrderID<=showgameday && item.Group.GroupOrderID>showgameday-lastgamecount) {
 
                     if (matchresult.PointsTeam1>matchresult.PointsTeam2) {
-                        if (mymode==1 || mymode ==2) {
+                        if (mymode==1 || mymode ==2 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team1.Points        += 3;
                             team1.OpponentGoals += matchresult.PointsTeam2;
                             team1.Goals         += matchresult.PointsTeam1;
@@ -893,7 +898,7 @@ vis.binds["openligadb"] = {
                             team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
                         }
 
-                        if (mymode==1 || mymode ==3) {
+                        if (mymode==1 || mymode ==3 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team2.Points        += 0;
                             team2.OpponentGoals += matchresult.PointsTeam1;
                             team2.Goals         += matchresult.PointsTeam2;
@@ -903,7 +908,7 @@ vis.binds["openligadb"] = {
                         }                        
                     }
                     if (matchresult.PointsTeam1==matchresult.PointsTeam2) {
-                        if (mymode==1 || mymode ==2) {
+                        if (mymode==1 || mymode ==2 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team1.Points        += 1;
                             team1.OpponentGoals += matchresult.PointsTeam2;
                             team1.Goals         += matchresult.PointsTeam1;
@@ -912,7 +917,7 @@ vis.binds["openligadb"] = {
                             team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
                         }
 
-                        if (mymode==1 || mymode ==3) {
+                        if (mymode==1 || mymode ==3 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team2.Points        += 1;
                             team2.OpponentGoals += matchresult.PointsTeam1;
                             team2.Goals         += matchresult.PointsTeam2;
@@ -922,7 +927,7 @@ vis.binds["openligadb"] = {
                         }
                     }
                     if (matchresult.PointsTeam1<matchresult.PointsTeam2) {
-                        if (mymode==1 || mymode ==2) {
+                        if (mymode==1 || mymode ==2 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team1.Points        += 0;
                             team1.OpponentGoals += matchresult.PointsTeam2;
                             team1.Goals         += matchresult.PointsTeam1;
@@ -931,7 +936,7 @@ vis.binds["openligadb"] = {
                             team1.GoalDiff      = team1.Goals-team1.OpponentGoals;
                         }
 
-                        if (mymode==1 || mymode ==3) {
+                        if (mymode==1 || mymode ==3 || (mymode ==4 && item.Group.GroupOrderID<=maxgameday/2) || (mymode ==5 && item.Group.GroupOrderID>maxgameday/2)) {
                             team2.Points        += 3;
                             team2.OpponentGoals += matchresult.PointsTeam1;
                             team2.Goals         += matchresult.PointsTeam2;

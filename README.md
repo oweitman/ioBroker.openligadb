@@ -43,7 +43,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 
 * validation in widget if user didnt select the right datapoint
 * translation
-* extend table modes with 1st round,2nd round,
+* ~~extend table modes with 1st round,2nd round~~
 * ~~new widget pivot table of played games~~
 * ~~new widget goal getter ranking with sort function~~
 * ~~extend table with trend sign (arrow up/down, point for no change)~~
