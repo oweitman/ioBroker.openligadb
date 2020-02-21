@@ -29,6 +29,118 @@ vis.binds["openligadb"] = {
         }
     },
     
+    pivottable: {
+        createWidget: function (widgetID, view, data, style) {
+            
+            var $div = $('#' + widgetID);
+            // if nothing found => wait
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["openligadb"].pivottable.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+            var maxicon = data.maxicon || 25;
+            var shortname = data.shortname || false;
+            var highlight = data.highlight || '';
+                        
+            var pivottable = allmatches.reduce(function(collect,item){
+                if (collect.hasOwnProperty(item.Team1.TeamName)) {                
+                    var team =collect[item.Team1.TeamName];
+                } else {
+                    var team = {
+                        "TeamName":             item.Team1.TeamName,
+                        "ShortName":            item.Team1.ShortName,
+                        "TeamIconUrl":          item.Team1.TeamIconUrl,
+                        "Gamedays":             []
+                    }
+                }
+                var result = vis.binds["openligadb"].getResult(item.MatchResults);
+                var team1result = result.hasOwnProperty('PointsTeam1') ? result.PointsTeam1 : '-';
+                var team2result = result.hasOwnProperty('PointsTeam2') ? result.PointsTeam2 : '-';
+                var game = {
+                        "MatchDateTime":        item.MatchDateTime,
+                        "Result":               team1result + ':'+ team2result,
+                        "GroupName":            item.Group.GroupName,
+                        "GroupOrderID":         item.Group.GroupOrderID,
+                        "TeamName":             item.Team2.TeamName,
+                        "ShortName":            item.Team2.ShortName,
+                        "TeamIconUrl":          item.Team2.TeamIconUrl
+                };
+                
+                team.Gamedays[item.Team2.TeamName] = game;
+                collect[item.Team1.TeamName] = team;
+                return collect;
+                
+            },[]);
+            var table = vis.binds["openligadb"].table3.calcTable(allmatches, 1, currgameday, currgameday);
+            var newtable = new Array();
+            for (var items in table){
+                newtable.push( table[items] );
+            }
+            table = newtable.sort(function(a,b) {
+                return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
+            });             
+
+            var text ='';
+            
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-icon {\n';
+            text += '   max-height: ' + maxicon + 'px; \n';
+            text += '   max-width: ' + maxicon + 'px; \n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-center {\n';
+            text += '   text-align: center;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';            
+            text += '#'+widgetID + ' .oldb-full {\n';
+            text += '   width: 100%;\n';
+            text += '} \n';                                    
+            text += '</style> \n';            
+            
+            text += '<table class="oldb-tt">';
+            text += '        <tr>';
+            text += '           <th class="oldb-center oldb-rank">#</th><th></th><th></th>';
+            table.forEach(function(team, index) {
+                text += '           <th class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-icon" src="'+team.TeamIconUrl+'">';
+                text += '           </th>';                
+            });
+            text += '           <th class="oldb-center oldb-goaldiff">Diff</th><th class="oldb-center oldb-points">Punkte</th>';
+            text += '        </tr>';            
+            var pteam1,pteam2;            
+            table.forEach(function(team1, index) {
+                pteam1 = pivottable[team1.TeamName];
+                var team1name = shortname ? team1.ShortName : team1.TeamName;
+                if (vis.binds["openligadb"].checkHighlite(team1.TeamName,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';                
+                text += '        <tr>';
+                text += '            <td class="oldb-center oldb-rank">';
+                text += index +1;
+                text += '            </td>';                
+                text += '           <td class="oldb-center oldb-tdicon">';
+                text += '              <img class="oldb-icon" src="'+team1.TeamIconUrl+'">';
+                text += '           </td>';
+                text += '           <td class="oldb-teamname oldb-full">'+team1name+'</td>';
+                table.forEach(function(team2, index) {
+                    if (team1.TeamName==team2.TeamName) {
+                        text += '           <td class=""></td>';
+                        return;
+                    }
+                    var result = pteam1.Gamedays[team2.TeamName].Result;
+                    text += '           <td class="oldb-center oldb-result">'+result+'</td>';
+                });
+                text += '           <td class="oldb-center oldb-goaldiff">'+team1.GoalDiff+'</td>';
+                text += '           <td class="oldb-center oldb-points">'+team1.Points+'</td>';                
+                text += '        </tr>';
+            });
+            text += '</table>';
+            $('#' + widgetID).html(text);
+        },    
+    },
+            
     goalgetters: {
         createWidget: function (widgetID, view, data, style) {
             
@@ -602,7 +714,7 @@ vis.binds["openligadb"] = {
             text += '} \n';
             text += '#'+widgetID + ' .oldb-full {\n';
             text += '   width: 100%;\n';
-            text += '} \n';                        
+            text += '} \n';
             text += '#'+widgetID + ' .oldb-center {\n';
             text += '   text-align: center;\n';
             text += '} \n';
