@@ -29,6 +29,92 @@ vis.binds["openligadb"] = {
         }
     },
     
+    goalgetters: {
+        createWidget: function (widgetID, view, data, style) {
+            
+            var $div = $('#' + widgetID);
+            // if nothing found => wait
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["openligadb"].goalgetters.createWidget(widgetID, view, data, style);
+                }, 100);
+            }
+            
+            var goalgetters  = data.goalgetters_oid ? JSON.parse(vis.states.attr(data.goalgetters_oid + '.val')) : {};
+            var maxcount = data.maxcount || 99999;
+            var sort = data.sort || 'goal';
+            
+            goalgetters = this.setName(goalgetters);
+            
+            if (sort=='goal') {
+                goalgetters = goalgetters.sort(function(a,b){
+                   return b.GoalCount-a.GoalCount;
+                });
+            }
+            if (sort=='name') {
+                goalgetters = goalgetters.sort(function(a,b){
+                    return ('' + a.lastname + ' ' + a.prename).localeCompare('' + b.lastname + ' ' + b.prename);
+                });
+            }
+            
+            
+            var text ='';
+            text += '<table class="oldb-gg">';
+            goalgetters.forEach(function(goalgetter, index) {
+                
+                if (index<maxcount) {
+                    
+                    var name = '';
+                    name += goalgetter.lastname;
+                    (goalgetter.prename) ? name += ', ' + goalgetter.prename : name += goalgetter.prename;
+
+                    text += '        <tr>';
+                    text += '           <td class="oldb-left">'+ name +'</td>';
+                    text += '           <td class="oldb-left">'+ goalgetter.GoalCount  +'</td>';
+                    text += '        </tr>';            
+                }
+            });
+            text += '</table>            ';            
+            $('#' + widgetID).html(text);            
+        },         
+        setName: function(goalgetters) {
+            var arr;
+            goalgetters.forEach(function(goalgetter, index) {
+                const regex_c1 = /(.+), ?(.+)/g;
+                const regex_c2 = /(.+)\. ?(.+)/g;
+                var name = goalgetter.GoalGetterName.trim();
+                goalgetter.ok = false;
+                arr = regex_c1.exec(name);
+                if ((arr) && arr[1] && arr[2]) {
+                    goalgetter.prename = arr[2];
+                    goalgetter.lastname = arr[1];
+                    goalgetter.ok = true;
+                    return;
+                }
+                arr = regex_c2.exec(name);
+                if ((arr) && arr[1] && arr[2]) {
+                    goalgetter.lastname = arr[2];
+                    goalgetter.prename = arr[1] + '.';
+                    goalgetter.ok = true;
+                    return;
+                }
+                arr = name.split(' ');
+                if ((arr) && arr.length>1) {
+                    goalgetter.lastname = arr.pop();
+                    goalgetter.prename = arr.join(' ');  
+                    goalgetter.ok = true;
+                    return;
+                }
+                if ((arr) && arr.length==1) {
+                    goalgetter.lastname = arr.pop();
+                    goalgetter.prename = '';  
+                    goalgetter.ok = true;
+                }                
+            });
+            return goalgetters;
+        },    
+    },
+
     favgames2: {
         createWidget: function (widgetID, view, data, style) {
             
@@ -1096,7 +1182,9 @@ vis.binds["openligadb"] = {
                 text += '                <strong>'+team.Points+'</strong>';
                 text += '            </td>';
                 text += '        </tr>';
+                
             });
+            text += '<tr><td colspan="9">This widget is deprecated. Please use table3</td></tr>';
             text += '    </tbody>';
             text += '</table>            ';
             
