@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.11.0",
+        "version": "0.11.1",
         "news": {
+            "0.11.1": {
+                "en": "* change some template settings, goalgetter table get headers, add object change sensing.* widget goalgetters: add parameter highlight and showonlyhighlight,* widget pivottable: add sort option and choice to place favorite teams on top,* remove year from date for several widgets"
+            },
             "0.11.0": {
                 "en": "extend table to calculate with x last games and extend table to calculate ranking for a defined gameday, to ensure backward compatibility i have to create a new table v3 widget, extend table with trend sign (arrow up/down, point for no change), new widget goal getter ranking with sort function, new widget pivot table of played games, extend table modes with 1st round,2nd round"
             },
@@ -59,9 +62,6 @@
             },
             "0.0.3": {
                 "en": "fixed getting oids in vis runtime"
-            },
-            "0.0.2": {
-                "en": "add controlable gameday logic to gameday widget and adapter"
             }
         },
         "title": "OpenLigaDB",
