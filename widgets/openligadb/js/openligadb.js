@@ -345,7 +345,8 @@ vis.binds["openligadb"] = {
             favgames = this.sortFavGames(favgames);
 
             var weekday_options = { weekday: 'short' };
-            var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            //var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var date_options = { month: '2-digit', day: '2-digit' };
             var time_options = { hour: '2-digit', minute: '2-digit' };            
             var text ='';
             
@@ -469,7 +470,8 @@ vis.binds["openligadb"] = {
             
             var favgames = this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight);  
             
-            var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            //var date_options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var date_options = { month: '2-digit', day: '2-digit' };
             var time_options = { hour: '2-digit', minute: '2-digit' };            
             var text ='';
             
@@ -630,7 +632,8 @@ vis.binds["openligadb"] = {
             text += '<table class="oldb-tt">';
 
             var curDate,oldDate = new Date(0);
-            var date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
+            //var date_options = (showweekday) ? { weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit' } : { year: 'numeric', month: '2-digit', day: '2-digit' };
+            var date_options = (showweekday) ? { weekday: 'short', month: '2-digit', day: '2-digit' } : { month: '2-digit', day: '2-digit' };
             var time_options = { hour: '2-digit', minute: '2-digit' };
 
             gamedays.forEach(function(gameday, index) {
