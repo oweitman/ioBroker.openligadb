@@ -44,7 +44,17 @@ vis.binds["openligadb"] = {
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
-                        
+            
+            function onChange(e, newVal, oldVal) {
+                vis.binds["openligadb"].pivottable.createWidget(widgetID, view, data, style);
+            }
+
+            if (data.allmatches_oid && data.currgameday_oid) {
+                if (1 || !vis.editMode) {
+                    vis.binds["openligadb"].bindStates($div,[data.allmatches_oid,data.currgameday_oid],onChange);                    
+                }
+            }            
+                                    
             var pivottable = allmatches.reduce(function(collect,item){
                 if (collect.hasOwnProperty(item.Team1.TeamName)) {                
                     var team =collect[item.Team1.TeamName];
@@ -156,6 +166,16 @@ vis.binds["openligadb"] = {
             var maxcount = data.maxcount || 99999;
             var sort = data.sort || 'goal';
             
+            function onChange(e, newVal, oldVal) {
+                vis.binds["openligadb"].goalgetters.createWidget(widgetID, view, data, style);
+            }
+
+            if (data.goalgetters_oid) {
+                if (1 || !vis.editMode) {
+                    vis.binds["openligadb"].bindStates($div,[data.goalgetters_oid],onChange);                    
+                }
+            }            
+                                   
             goalgetters = this.setName(goalgetters);
             
             if (sort=='goal') {
@@ -171,7 +191,21 @@ vis.binds["openligadb"] = {
             
             
             var text ='';
+
+            text += '<style> \n';
+            text += '#'+widgetID + ' .oldb-tt td{\n';
+            text += '   white-space: nowrap;\n';
+            text += '} \n';
+            text += '#'+widgetID + ' .oldb-left {\n';
+            text += '   text-align: left;\n';
+            text += '} \n';            
+            text += '</style> \n';            
+            
             text += '<table class="oldb-gg">';
+            text += '        <tr>';
+            text += '           <th class="oldb-left">Name</td>';
+            text += '           <th class="oldb-left">Tore</td>';
+            text += '        </tr>';            
             goalgetters.forEach(function(goalgetter, index) {
                 
                 if (index<maxcount) {
@@ -243,11 +277,14 @@ vis.binds["openligadb"] = {
             var showresult = data.showresult || false;
             var maxicon = data.maxicon || 25;
             var nohighlight = '';
+            var bound = [];
 
             for (var i = 1; i <= data.lCount; i++) {
 
                 var allmatches  = data['allmatches_oid'+i] ? JSON.parse(vis.states.attr( data['allmatches_oid'+i] + '.val')) : {};
                 var currgameday = data['currgameday_oid'+i] ? JSON.parse(vis.states.attr(data['currgameday_oid'+i] + '.val')) : {};
+                bound.push(data['allmatches_oid'+i]);
+                bound.push(data['currgameday_oid'+i]);
                 var showgameday = data['showgameday'+i] || '';
                 if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
                 if (showgameday==0) showgameday='';
@@ -262,6 +299,20 @@ vis.binds["openligadb"] = {
                 favgames=favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, highlight,shortname,abbreviation));  
                 if (highlight=='') nohighlight += 'group'+i+' ';
             }
+
+            function onChange(e, newVal, oldVal) {
+                vis.binds["openligadb"].favgames2.createWidget(widgetID, view, data, style);
+            }
+
+            if (bound) {
+                if (1 || !vis.editMode) {
+                    vis.binds["openligadb"].bindStates($div,bound,onChange);                    
+                }
+            }            
+            
+
+
+            
             favgames = this.sortFavGames(favgames);
 
             var weekday_options = { weekday: 'short' };
@@ -496,6 +547,17 @@ vis.binds["openligadb"] = {
             var matches = this.filterGameDay(allmatches,showgameday || currgameday || '', showgamedaycount, currgameday);
             var gamedays = this.groupGameDay(matches,shortname,highlight);
             
+            function onChange(e, newVal, oldVal) {
+                vis.binds["openligadb"].gameday.createWidget(widgetID, view, data, style);
+            }
+
+            if (data.allmatches_oid && data.currgameday_oid) {
+                if (1 || !vis.editMode) {
+                    vis.binds["openligadb"].bindStates($div,[data.allmatches_oid,data.currgameday_oid],onChange);                    
+                }
+            }            
+            
+            
             var text ='';
 
             text += '<style> \n';
@@ -684,6 +746,16 @@ vis.binds["openligadb"] = {
             
             var mode = data.mode || '1home';
             var mymode=mode[0];
+
+            function onChange(e, newVal, oldVal) {
+                vis.binds["openligadb"].table3.createWidget(widgetID, view, data, style);
+            }
+
+            if (data.allmatches_oid && data.currgameday_oid) {
+                if (1 || !vis.editMode) {
+                    vis.binds["openligadb"].bindStates($div,[data.allmatches_oid,data.currgameday_oid],onChange);                    
+                }
+            }            
             
             var table = this.calcTable(allmatches, mymode, showgameday, lastgamecount);
                 
@@ -1307,6 +1379,24 @@ vis.binds["openligadb"] = {
             
             $('#' + widgetID).html(text);
         }
+    },
+    bindStates: function(elem,bound,change_callback) {
+        var $div = $(elem);
+        var boundstates = $div.data('bound');
+        if (boundstates) {
+            for (var i = 0; i < boundstates.bound.length; i++) {
+                vis.states.unbind(boundstates.bound[i], boundstates.change_callback);
+            }
+        }
+        $div.data('bound', null);
+        $div.data('bindHandler', null);
+        for (var i=0;i<bound.length;i++) {
+            bound[i]=bound[i]+'.val';
+            vis.states.bind(bound[i] , change_callback);            
+        }
+        $div.data('bound', {bound,change_callback});
+        $div.data('bindHandler', change_callback);
+        
     },
     checkHighlite: function(value,highlights,sep) {
         sep = typeof sep !== 'undefined' ? sep : ";";
