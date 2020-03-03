@@ -165,6 +165,8 @@ vis.binds["openligadb"] = {
             var goalgetters  = data.goalgetters_oid ? JSON.parse(vis.states.attr(data.goalgetters_oid + '.val')) : {};
             var maxcount = data.maxcount || 99999;
             var sort = data.sort || 'goal';
+            var highlight = data.highlight || '';
+            var showonlyhighlight = data.showonlyhighlight || false;
             
             function onChange(e, newVal, oldVal) {
                 vis.binds["openligadb"].goalgetters.createWidget(widgetID, view, data, style);
@@ -213,11 +215,15 @@ vis.binds["openligadb"] = {
                     var name = '';
                     name += goalgetter.lastname;
                     (goalgetter.prename) ? name += ', ' + goalgetter.prename : name += goalgetter.prename;
-
-                    text += '        <tr>';
-                    text += '           <td class="oldb-left">'+ name +'</td>';
-                    text += '           <td class="oldb-left">'+ goalgetter.GoalCount  +'</td>';
-                    text += '        </tr>';            
+                    var check = vis.binds["openligadb"].checkHighlite(name,highlight);
+                    if (check) name = '<b>'+name+'</b>';
+                    
+                    if (!showonlyhighlight || showonlyhighlight && check) {
+                        text += '        <tr>';
+                        text += '           <td class="oldb-left">'+ name +'</td>';
+                        text += '           <td class="oldb-left">'+ goalgetter.GoalCount  +'</td>';
+                        text += '        </tr>';            
+                    }
                 }
             });
             text += '</table>            ';            
