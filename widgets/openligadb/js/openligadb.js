@@ -44,6 +44,9 @@ vis.binds["openligadb"] = {
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
+            var sort = data.sort || 'table';
+            var highlightontop = data.highlightontop || false;
+            
             
             function onChange(e, newVal, oldVal) {
                 vis.binds["openligadb"].pivottable.createWidget(widgetID, view, data, style);
@@ -89,10 +92,30 @@ vis.binds["openligadb"] = {
             for (var items in table){
                 newtable.push( table[items] );
             }
-            table = newtable.sort(function(a,b) {
-                return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
-            });             
-
+            if (sort=='table') {
+                table = newtable.sort(function(a,b) {
+                    return (a.Points > b.Points) ? -1 : ((b.Points > a.Points) ? 1 : (a.GoalDiff<b.GoalDiff) ? 1: (a.GoalDiff>b.GoalDiff)? -1:0);
+                });
+            }
+            if (sort=='name') {
+                table = newtable.sort(function(a,b) {
+                    var name1,name2
+                    name1 = (shortname)? a.ShortName : a.TeamName;
+                    name2 = (shortname)? b.ShortName : b.TeamName;
+                    return (name1 > name2) ? 1 : (name1 < name2) ? -1:0;
+                });
+            }
+            if (highlightontop) {
+                var tophighlight = highlight.split(';');
+                tophighlight = tophighlight.reverse();
+                for (var i=0;i<tophighlight.length;i++) {
+                    var topindex = table.findIndex(function(item){
+                        return item.TeamName.toLowerCase().indexOf(tophighlight[i].toLowerCase())>0; 
+                    });
+                    table.splice(0,0,table.splice(topindex,1)[0]);
+                }
+            }
+            
             var text ='';
             
             text += '<style> \n';
