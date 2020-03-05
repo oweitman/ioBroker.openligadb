@@ -106,13 +106,15 @@ vis.binds["openligadb"] = {
                 });
             }
             if (highlightontop) {
-                var tophighlight = highlight.split(';');
-                tophighlight = tophighlight.reverse();
-                for (var i=0;i<tophighlight.length;i++) {
-                    var topindex = table.findIndex(function(item){
-                        return item.TeamName.toLowerCase().indexOf(tophighlight[i].toLowerCase())>0; 
-                    });
-                    table.splice(0,0,table.splice(topindex,1)[0]);
+                if (highlight.trim()!='') {
+                    var tophighlight = highlight.split(';');
+                    tophighlight = tophighlight.reverse();
+                    for (var i=0;i<tophighlight.length;i++) {
+                        var topindex = table.findIndex(function(item){
+                            return item.TeamName.toLowerCase().indexOf(tophighlight[i].toLowerCase())>0; 
+                        });
+                        if (topindex>0) table.splice(0,0,table.splice(topindex,1)[0]);
+                    }
                 }
             }
             
