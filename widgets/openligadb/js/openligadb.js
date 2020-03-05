@@ -214,7 +214,6 @@ vis.binds["openligadb"] = {
                 });
             }
             
-            
             var text ='';
 
             text += '<style> \n';
@@ -230,10 +229,11 @@ vis.binds["openligadb"] = {
             text += '        <tr>';
             text += '           <th class="oldb-left">Name</td>';
             text += '           <th class="oldb-left">Tore</td>';
-            text += '        </tr>';            
+            text += '        </tr>';
+            var count=0;
             goalgetters.forEach(function(goalgetter, index) {
                 
-                if (index<maxcount) {
+                if (count<maxcount) {
                     
                     var name = '';
                     name += goalgetter.lastname;
@@ -245,7 +245,8 @@ vis.binds["openligadb"] = {
                         text += '        <tr>';
                         text += '           <td class="oldb-left">'+ name +'</td>';
                         text += '           <td class="oldb-left">'+ goalgetter.GoalCount  +'</td>';
-                        text += '        </tr>';            
+                        text += '        </tr>';
+                        count++;
                     }
                 }
             });
