@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.11.1",
+        "version": "0.11.2",
         "news": {
+            "0.11.2": {
+                "en": "* pivottable: fix problem with sort and highlightontop, * fix problem with goalgetters"
+            },
             "0.11.1": {
                 "en": "* change some template settings, goalgetter table get headers, add object change sensing.* widget goalgetters: add parameter highlight and showonlyhighlight,* widget pivottable: add sort option and choice to place favorite teams on top,* remove year from date for several widgets"
             },
@@ -59,9 +62,6 @@
             },
             "0.0.4": {
                 "en": "fixed more oids in vis runtime"
-            },
-            "0.0.3": {
-                "en": "fixed getting oids in vis runtime"
             }
         },
         "title": "OpenLigaDB",
