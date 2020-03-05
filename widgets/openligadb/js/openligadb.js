@@ -153,7 +153,7 @@ vis.binds["openligadb"] = {
                 if (vis.binds["openligadb"].checkHighlite(team1.TeamName,highlight)) team1name = '<b class="favorite">' + team1name + '</b>';                
                 text += '        <tr>';
                 text += '            <td class="oldb-center oldb-rank">';
-                text += index +1;
+                text += team1.ranking[team1.ranking.length-1];
                 text += '            </td>';                
                 text += '           <td class="oldb-center oldb-tdicon">';
                 text += '              <img class="oldb-icon" src="'+team1.TeamIconUrl+'">';
