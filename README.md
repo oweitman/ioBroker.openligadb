@@ -59,6 +59,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
+### 0.11.3
+* pivottable: fix problem with rank number
 ### 0.11.2
 * pivottable: fix problem with sort and highlightontop
 * fix problem with goalgetters 

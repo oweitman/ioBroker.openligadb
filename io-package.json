@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.11.2",
+        "version": "0.11.3",
         "news": {
+            "0.11.3": {
+                "en": "* pivottable: fix problem with rank number"
+            },
             "0.11.2": {
                 "en": "* pivottable: fix problem with sort and highlightontop, * fix problem with goalgetters"
             },
