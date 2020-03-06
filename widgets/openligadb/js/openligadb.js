@@ -72,6 +72,11 @@ vis.binds["openligadb"] = {
                 var result = vis.binds["openligadb"].getResult(item.MatchResults);
                 var team1result = result.hasOwnProperty('PointsTeam1') ? result.PointsTeam1 : '-';
                 var team2result = result.hasOwnProperty('PointsTeam2') ? result.PointsTeam2 : '-';
+                if (item.Group.GroupOrderID>currgameday) {
+                    team1result='-';
+                    team2result='-';                    
+                }
+
                 var game = {
                         "MatchDateTime":        item.MatchDateTime,
                         "Result":               team1result + ':'+ team2result,
