@@ -111,38 +111,51 @@ Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werd
 <br>
 
 
-<h3><a name="tplOLiDBTable2" ></a>League Table 2</h3>
+<h3><a name="tplOLiDBTable3" ></a>League Table 3</h3>
 <img src="img/table.png"/><br>
 Das ist die klassische Tabellenansicht. Die Tabelle enthält verschiedene Spalten.<br>
 Sp=Anzahl gespielter Spiele, S=Siege, U=Unentschieden, N=Niederlagen, Tore=Torverhältnis, Punkte=Punktestand<br>
 <h4>Attribute</h4>
-<h5>Attribute Object ID</h5>
+<h5>Attribut allmatches</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches (Achtung im alten widget musste hier noch table ausgewählt werden) ausgewählt werden.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Datenpunkt enthält alle Spieldaten einer Liga/Season im JSON-Format. Aus diesen Daten wird dann auf Basis des Modus die 
-Tabellen für Gesamt(1total), Heim (2home) oder Auswärts (3away) berechnet.
-<h5>Attribute mode</h5>
-Auswahl in welchem Modus die Tabelle angezeigt werden soll zur Auswahl steht Gesamt(1total), Heim (2home) oder Auswärts (3away).
-<h5>Attribute maxicon</h5>
+Tabellen die verschiedenen Modis berechnet.
+<h5>Attribut currgameday</h5>
+Hier ist ein Datenpunk zu wählen, der mit currgameday benannt ist.
+Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
+Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur Hälfte der Zeit 
+zwischen dem letzten Spiel des vorherigen Spieltags und dem ersten Spiel des folgenden Spieltages.
+<h5>Attribut mode</h5>
+Listenauswahl in welchem Modus die Tabelle angezeigt werden soll zur Auswahl steht Gesamt(1total), Heim (2home) oder Auswärts (3away), Hinrunde (4round1) oder Rückrunde (5round2).
+<h5>Attribut mode_binding</h5>
+Dieses Attribut entspricht inhaltlich dem Attribut mode. Es wurde ergänzend eingeführ, so das der Tabellenmodus ebenfalls per Binding gesteuert werden kann. <br>
+In dieses Textfeld können genau die gleichen Werte wie bei mode eingetragen werden.<br>
+Wenn hier ein korrekter Wert eingetragen ist, dann hat dieses Attribut vorrang vor dem Attribut mode.<br>
+Ein Normalanwender sollte er nichts eintragen.  
+<h5>Attribut maxicon</h5>
 Maximale Größe des Manschaftsicons in x oder y-Richtung.
-<h5>Attribute shortname</h5>
+<h5>Attribut shortname</h5>
 Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vorliegenden Daten gepflegt wurde.
-<h5>Attribute highlight</h5>
+<h5>Attribut sowtrend</h5>
+Auswahl, wenn Trendicons angezeigt werden sollen. Der Trend wird im Vergleich zum vorherigen Spieltag berechnet.
+<h5>Attribut highlight</h5>
 Hier können ein oder mehrere Begriffe mit Semikolon (;) getrennt eingegeben werden die hervorgehoben werden sollen.
 Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
 Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
-<br><br>
-
-<h3><a name="tplOLiDBTable" ></a>League Table</h3>
-<img src="img/table.png"/><br>
-Dieses Widget wird gelöscht. Bitte nur noch Table 2 benutzen
-<br><br>
+<h5>Attribut iconup,icondn,iconst in der Attributgruppe Icons</h5>
+Hier können eigene Trendicons definiert werden.
+<h5>Attribut showgameday in der Attributgruppe Erweiterte Einstellungen</h5>
+Hier kann ein vom aktuellen Spieltag abweichender Tag zur Berechnung der Tabelle eingegeben werden 
+<h5>Attribut lastgamecount in der Attributgruppe Erweiterte Einstellungen</h5>
+Wenn hier eine Zahl eingegeben wird, dann wird die Tabelle nur für die Anzahl von Spieltagen bis zum aktuell angezeigten Spieltag (in Abhängigkeit von currgameday und showgameday) berechnet<br><br>
+Beispiel: Eingabe bei showgameday = 10 und bei lastgamecount=5: Die Tabelle wird nur für die Spieltage 6-10 berechnet (5 Spieltage)
 
 <h3><a name="tplOLiDBGameDay" ></a>Games of Gameday</h3>
 <img src="img/gameday.png"/><br>
-Dieses Widget zeigt den Spieltage an. Je nach Einstellung kann immer der aktuelle, relativ zum aktuellen oder ein bestimmter Spieltag angezeigt werden. <br>
+Dieses Widget zeigt den Spieltag an. Je nach Einstellung kann immer der aktuelle, relativ zum aktuellen oder ein bestimmter Spieltag angezeigt werden. <br>
 Darüber hinaus kann auch die Menge der angezeigten Spieltage festgelegt werden.<br>
-Bestimmte Elemente der Anzeige wurden mit <b>CSS-Klassen</b> versehenm, für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:<br>
+Bestimmte Elemente der Anzeige wurden mit <b>CSS-Klassen</b> versehen, für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:<br>
 <table>
 <tr><th>CSS-Klasse</th><th>Formatierung betrifft welches Element</td><th>Anmerkung</th><th>Beispiel</th></tr>
 <tr><th>favorite</th><td>im Anzeigekopf eines Spieltages (Datum/Uhrzeit)</td><td>Hier kann Datum und Uhrzeit formatiert werden, wenn die Lieblingsmannschaft am Spieltag spielt. ggfs. kann es auch mit der CSS-Klasse "todaygameheader" verbunden werden.</td>
@@ -193,7 +206,17 @@ Hier ist ein Datenpunk zu wählen, der mit currgameday benannt ist.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
 Der Wert wird im Adapter auf Basis des aktuellen Datums berechnet. Der aktuelle Spieltag wechselt zur Hälfte der Zeit 
 zwischen dem letzten Spielt der vorherigen Spieltags und dem ersten Spiel des folgenden Spieltages.
-<h5>Attribute showgameday</h5>
+<h5>Attribute maxicon</h5>
+Maximale Größe des Manschaftsicons in x oder y-Richtung.
+<h5>Attribute shortname</h5>
+Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vorliegenden Daten gepflegt wurde.
+<h5>Attribute showgoals</h5>
+Informationen zu den Torschützen wird angezeigt.
+<h5>Attribute highlight</h5>
+Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen.
+Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
+Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
+<h5>Attribute showgameday in der Gruppe Erweiterte Einstellungen</h5>
 Wenn dieses Feld leer bleibt, wird immer der aktuelle Spieltag angezeigt.<br>
 Trägt man eine positive Zahl ein, dann wird, falls vorhanden, der ausgewählte Spieltag angezeigt.<br>
 Trägt man eine negative Zahl ein, dann wird relativ vom aktuellen Spieltag dieser angezeigt (bspw -1 entspricht dem vorherigen Spieltag)<br>
@@ -210,28 +233,13 @@ Beispiele für relativ berechneten Spieltag:<br>
 
 
 Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.<br>
-<h5>Attribute showgamedaycount</h5>
+<h5>Attribute showgamedaycount in der Gruppe Erweiterte Einstellungen</h5>
 Üblicherweise bleibt dieses Feld leer oder enthält 1.<br>
 Dadurch wird genau ein Spieltag angezeigt.<br>
 Wird hier eine andere Zahl eingegeben, dann wird diese Anzahl von Spieltagen, ausgehend von der 'Einstellung in showgameday angezeigt.<br>
-<h5>Attribute maxicon</h5>
-Maximale Größe des Manschaftsicons in x oder y-Richtung.
-<h5>Attribute shortname</h5>
-Anstatt des Manschaftsnamens wird der Kurzname angezeigt, falls dieser in den vorliegenden Daten gepflegt wurde.
-<h5>Attribute showgoals</h5>
-Informationen zu den Torschützen wird angezeigt.
-<h5>Attribute showweekday</h5>
+<h5>Attribute showweekday in der Gruppe Erweiterte Einstellungen</h5>
 Zeigt vor dem Datum wahlweise den Wochentag an.
-<h5>Attribute highlight</h5>
-Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen.
-Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags &lt;b&gt; eingefasst.
-Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.
 <br><br>
-<h3><a name="tplOLiDBFavGames" ></a>Games of favorite clubs</h3>
-<img src="img/favgames.png"/><br>
-Dieses Widget wird gelöscht. Bitte nur noch Games of favorite clubs 2 benutzen
-<br><br>
-
 <h3><a name="tplOLiDBFavGames2" ></a>Games of favorite clubs 2</h3>
 <img src="img/favgames.png"/><br>
 Diese Widget zeigt die nächsten Spiele deiner Lieblingsmannschaften aus ein oder mehrerer Ligen an.
@@ -263,7 +271,8 @@ Um die Spiele der einzelnen Ligen unterscheiden zu können, kann man eine eigene
 Hier kann ausgewählt werden, ob diese angezeigt werden soll.
 <h5>Attribute showweekday - Gruppe Allgemein</h5>
 Zeigt vor dem Datum wahlweise den Wochentag an.
-
+<br><br>
+Die folgenden Attribute in der Gruppe Liga können sich in Abhängigkeit der Eingabe bei <b>Anzahl Liga</b> mehrfach wiederholen.
 <h5>Attribute allmatches - Gruppe Liga</h5>
 Hier muss ein Datenpunkt mit der Bezeichnung allmatches ausgewählt werden.
 Dieser Datenpunkt wird nach dem Anlegen der Liga/Season in der Konfiguration erzeugt, falls die Angaben gültig sind.
@@ -300,6 +309,19 @@ Abkürzung die für diese Liga angezeigt werden soll, sofern showabbreviation au
 Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, um die Lieblingsmanschaften zu finden.
 Die Suche erfolgt nur in den Mannschaftsnamen. Eine besondere Hervorhebung wie bei den anderen Widgets gibt es hier nicht.
 <br><br>
+<h3><a name="tplOLiDBTable2" ></a>League Table 2</h3>
+<img src="img/table.png"/><br>
+Dieses Widget wird gelöscht. Bitte nur noch Table 3 benutzen
+<br><br>
+<h3><a name="tplOLiDBTable" ></a>League Table</h3>
+<img src="img/table.png"/><br>
+Dieses Widget wird gelöscht. Bitte nur noch Table 3 benutzen
+<br><br>
+<h3><a name="tplOLiDBFavGames" ></a>Games of favorite clubs</h3>
+<img src="img/favgames.png"/><br>
+Dieses Widget wird gelöscht. Bitte nur noch Games of favorite clubs 2 benutzen
+<br><br>
+
 
 <h3>Rezepte zur Wiederverwendung</h3>
 <h4>Steuerung des Tabellenmodus über Knöpfe</h4>
@@ -386,5 +408,28 @@ Der Bindungsausdruck wir hier in das Feld background-color im Reiter CSS Hinterg
     </div>
 </div>
 <br>
+<h4>Auswahl des Tabellenmodus für das table widget</h4>
+<img src="img/tableselect.png"/><br>
+Mit diesem HTML-widget lässt sich der Modus des Tabellen widgets steuern.<br>
+Der im folgenden widget verwendete Datenpunkt lautet: 
+<pre>
+<code class="javascript hljs">
+javascript.0.tabellemodus
+</code></pre>
+Dieser ist als Bindung in das attribut mode_binding im tabellen widget wie folgt zu hinterlegen:
+<pre><code class="javascript hljs">
+{javascript.0.tabellemodus}
+</code></pre>
+Hier der widget code zum importieren.
+<div class="spoiler container">
+    <div class="header spoiler" onclick="spoiler(this);"><span>Expand</span>
+    </div>
+    <div class="content">
+        <pre><code class="json hljs">
+[{"tpl":"tplJquiRadioList","data":{"oid":"javascript.0.tabellemodus","g_fixed":true,"g_visibility":false,"g_css_font_text":true,"g_css_background":true,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","values":"1total;2home;3away;4round1;5round2","texts":"Gesamt;Heim;Auswärts;Hinrunde;Rückrunde","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"class":""},"style":{"left":"54px","top":"356px","background":"black","font-size":"xx-small"},"widgetSet":"jqui"}]
+        </code></pre>
+    </div>
+</div>
+
 </body>
 </html>

@@ -42,8 +42,8 @@
         type="text/ejs"
         class="vis-tpl"
 		data-vis-prev='<img src="widgets/openligadb/img/table.png"></img>'
-        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;mode[1total]/nselect,1total,2home,3away,4round1,5round2;maxicon[25],number;shortname/checkbox;showtrend/checkbox;highlight;"
-        data-vis-attrs0="group.icons;iconup;icondn;iconst;"
+        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;mode[1total]/nselect,1total,2home,3away,4round1,5round2;mode_binding;maxicon[25],number;shortname/checkbox;showtrend/checkbox;highlight;"
+        data-vis-attrs0="group.icons;iconup/image;icondn/image;iconst/image;"
         data-vis-attrs1="group.extended;showgameday;lastgamecount;"
         data-vis-set="openligadb"
         data-vis-type="val"
@@ -58,8 +58,9 @@
         type="text/ejs"
         class="vis-tpl"
 		data-vis-prev='<img src="widgets/openligadb/img/gameday.png"></img>'
-        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;showgameday;showgamedaycount;maxicon[25],number;shortname/checkbox;showgoals/checkbox;showweekday/checkbox;highlight;"
-        data-vis-set="openligadb"   
+        data-vis-attrs="allmatches_oid/id;currgameday_oid/id;maxicon[25],number;shortname/checkbox;showweekday/checkbox;highlight;"
+        data-vis-attrs0="group.extended;showgameday;showgamedaycount;showgoals/checkbox;"
+        data-vis-set="openligadb"
         data-vis-type="val"
         data-vis-beta="true"
         data-vis-update-style="true"
@@ -125,4 +126,4 @@
         vis.binds.openligadb.table2.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
-          
+                        

@@ -784,7 +784,10 @@ vis.binds["openligadb"] = {
             var icondn = data.icondn || 'widgets/openligadb/img/trend_dn.png';
             var iconst = data.iconst || 'widgets/openligadb/img/trend_st.png';
             
-            var mode = data.mode || '1home';
+            var mode_binding = data.mode_binding || '';
+            data.mode = ('1total,2home,3away,4round1,5round2'.indexOf(mode_binding)>=0 && mode_binding!='') ? mode_binding : data.mode;
+            
+            var mode = data.mode || '1total';
             var mymode=mode[0];
 
             function onChange(e, newVal, oldVal) {

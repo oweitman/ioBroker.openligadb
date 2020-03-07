@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "0.11.4",
+        "version": "0.11.5",
         "news": {
+            "0.11.5": {
+                "en": "* pivottable: show only results for selected gameday, * table3: icon attributes, add image selection dialog, * table3: add an extra attribute for mode to use with binding, * all widgets: update documentation"
+            },
             "0.11.4": {
                 "en": "* fixed build/test problem  "
             },
