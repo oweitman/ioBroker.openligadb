@@ -59,6 +59,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
+### 1.0.1
+* improve error message for requests
 ### 1.0.0
 * prepare for stable repository
 ### 0.11.5
@@ -132,12 +134,6 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * add controlable gameday logic to gameday widget and adapter
 ### 0.0.1
 * initial release
-
-
-
-
-
-
 
 ## License
 MIT License
