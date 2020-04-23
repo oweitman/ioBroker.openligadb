@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
+            "1.0.2": {
+                "en": "* improve debug messages"
+            },
             "1.0.1": {
                 "en": "* improve error message for requests"
             },
