@@ -59,6 +59,8 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 * ~~controllable gameday in the gameday widget~~
 
 ## Changelog
+### 1.0.3
+* change setstate/createobject logic
 ### 1.0.2
 * remove deprecated widgets / change widget beta flag
 * improve debug messages
