@@ -39,14 +39,15 @@ vis.binds["openligadb"] = {
                     vis.binds["openligadb"].pivottable.createWidget(widgetID, view, data, style);
                 }, 100);
             }
+
             var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
-            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
+            currgameday = currgameday || 1;
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
             var sort = data.sort || 'table';
             var highlightontop = data.highlightontop || false;
-            
             
             function onChange(e, newVal, oldVal) {
                 vis.binds["openligadb"].pivottable.createWidget(widgetID, view, data, style);
@@ -56,8 +57,9 @@ vis.binds["openligadb"] = {
                 if (1 || !vis.editMode) {
                     vis.binds["openligadb"].bindStates($div,[data.allmatches_oid,data.currgameday_oid],onChange);                    
                 }
-            }            
-                                    
+            }
+
+            if (!allmatches) return;
             var pivottable = allmatches.reduce(function(collect,item){
                 if (collect.hasOwnProperty(item.Team1.TeamName)) {                
                     var team =collect[item.Team1.TeamName];
@@ -569,7 +571,7 @@ vis.binds["openligadb"] = {
             }
             
             var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
-            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
             var showgameday = data.showgameday || '';
             if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
             if (showgameday==0) showgameday='';
@@ -581,11 +583,7 @@ vis.binds["openligadb"] = {
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
-            
-            
-            var matches = this.filterGameDay(allmatches,showgameday || currgameday || '', showgamedaycount, currgameday);
-            var gamedays = this.groupGameDay(matches,shortname,highlight);
-            
+
             function onChange(e, newVal, oldVal) {
                 vis.binds["openligadb"].gameday.createWidget(widgetID, view, data, style);
             }
@@ -596,6 +594,8 @@ vis.binds["openligadb"] = {
                 }
             }            
             
+            var matches = this.filterGameDay(allmatches,showgameday || currgameday || '', showgamedaycount, currgameday);
+            var gamedays = this.groupGameDay(matches,shortname,highlight);
             
             var text ='';
 
@@ -748,16 +748,18 @@ vis.binds["openligadb"] = {
             
         },        
         getGoals: function(match) {
-            var goals = [];
-            match.Goals.forEach(function(match, index,arr) {
-                var goal = '';
-                goal += match.ScoreTeam1+':'+match.ScoreTeam2+' '+match.GoalGetterName+' '+'('+match.MatchMinute+')';
-                goal += (match.IsPenalty) ? ' (Elfmeter)' : '';
-                goal += (match.IsOwnGoal) ? ' (Eigentor)' : '';
-                goal += index < arr.length-1 ? ', ' : '';
-                goals += '<span class="oldb-goal">' + goal + '</span>';
+            var goaltxts = '';
+            match.Goals.forEach(function(goal, index,arr) {
+                var goaltxt = '';
+                var name = (goal.GoalGetterName)?' '+goal.GoalGetterName:"";
+                var minute = (goal.MatchMinute)?' ('+goal.MatchMinute+')':"";
+                goaltxt += goal.ScoreTeam1+':'+goal.ScoreTeam2+name+minute;
+                goaltxt += (goal.IsPenalty) ? ' (Elfmeter)' : '';
+                goaltxt += (goal.IsOwnGoal) ? ' (Eigentor)' : '';
+                goaltxt += index < arr.length-1 ? ', ' : '';
+                goaltxts += '<span class="oldb-goal">' + goaltxt + '</span>';
             });
-            return goals;
+            return goaltxts;
         }       
     },
     table3: {
@@ -770,7 +772,7 @@ vis.binds["openligadb"] = {
                 }, 100);
             }
             var allmatches = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
-            var currgameday = data.currgameday_oid ? JSON.parse(vis.states.attr(data.currgameday_oid + '.val')) : {};
+            var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
 
             var showgameday = data.showgameday || '';
             if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
@@ -945,6 +947,7 @@ vis.binds["openligadb"] = {
             
             var prevgd=0
             var self = this;
+            if (!allmatches) return [];
             var maxgameday = allmatches.reduce(function(a, b) {
               return Math.max(a, b.Group.GroupOrderID);
             },0);
@@ -1433,13 +1436,19 @@ vis.binds["openligadb"] = {
         }
         $div.data('bound', null);
         $div.data('bindHandler', null);
-        for (var i=0;i<bound.length;i++) {
-            bound[i]=bound[i]+'.val';
-            vis.states.bind(bound[i] , change_callback);            
-        }
-        $div.data('bound', {bound,change_callback});
-        $div.data('bindHandler', change_callback);
-        
+
+        vis.conn.gettingStates = 0;
+        vis.conn.getStates(bound, function (error, states) {
+            vis.updateStates(states);
+            vis.conn.subscribe(bound);
+
+            for (var i=0;i<bound.length;i++) {
+                bound[i]=bound[i]+'.val';
+                vis.states.bind(bound[i] , change_callback);
+            }
+            $div.data('bound', {bound,change_callback});
+            $div.data('bindHandler', change_callback);
+        }.bind({change_callback}));
     },
     checkHighlite: function(value,highlights,sep) {
         sep = typeof sep !== 'undefined' ? sep : ";";
