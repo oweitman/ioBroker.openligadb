@@ -5,6 +5,5 @@ iobroker-*.tgz
 npm-debug.log
 
 # This is too much noise for git
-package-lock.json
 
 test.js
