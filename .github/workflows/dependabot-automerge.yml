@@ -9,6 +9,10 @@ on:
   pull_request_target:
 
 jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "github.actor ${{ github.actor }} ."
   auto-merge:
     if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
     runs-on: ubuntu-latest
