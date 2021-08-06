@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.2.0",
+        "version": "1.2.1",
         "news": {
             "1.2.1": {
                 "en": "* fix object type"
