@@ -3,6 +3,9 @@
         "name": "openligadb",
         "version": "1.2.0",
         "news": {
+            "1.2.1": {
+                "en": "* fix object type"
+            },
             "1.2.0": {
                 "en": "* fix display of goals if goals are without minutes and playername saved by openligadb, * fixed that sometimes request of states failed"
             },
