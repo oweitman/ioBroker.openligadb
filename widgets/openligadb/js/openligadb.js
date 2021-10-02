@@ -1466,7 +1466,8 @@ vis.binds["openligadb"] = {
     getResult: function(results) {
         if (results.length==0) return {};
         results = results.reduce(function(acc,cur){
-            if (cur.ResultTypeID==2) acc = cur;
+            //if (cur.ResultTypeID==2) acc = cur;
+            if (cur.ResultTypeID>(acc.ResultTypeID||0)) acc = cur;
             return acc;
         },{});
         return results;
