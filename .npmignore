@@ -1,5 +1,4 @@
-.git
-.idea
+.*
 node_modules/
 nbproject/
 .vs*/
@@ -9,12 +8,6 @@ debug.info
 vis
 
 test/
-travis/
-.travis.yml
-appveyor.yml
-.travis.yaml
-appveyor.yaml
-
 .eslintrc.json
 
 # npm package files

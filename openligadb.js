@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
  * Created with @iobroker/create-adapter v1.12.0
@@ -6,12 +6,12 @@
 
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
-const utils = require('@iobroker/adapter-core');
+const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
-const IoOlServer = require(__dirname +'/lib/openligadbserver.js');
+const IoOlServer = require(__dirname +"/lib/openligadbserver.js");
 
 /**
  * The adapter instance
@@ -28,7 +28,7 @@ let openligadbServer;
 function startAdapter(options) {
     // Create the adapter and define its methods
     return adapter = utils.adapter(Object.assign({}, options, {
-        name: 'openligadb',
+        name: "openligadb",
 
         // The ready callback is called when databases are connected and adapter received configuration.
         // start here!
@@ -38,7 +38,7 @@ function startAdapter(options) {
         unload: (callback) => {
             try {
                 openligadbServer.closeConnections();
-                adapter.log.info('openligadb unloaded');
+                adapter.log.info("openligadb unloaded");
                 callback();
             } catch (e) {
                 callback();
@@ -50,7 +50,7 @@ function startAdapter(options) {
             if (state) {
                 // The state was changed
                 if (openligadbServer) openligadbServer.stateChange(id,state);
-            } 
+            }
         },
 
     }));
