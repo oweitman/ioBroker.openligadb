@@ -70,7 +70,7 @@
         "test:integration": "mocha test/integration --exit",
         "test": "npm run test:js && npm run test:package",
         "check": "tsc --noEmit -p tsconfig.check.json",
-        "lint": "eslint openligadb.js lib --ext .js,.jsx --env node --fix"
+        "lint": "eslint"
     },
     "bugs": {
         "url": "https://github.com/oweitman/ioBroker.openligadb/issues"
