@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.2.3",
+        "version": "1.2.4",
         "news": {
+            "1.2.4": {
+                "en": "* fix problems reported by adapter-checker"
+            },
             "1.2.3": {
                 "en": "* add connectiontype and datasource to io-package.json"
             },
@@ -105,7 +108,7 @@
                 "admin": ">=3.0.0"
             },
             {
-                "js-controller": ">=1.4.2"
+                "js-controller": ">=2.0.0"
             }
         ]
     },
