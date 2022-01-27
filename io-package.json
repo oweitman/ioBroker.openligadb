@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.2.2",
+        "version": "1.2.3",
         "news": {
+            "1.2.3": {
+                "en": "* add connectiontype and datasource to io-package.json"
+            },
             "1.2.2": {
                 "en": "* fix result calculation"
             },
@@ -89,7 +92,9 @@
         "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
         "loglevel": "debug",
         "mode": "daemon",
-        "type": "misc-data",        
+        "type": "misc-data",
+        "connectionType": "cloud",
+        "dataSource": "poll",
         "compact": true,
         "materialize": true,
         "restartAdapters": [

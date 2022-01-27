@@ -60,7 +60,9 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 
 ## Changelog
 
-### 1.2.1
+### 1.2.3
+* add connectiontype and datasource to io-package.json
+### 1.2.2
 * fix result calculation
 ### 1.2.1
 * fix object type
