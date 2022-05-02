@@ -21,7 +21,7 @@
         "@iobroker/adapter-core": "^2.6.0"
     },
     "devDependencies": {
-        "@babel/cli": "^7.17.6",
+        "@babel/cli": "^7.17.10",
         "@babel/core": "^7.17.10",
         "@iobroker/adapter-react": "^2.0.22",
         "@iobroker/testing": "^2.6.0",
