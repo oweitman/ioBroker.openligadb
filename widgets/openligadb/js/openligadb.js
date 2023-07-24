@@ -815,6 +815,8 @@ vis.binds["openligadb"] = {
             var maxicon = data.maxicon || 25;
             var shortname = data.shortname || false;
             var highlight = data.highlight || '';
+            var filter = data.filter || '';
+            //test
             
             var text ='';
 
@@ -880,6 +882,7 @@ vis.binds["openligadb"] = {
             table.forEach(function(team, index) {
 
                 var teamname = shortname ? team.shortName : team.teamName;
+                if (!(vis.binds["openligadb"].checkHighlite(teamname,filter)||filter=="")) return;
                 if (vis.binds["openligadb"].checkHighlite(teamname,highlight)) teamname = '<b class="favorite">' + teamname + '</b>';
                 
                 text += '        <tr>';
