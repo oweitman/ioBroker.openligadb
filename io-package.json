@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.3.1",
+        "version": "1.3.3",
         "news": {
+            "1.3.3": {
+                "en": "* fix version number"
+            },
             "1.3.2": {
                 "en": "* add filter field for table widget"
             },
@@ -29,36 +32,6 @@
             },
             "1.1.0": {
                 "en": "* prepare v1.1.0"
-            },
-            "1.0.3": {
-                "en": "* change setstate/createobject logic"
-            },
-            "1.0.2": {
-                "en": "* improve debug messages"
-            },
-            "1.0.1": {
-                "en": "* improve error message for requests"
-            },
-            "1.0.0": {
-                "en": "* prepare for stable repository"
-            },
-            "0.11.5": {
-                "en": "* pivottable: show only results for selected gameday, * table3: icon attributes, add image selection dialog, * table3: add an extra attribute for mode to use with binding, * all widgets: update documentation"
-            },
-            "0.11.4": {
-                "en": "* fixed build/test problem  "
-            },
-            "0.11.3": {
-                "en": "* pivottable: fix problem with rank number"
-            },
-            "0.11.2": {
-                "en": "* pivottable: fix problem with sort and highlightontop, * fix problem with goalgetters"
-            },
-            "0.11.1": {
-                "en": "* change some template settings, goalgetter table get headers, add object change sensing.* widget goalgetters: add parameter highlight and showonlyhighlight,* widget pivottable: add sort option and choice to place favorite teams on top,* remove year from date for several widgets"
-            },
-            "0.11.0": {
-                "en": "extend table to calculate with x last games and extend table to calculate ranking for a defined gameday, to ensure backward compatibility i have to create a new table v3 widget, extend table with trend sign (arrow up/down, point for no change), new widget goal getter ranking with sort function, new widget pivot table of played games, extend table modes with 1st round,2nd round"
             }
         },
         "title": "OpenLigaDB",
