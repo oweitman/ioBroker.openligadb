@@ -40,7 +40,7 @@ vis.binds["openligadb"] = {
                 }, 100);
             }
 
-            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : [];
             var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
             currgameday = currgameday || 1;
             var maxicon = data.maxicon || 25;
@@ -194,7 +194,7 @@ vis.binds["openligadb"] = {
                 }, 100);
             }
             
-            var goalgetters  = data.goalgetters_oid ? JSON.parse(vis.states.attr(data.goalgetters_oid + '.val')) : {};
+            var goalgetters  = data.goalgetters_oid ? JSON.parse(vis.states.attr(data.goalgetters_oid + '.val')) : [];
             var maxcount = data.maxcount || 99999;
             var sort = data.sort || 'goal';
             var highlight = data.highlight || '';
@@ -322,8 +322,8 @@ vis.binds["openligadb"] = {
 
                 var allmatches  = data['allmatches_oid'+i] ? JSON.parse(vis.states.attr( data['allmatches_oid'+i] + '.val')) : {};
                 var currgameday = data['currgameday_oid'+i] ? JSON.parse(vis.states.attr(data['currgameday_oid'+i] + '.val')) : {};
-                bound.push(data['allmatches_oid'+i]);
-                bound.push(data['currgameday_oid'+i]);
+                if (data['allmatches_oid'+i]) bound.push(data['allmatches_oid'+i]);
+                if (data['currgameday_oid'+i]) bound.push(data['currgameday_oid'+i]);
                 var showgameday = data['showgameday'+i] || '';
                 if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
                 if (showgameday==0) showgameday='';
@@ -343,7 +343,7 @@ vis.binds["openligadb"] = {
                 vis.binds["openligadb"].favgames2.createWidget(widgetID, view, data, style);
             }
 
-            if (bound) {
+            if (bound.length>0) {
                 if (1 || !vis.editMode) {
                     vis.binds["openligadb"].bindStates($div,bound,onChange);                    
                 }
@@ -570,7 +570,7 @@ vis.binds["openligadb"] = {
                 }, 100);
             }
             
-            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var allmatches  = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : [];
             var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
             var showgameday = data.showgameday || '';
             if (vis.editMode && /{.*}/gm.test(showgameday))  showgameday = '';
@@ -771,7 +771,7 @@ vis.binds["openligadb"] = {
                     vis.binds["openligadb"].table3.createWidget(widgetID, view, data, style);
                 }, 100);
             }
-            var allmatches = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : {};
+            var allmatches = data.allmatches_oid ? JSON.parse(vis.states.attr(data.allmatches_oid + '.val')) : [];
             var currgameday = data.currgameday_oid ? vis.states.attr(data.currgameday_oid + '.val') : 1;
 
             var showgameday = data.showgameday || '';
@@ -1006,7 +1006,6 @@ vis.binds["openligadb"] = {
                     }
                 }
                 var matchresult = vis.binds["openligadb"].getResult(item.matchResults);
-                console.debug(item.group.groupOrderID,(mymode ==4 && item.group.groupOrderID<=maxgameday/2)?'4':'',(mymode ==5 && item.group.groupOrderID>maxgameday/2)?'5':'');
                 if (matchresult.hasOwnProperty('pointsTeam1') && item.group.groupOrderID<=showgameday && item.group.groupOrderID>showgameday-lastgamecount) {
 
                     if (matchresult.pointsTeam1>matchresult.pointsTeam2) {
@@ -1484,15 +1483,12 @@ vis.binds["openligadb"] = {
         if (oid) {
             var json = vis.states.attr( oid + '.val');
             if ((json) && json!='null') {
-                console.debug('statedo:'+oid);
                 if (!vis.subscribing.IDs.includes(oid)) {
                     vis.subscribing.IDs.push(oid);
                     var a = [];
                     a.push(oid);
                     vis.conn.gettingStates=0;
-                    console.debug('stateask:'+oid);                    
                     vis.conn.getStates(a, function (error, data) {
-                        console.debug('stateget:'+oid);                    
                         vis.updateStates(data);
                         var a = [];
                         a.push(oid);                    
@@ -1508,7 +1504,6 @@ vis.binds["openligadb"] = {
                             (vis.binds["openligadb"].checkHighlite(item.team1.teamName,highlite,",") ||
                             vis.binds["openligadb"].checkHighlite(item.team2.teamName,highlite,","));
                         if (test) {
-                            console.debug('Match for:' + oid + ' and ' + highlite+ " " + item.matchDateTime + " " + item.team1.teamName + " " + item.team2.teamName);
                         } 
                         return result || test;
                     },false);
@@ -1518,9 +1513,7 @@ vis.binds["openligadb"] = {
                 var a = [];
                 a.push(oid);
                 vis.conn.gettingStates=0;
-                console.debug('stateask:'+oid);                    
                 vis.conn.getStates(a, function (error, data) {
-                    console.debug('stateget:'+oid);                    
                     vis.updateStates(data);
                     var a = [];
                     a.push(oid);                    

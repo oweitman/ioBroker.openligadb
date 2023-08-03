@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.3.3",
+        "version": "1.3.4",
         "news": {
+            "1.3.4": {
+                "en": "* fix some widgets errors * add pivottable image"
+            },
             "1.3.3": {
                 "en": "* fix version number"
             },
