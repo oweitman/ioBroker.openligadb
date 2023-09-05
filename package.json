@@ -29,7 +29,7 @@
         "@material-ui/icons": "^4.11.3",
         "@material-ui/lab": "^4.0.0-alpha.61",
         "@types/chai": "^4.3.3",
-        "@types/chai-as-promised": "^7.1.5",
+        "@types/chai-as-promised": "^7.1.6",
         "@types/gulp": "^4.0.10",
         "@types/mocha": "^10.0.1",
         "@types/node": "^18.15.0",
