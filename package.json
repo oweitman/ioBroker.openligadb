@@ -18,7 +18,7 @@
         "url": "https://github.com/oweitman/ioBroker.openligadb"
     },
     "dependencies": {
-        "@iobroker/adapter-core": "^2.6.7"
+        "@iobroker/adapter-core": "^2.6.9"
     },
     "devDependencies": {
         "@babel/cli": "^7.21.0",
