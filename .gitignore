@@ -1,9 +1,17 @@
-.idea
-tsconfig.json
+# No dot-directories except github/vscode
+.*/
+!.vscode/
+!.github/
+
+*.code-workspace
 node_modules
-iobroker-*.tgz
-npm-debug.log
+nbproject
 
-# This is too much noise for git
+# npm package files
+iobroker.*.tgz
 
-test.js
+Thumbs.db
+
+# i18n intermediate files
+admin/i18n/flat.txt
+admin/i18n/*/flat.txt

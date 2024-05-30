@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "openligadb",
-        "version": "1.3.4",
+        "version": "1.4.0",
         "news": {
+            "1.4.0": {
+                "en": "* Update and vis2"
+            },            
             "1.3.4": {
                 "en": "* fix some widgets errors * add pivottable image"
             },
@@ -62,16 +65,22 @@
             "pl": "OpenLigaDB",
             "zh-cn": "OpenLigaDB"
         },
-        "authors": [
-            "oweitman <oweitman@gmx.de>"
-        ],
+        "authors": ["oweitman <oweitman@gmx.de>"],
         "keywords": [
             "ioBroker",
-            "template",
             "Smart Home",
-            "home automation"
+            "home automation",
+            "openligadb",
+            "openliga",
+            "football",
+            "fussball",
+            "bundesliga"
         ],
         "license": "MIT",
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
         "platform": "Javascript/Node.js",
         "main": "openligadb.js",
         "icon": "openligadb_b.png",
@@ -79,21 +88,23 @@
         "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_b.png",
         "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
         "loglevel": "debug",
+        "tier": 3,
         "mode": "daemon",
         "type": "misc-data",
+        "compact": true,
         "connectionType": "cloud",
         "dataSource": "poll",
-        "compact": true,
-        "materialize": true,
-        "restartAdapters": [
-            "vis"
-        ],
+        "adminUI": {
+            "config": "json"
+        },
         "dependencies": [
             {
-                "admin": ">=3.0.0"
-            },
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
             {
-                "js-controller": ">=2.0.0"
+                "admin": ">=5.1.13"
             }
         ]
     },
