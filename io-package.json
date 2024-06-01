@@ -1,262 +1,197 @@
 {
-    "common": {
-        "name": "openligadb",
-        "version": "1.4.0",
-        "news": {
-            "1.4.0": {
-                "en": "* Update and vis2",
-                "de": "* Update und vis2",
-                "ru": "* Обновление и вис2",
-                "pt": "* Atualização e vis2",
-                "nl": "* Update en vis2",
-                "fr": "* Mise à jour et vis2",
-                "it": "* Aggiornamento e vis2",
-                "es": "* Actualización y vis2",
-                "pl": "* Aktualizacja i vis2",
-                "uk": "* Оновлення та vis2",
-                "zh-cn": "* 更新和vis2"
-            },
-            "1.3.4": {
-                "en": "* fix some widgets errors * add pivottable image",
-                "de": "* einige Widget-Fehler beheben * Pivottable-Bild hinzufügen",
-                "ru": "* исправлены некоторые ошибки виджетов * добавлено изображение сводной таблицы",
-                "pt": "* corrigir alguns erros de widgets * adicionar imagem pivotável",
-                "nl": "* enkele widgetfouten repareren * draaibare afbeelding toevoegen",
-                "fr": "* correction de certaines erreurs de widgets * ajout d'une image pivotante",
-                "it": "* correggi alcuni errori dei widget * aggiungi un'immagine pivotabile",
-                "es": "* corregir algunos errores de widgets * agregar una imagen pivotable",
-                "pl": "* napraw niektóre błędy widżetów * dodaj obracany obraz",
-                "uk": "* виправлення деяких помилок віджетів * додавання поворотного зображення",
-                "zh-cn": "* 修复一些小部件错误 * 添加数据透视表图像"
-            },
-            "1.3.3": {
-                "en": "* fix version number",
-                "de": "* Versionsnummer korrigieren",
-                "ru": "* исправить номер версии",
-                "pt": "* corrigir o número da versão",
-                "nl": "* versienummer repareren",
-                "fr": "* Correction du numéro de version",
-                "it": "* corretto il numero di versione",
-                "es": "* arreglar el número de versión",
-                "pl": "* popraw numer wersji",
-                "uk": "* виправити номер версії",
-                "zh-cn": "* 修复版本号"
-            },
-            "1.3.2": {
-                "en": "* add filter field for table widget",
-                "de": "* Filterfeld für Tabellen-Widget hinzufügen",
-                "ru": "* добавить поле фильтра для виджета таблицы",
-                "pt": "* adicionar campo de filtro para widget de tabela",
-                "nl": "* filterveld toevoegen voor tabelwidget",
-                "fr": "* ajouter un champ de filtre pour le widget de table",
-                "it": "* aggiungi campo filtro per widget tabella",
-                "es": "* agregar campo de filtro para el widget de tabla",
-                "pl": "* dodaj pole filtrujące dla widżetu tabeli",
-                "uk": "* додати поле фільтра для віджета таблиці",
-                "zh-cn": "* 为表格小部件添加过滤字段"
-            },
-            "1.3.1": {
-                "en": "* fix attributname in servcerpart for groupOrderID",
-                "de": "* Attributname im Servcerpart für GroupOrderID korrigiert",
-                "ru": "* исправлено имя атрибута в servcerpart для groupOrderID",
-                "pt": "* corrige o nome do atributo em servcerpart para groupOrderID",
-                "nl": "* attribuutnaam in servcerpart voor groupOrderID gerepareerd",
-                "fr": "* Correction du nom d'attribut dans servcerpart pour groupOrderID",
-                "it": "* corretto il nomeattributo in servcerpart per groupOrderID",
-                "es": "* corrige el nombre del atributo en servcerpart para groupOrderID",
-                "pl": "* napraw nazwę atrybutu w servcerpart dla groupOrderID",
-                "uk": "* виправити назву атрибута в servcerpart для groupOrderID",
-                "zh-cn": "* 修复 servcerpart 中 groupOrderID 的属性名称"
-            },
-            "1.3.0": {
-                "en": "* change api web-address * change property names",
-                "de": "* API-Webadresse ändern * Eigenschaftsnamen ändern",
-                "ru": "* изменить веб-адрес API * изменить имена свойств",
-                "pt": "* alterar o endereço da web da API * alterar nomes de propriedades",
-                "nl": "* wijzig het API-webadres * wijzig de namen van eigendommen",
-                "fr": "* changer l'adresse Web de l'API * changer les noms des propriétés",
-                "it": "* cambia l'indirizzo web dell'API * cambia i nomi delle proprietà",
-                "es": "* cambiar la dirección web de la API * cambiar los nombres de las propiedades",
-                "pl": "* zmień adres internetowy interfejsu API * zmień nazwy właściwości",
-                "uk": "* змінити веб-адресу API * змінити назви властивостей",
-                "zh-cn": "* 更改 api 网址 * 更改属性名称"
-            },
-            "1.2.4": {
-                "en": "* fix problems reported by adapter-checker",
-                "de": "* Vom Adapter-Checker gemeldete Probleme beheben",
-                "ru": "* исправить проблемы, о которых сообщил адаптер-проверщик",
-                "pt": "* corrigir problemas relatados pelo verificador de adaptador",
-                "nl": "* problemen oplossen die zijn gerapporteerd door adapter-checker",
-                "fr": "* Résoudre les problèmes signalés par le vérificateur d'adaptateur",
-                "it": "* Risolti i problemi segnalati da Adapter-Checker",
-                "es": "* solucionar problemas informados por el verificador de adaptador",
-                "pl": "* napraw problemy zgłaszane przez adapter-checker",
-                "uk": "* Вирішення проблем, про які повідомляє засіб перевірки адаптера",
-                "zh-cn": "* 修复适配器检查器报告的问题"
-            },
-            "1.2.3": {
-                "en": "* add connectiontype and datasource to io-package.json",
-                "de": "* Verbindungstyp und Datenquelle zu io-package.json hinzufügen",
-                "ru": "* добавить тип соединения и источник данных в io-package.json",
-                "pt": "* adicione tipo de conexão e fonte de dados a io-package.json",
-                "nl": "* voeg verbindingstype en gegevensbron toe aan io-package.json",
-                "fr": "* ajouter le type de connexion et la source de données à io-package.json",
-                "it": "* aggiungi tipo di connessione e origine dati a io-package.json",
-                "es": "* agregar tipo de conexión y fuente de datos a io-package.json",
-                "pl": "* dodaj typ połączenia i źródło danych do io-package.json",
-                "uk": "* додайте тип підключення та джерело даних до io-package.json",
-                "zh-cn": "* 将连接类型和数据源添加到io-package.json"
-            },
-            "1.2.2": {
-                "en": "* fix result calculation",
-                "de": "* Ergebnisberechnung korrigieren",
-                "ru": "* исправлен расчет результата",
-                "pt": "* corrigir cálculo do resultado",
-                "nl": "* resultaatberekening repareren",
-                "fr": "* correction du calcul du résultat",
-                "it": "* correggere il calcolo dei risultati",
-                "es": "* arreglar el cálculo del resultado",
-                "pl": "* napraw obliczenia wyników",
-                "uk": "* фіксувати результат розрахунку",
-                "zh-cn": "* 修正结果计算"
-            },
-            "1.2.1": {
-                "en": "* fix object type",
-                "de": "* Objekttyp korrigieren",
-                "ru": "* исправлен тип объекта",
-                "pt": "* corrigir tipo de objeto",
-                "nl": "* objecttype repareren",
-                "fr": "* Correction du type d'objet",
-                "it": "* corretto il tipo di oggetto",
-                "es": "* arreglar el tipo de objeto",
-                "pl": "* napraw typ obiektu",
-                "uk": "* фіксувати тип об'єкта",
-                "zh-cn": "* 修复对象类型"
-            },
-            "1.2.0": {
-                "en": "* fix display of goals if goals are without minutes and playername saved by openligadb, * fixed that sometimes request of states failed",
-                "de": "* Anzeige von Toren korrigiert, wenn Tore ohne Minuten und Spielernamen sind, die von openligadb gespeichert werden, * behoben, dass manchmal die Abfrage von Staaten fehlschlug",
-                "ru": "* исправлено отображение голов, если в голах нет минут и имени игрока, сохраненного openligadb, * исправлена ​​ошибка, из-за которой иногда запрос состояний не удался",
-                "pt": "* corrigida a exibição dos gols se os gols não tivessem minutos e nome do jogador salvo pelo openligadb, * corrigido que às vezes a solicitação de estados falhava",
-                "nl": "* weergave van doelpunten repareren als doelpunten zonder minuten zijn en spelersnaam opgeslagen door openligadb, * opgelost dat soms het verzoek om staten mislukte",
-                "fr": "* correction de l'affichage des buts si les buts sont sans minutes et sans nom de joueur enregistré par openligadb, * correction du fait que parfois la demande d'états échouait",
-                "it": "* corretta la visualizzazione dei goal se i goal sono senza minuti e nome giocatore salvati da openligadb, * corretto che a volte la richiesta degli stati falliva",
-                "es": "* Se corrigió la visualización de goles si los goles no tienen minutos ni el nombre del jugador guardado por openligadb, * Se corrigió que a veces fallaba la solicitud de estados.",
-                "pl": "* naprawiono wyświetlanie bramek, jeśli bramki nie zawierały minut i nazwy gracza zapisanej przez openligadb, * naprawiono to, że czasami żądanie stanów nie działało",
-                "uk": "* виправлено відображення голів, якщо голи без хвилин і імені гравця, збереженого openligadb, * виправлено помилку запиту станів",
-                "zh-cn": "* 修正了如果进球没有由 openligadb 保存的分钟数和球员名的情况下的进球显示， * 修正了有时状态请求失败的问题"
-            },
-            "1.1.0": {
-                "en": "* prepare v1.1.0",
-                "de": "* v1.1.0 vorbereiten",
-                "ru": "* подготовить v1.1.0",
-                "pt": "* prepare v1.1.0",
-                "nl": "* v1.1.0 voorbereiden",
-                "fr": "* préparer la v1.1.0",
-                "it": "* preparare la v1.1.0",
-                "es": "* preparar v1.1.0",
-                "pl": "* przygotuj wersję 1.1.0",
-                "uk": "* підготувати v1.1.0",
-                "zh-cn": "* 准备v1.1.0"
-            }
-        },
-        "title": "OpenLigaDB",
-        "titleLang": {
-            "en": "OpenLigaDB",
-            "de": "OpenLigaDB",
-            "ru": "OpenLigaDB",
-            "pt": "OpenLigaDB",
-            "nl": "OpenLigaDB",
-            "fr": "OpenLigaDB",
-            "it": "OpenLigaDB",
-            "es": "OpenLigaDB",
-            "pl": "OpenLigaDB",
-            "zh-cn": "OpenLigaDB",
-            "uk": "OpenLigaDB"
-        },
-        "desc": {
-            "en": "OpenLigaDB",
-            "de": "OpenLigaDB",
-            "ru": "OpenLigaDB",
-            "pt": "OpenLigaDB",
-            "nl": "OpenLigaDB",
-            "fr": "OpenLigaDB",
-            "it": "OpenLigaDB",
-            "es": "OpenLigaDB",
-            "pl": "OpenLigaDB",
-            "zh-cn": "OpenLigaDB",
-            "uk": "OpenLigaDB"
-        },
-        "authors": [
-            "oweitman <oweitman@gmx.de>"
-        ],
-        "keywords": [
-            "ioBroker",
-            "Smart Home",
-            "home automation",
-            "openligadb",
-            "openliga",
-            "football",
-            "fussball",
-            "bundesliga"
-        ],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "main": "openligadb.js",
-        "icon": "openligadb_n.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_b.png",
-        "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
-        "loglevel": "debug",
-        "tier": 3,
-        "mode": "daemon",
-        "type": "misc-data",
-        "compact": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
+  "common": {
+    "name": "openligadb",
+    "version": "1.4.1",
+    "news": {
+      "1.4.1": {
+        "en": "update package and io-broker files\nfix problems with vis2\nremove vis as a",
+        "de": "update paket und io-broker dateien\nprobleme mit vis2 beheben\nvis als",
+        "ru": "обновление пакетов и io-брокерных файлов\nисправить проблемы с vis2\nудалить vis как",
+        "pt": "pacote de atualização e arquivos io-broker\ncorrigir problemas com vis2\nremover vis como um",
+        "nl": "update pakket en io-makelaar bestanden\nproblemen oplossen met vis2\nverwijder vis als a",
+        "fr": "mettre à jour les fichiers paquet et io-broker\nrésoudre les problèmes avec vis2\nenlever comme un",
+        "it": "pacchetto di aggiornamento e file io-broker\nrisolvere problemi con vis2\nrimuovere vis come",
+        "es": "actualizar paquetes y archivos io-broker\nsolucionar problemas con vis2\nquitar vis como un",
+        "pl": "aktualizację pakietów i plików brokera jo-\nrozwiązać problemy z vis2\nusunąć vis jako",
+        "uk": "оновлення пакету і io-broker файлів\nвиправлення проблем з вісом2\nвидалення в'язнів як",
+        "zh-cn": "更新软件包和 io 经纪人文件\n解决相对于2的问题\n相对于"
+      },
+      "1.4.0": {
+        "en": "* Update and vis2",
+        "de": "* Update und vis2",
+        "ru": "* Обновление и вис2",
+        "pt": "* Atualização e vis2",
+        "nl": "* Update en vis2",
+        "fr": "* Mise à jour et vis2",
+        "it": "* Aggiornamento e vis2",
+        "es": "* Actualización y vis2",
+        "pl": "* Aktualizacja i vis2",
+        "uk": "* Оновлення та vis2",
+        "zh-cn": "* 更新和vis2"
+      },
+      "1.3.4": {
+        "en": "* fix some widgets errors * add pivottable image",
+        "de": "* einige Widget-Fehler beheben * Pivottable-Bild hinzufügen",
+        "ru": "* исправлены некоторые ошибки виджетов * добавлено изображение сводной таблицы",
+        "pt": "* corrigir alguns erros de widgets * adicionar imagem pivotável",
+        "nl": "* enkele widgetfouten repareren * draaibare afbeelding toevoegen",
+        "fr": "* correction de certaines erreurs de widgets * ajout d'une image pivotante",
+        "it": "* correggi alcuni errori dei widget * aggiungi un'immagine pivotabile",
+        "es": "* corregir algunos errores de widgets * agregar una imagen pivotable",
+        "pl": "* napraw niektóre błędy widżetów * dodaj obracany obraz",
+        "uk": "* виправлення деяких помилок віджетів * додавання поворотного зображення",
+        "zh-cn": "* 修复一些小部件错误 * 添加数据透视表图像"
+      },
+      "1.3.3": {
+        "en": "* fix version number",
+        "de": "* Versionsnummer korrigieren",
+        "ru": "* исправить номер версии",
+        "pt": "* corrigir o número da versão",
+        "nl": "* versienummer repareren",
+        "fr": "* Correction du numéro de version",
+        "it": "* corretto il numero di versione",
+        "es": "* arreglar el número de versión",
+        "pl": "* popraw numer wersji",
+        "uk": "* виправити номер версії",
+        "zh-cn": "* 修复版本号"
+      },
+      "1.3.2": {
+        "en": "* add filter field for table widget",
+        "de": "* Filterfeld für Tabellen-Widget hinzufügen",
+        "ru": "* добавить поле фильтра для виджета таблицы",
+        "pt": "* adicionar campo de filtro para widget de tabela",
+        "nl": "* filterveld toevoegen voor tabelwidget",
+        "fr": "* ajouter un champ de filtre pour le widget de table",
+        "it": "* aggiungi campo filtro per widget tabella",
+        "es": "* agregar campo de filtro para el widget de tabla",
+        "pl": "* dodaj pole filtrujące dla widżetu tabeli",
+        "uk": "* додати поле фільтра для віджета таблиці",
+        "zh-cn": "* 为表格小部件添加过滤字段"
+      },
+      "1.3.1": {
+        "en": "* fix attributname in servcerpart for groupOrderID",
+        "de": "* Attributname im Servcerpart für GroupOrderID korrigiert",
+        "ru": "* исправлено имя атрибута в servcerpart для groupOrderID",
+        "pt": "* corrige o nome do atributo em servcerpart para groupOrderID",
+        "nl": "* attribuutnaam in servcerpart voor groupOrderID gerepareerd",
+        "fr": "* Correction du nom d'attribut dans servcerpart pour groupOrderID",
+        "it": "* corretto il nomeattributo in servcerpart per groupOrderID",
+        "es": "* corrige el nombre del atributo en servcerpart para groupOrderID",
+        "pl": "* napraw nazwę atrybutu w servcerpart dla groupOrderID",
+        "uk": "* виправити назву атрибута в servcerpart для groupOrderID",
+        "zh-cn": "* 修复 servcerpart 中 groupOrderID 的属性名称"
+      },
+      "1.3.0": {
+        "en": "* change api web-address * change property names",
+        "de": "* API-Webadresse ändern * Eigenschaftsnamen ändern",
+        "ru": "* изменить веб-адрес API * изменить имена свойств",
+        "pt": "* alterar o endereço da web da API * alterar nomes de propriedades",
+        "nl": "* wijzig het API-webadres * wijzig de namen van eigendommen",
+        "fr": "* changer l'adresse Web de l'API * changer les noms des propriétés",
+        "it": "* cambia l'indirizzo web dell'API * cambia i nomi delle proprietà",
+        "es": "* cambiar la dirección web de la API * cambiar los nombres de las propiedades",
+        "pl": "* zmień adres internetowy interfejsu API * zmień nazwy właściwości",
+        "uk": "* змінити веб-адресу API * змінити назви властивостей",
+        "zh-cn": "* 更改 api 网址 * 更改属性名称"
+      }
     },
-    "native": {
-        "leagues": "[]",
-        "refresh": 10
+    "title": "OpenLigaDB",
+    "titleLang": {
+      "en": "OpenLigaDB",
+      "de": "OpenLigaDB",
+      "ru": "OpenLigaDB",
+      "pt": "OpenLigaDB",
+      "nl": "OpenLigaDB",
+      "fr": "OpenLigaDB",
+      "it": "OpenLigaDB",
+      "es": "OpenLigaDB",
+      "pl": "OpenLigaDB",
+      "zh-cn": "OpenLigaDB",
+      "uk": "OpenLigaDB"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "OpenLigaDB",
+      "de": "OpenLigaDB",
+      "ru": "OpenLigaDB",
+      "pt": "OpenLigaDB",
+      "nl": "OpenLigaDB",
+      "fr": "OpenLigaDB",
+      "it": "OpenLigaDB",
+      "es": "OpenLigaDB",
+      "pl": "OpenLigaDB",
+      "zh-cn": "OpenLigaDB",
+      "uk": "OpenLigaDB"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "ioBroker",
+      "Smart Home",
+      "home automation",
+      "openligadb",
+      "openliga",
+      "football",
+      "fussball",
+      "bundesliga"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "main": "openligadb.js",
+    "icon": "openligadb_n.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_b.png",
+    "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
+    "loglevel": "debug",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "misc-data",
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
     ]
+  },
+  "native": {
+    "leagues": "[]",
+    "refresh": 10
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
