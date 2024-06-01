@@ -9,7 +9,80 @@
 <link rel="stylesheet" href="widgets/openligadb/css/style.css" />
 <!-- here you can include so many js-files as you want -->
 <script type="text/javascript" src="widgets/openligadb/js/openligadb.js"></script>
- 
+<script id="tplOLiDBTable4"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/table.png"></img>'
+        data-vis-attrs="oid-allmatches/id;oid-currgameday/id;mode[1total]/nselect,1total,2home,3away,4round1,5round2;mode_binding;maxicon[25],number;shortname/checkbox;showtrend/checkbox;highlight;filter;"
+        data-vis-attrs0="group.icons;iconup/image;icondn/image;iconst/image;"
+        data-vis-attrs1="group.extended;showgameday;lastgamecount;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="OLiDB Table v4">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.table4.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script> 
+<script id="tplOLiDBPivotTable2"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/pivottable.png"></img>'
+        data-vis-attrs="oid-allmatches/id;oid-currgameday/id;maxicon[25],number;sort[table]/nselect,table,name;shortname/checkbox;highlightontop/checkbox;highlight;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="OLiDB PivotTable v2">
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.pivottable2.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+<script id="tplOLiDBGoalGetters2"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/goalgetters.png"></img>'
+        data-vis-attrs="oid-goalgetters/id;maxcount/number,1;sort[goal]/nselect,name,goal;showonlyhighlight/checkbox;highlight;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="OLiDB Goalgetters v2">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.goalgetters2.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+<script id="tplOLiDBGameDay2"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/gameday.png"></img>'
+        data-vis-attrs="oid-allmatches/id;oid-currgameday/id;maxicon[25],number;shortname/checkbox;showweekday/checkbox;highlight;"
+        data-vis-attrs0="group.extended;showgameday;showgamedaycount;showgoals/checkbox;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="OLiDB GameDay v2">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.gameday2.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+<script id="tplOLiDBFavGames3"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/favgames.png"></img>'
+        data-vis-attrs="lcount[1]/number;maxicon[25],number;showresult/checkbox;showabbreviation/checkbox;showweekday/checkbox;"
+        data-vis-attrs0="group.leagues/byindex;oid-allmatches(1-lcount)/id;oid-currgameday(1-lcount)/id;showgameday(1-lcount);showgamedaycount(1-lcount);shortname(1-lcount)/checkbox;abbreviation(1-lcount);filter(1-lcount);"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="OLiDB Games of Favorite Clubs v3">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.favgames3.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
 <script id="tplOLiDBPivotTable"
         type="text/ejs"
         class="vis-tpl"
@@ -19,23 +92,9 @@
         data-vis-type="val"
         data-vis-beta="false"
         data-vis-update-style="true"
-        data-vis-name="OLiDB PivotTable">
+        data-vis-name="deprecated OLiDB PivotTable">
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
         vis.binds.openligadb.pivottable.createWidget(this.data.wid, this.view, this.data, this.style);
-    %></div>
-</script>
-<script id="tplOLiDBGoalGetters"
-        type="text/ejs"
-        class="vis-tpl"
-		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/goalgetters.png"></img>'
-        data-vis-attrs="goalgetters_oid/id;maxcount/number,1;sort[goal]/nselect,name,goal;showonlyhighlight/checkbox;highlight;"
-        data-vis-set="openligadb"
-        data-vis-type="val"
-        data-vis-beta="false"
-        data-vis-update-style="true"
-        data-vis-name="OLiDB Goalgetters">        
-    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
-        vis.binds.openligadb.goalgetters.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
 <script id="tplOLiDBTable3"
@@ -49,9 +108,23 @@
         data-vis-type="val"
         data-vis-beta="false"
         data-vis-update-style="true"
-        data-vis-name="OLiDB Table v3">        
+        data-vis-name=" deprecated OLiDB Table v3">        
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
         vis.binds.openligadb.table3.createWidget(this.data.wid, this.view, this.data, this.style);
+    %></div>
+</script>
+<script id="tplOLiDBGoalGetters"
+        type="text/ejs"
+        class="vis-tpl"
+		data-vis-prev='<img style="display: block;margin-left: auto;margin-right: auto;width: 50%;" src="widgets/openligadb/img/goalgetters.png"></img>'
+        data-vis-attrs="goalgetters_oid/id;maxcount/number,1;sort[goal]/nselect,name,goal;showonlyhighlight/checkbox;highlight;"
+        data-vis-set="openligadb"
+        data-vis-type="val"
+        data-vis-beta="false"
+        data-vis-update-style="true"
+        data-vis-name="deprecated OLiDB Goalgetters">        
+    <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
+        vis.binds.openligadb.goalgetters.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
 <script id="tplOLiDBGameDay"
@@ -64,7 +137,7 @@
         data-vis-type="val"
         data-vis-beta="false"
         data-vis-update-style="true"
-        data-vis-name="OLiDB GameDay">        
+        data-vis-name="deprecated OLiDB GameDay">        
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
         vis.binds.openligadb.gameday.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
@@ -79,7 +152,7 @@
         data-vis-type="val"
         data-vis-beta="false"
         data-vis-update-style="true"
-        data-vis-name="OLiDB Games of Favorite Clubs v2">        
+        data-vis-name="deprecated OLiDB Games of Favorite Clubs v2">        
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
         vis.binds.openligadb.favgames2.createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>

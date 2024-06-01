@@ -1,5 +1,8 @@
 {
-    "openligadb1 adapter settings": "Налаштування адаптера для openligadb1",
-    "option1": "варіант1",
-    "option2": "варіант2"
+    "Default Refresh (min)": "Оновлення за умовчанням (хв.)",
+    "League": "Ліга",
+    "Season": "Сезон",
+    "ID of the League taken from openligadb.de": "ID ліги взято з openligadb.de",
+    "Season of the League taken from openligadb.de": "Сезон Ліги взято з openligadb.de",
+    "": ""
 }

@@ -27,6 +27,7 @@ let openligadbServer;
  */
 function startAdapter(options) {
     // Create the adapter and define its methods
+    // @ts-ignore
     return adapter = utils.adapter(Object.assign({}, options, {
         name: "openligadb",
 
@@ -63,6 +64,7 @@ function main() {
     }
 }
 
+// @ts-ignore
 if (module.parent) {
     // Export startAdapter in compact mode
     module.exports = startAdapter;

@@ -1,5 +1,8 @@
 {
-    "openligadb1 adapter settings": "Impostazioni dell'adattatore per openligadb1",
-    "option1": "opzione 1",
-    "option2": "opzione 2"
+    "Default Refresh (min)": "Aggiornamento predefinito (min)",
+    "League": "Lega",
+    "Season": "Stagione",
+    "ID of the League taken from openligadb.de": "ID della Lega tratto da openligadb.de",
+    "Season of the League taken from openligadb.de": "Stagione della lega tratta da openligadb.de",
+    "": ""
 }

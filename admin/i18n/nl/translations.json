@@ -1,5 +1,8 @@
 {
-    "openligadb1 adapter settings": "Adapterinstellingen voor openligadb1",
-    "option1": "Optie 1",
-    "option2": "Optie 2"
+    "Default Refresh (min)": "Standaard vernieuwen (min)",
+    "League": "Competitie",
+    "Season": "Seizoen",
+    "ID of the League taken from openligadb.de": "ID van de competitie overgenomen van openligadb.de",
+    "Season of the League taken from openligadb.de": "Seizoen van de competitie overgenomen van openligadb.de",
+    "": ""
 }

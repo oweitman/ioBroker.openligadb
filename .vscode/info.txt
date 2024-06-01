@@ -1,0 +1,37 @@
+node .\node_modules\iobroker.js-controller\iobroker.js
+
+
+Terminal1
+npx dev-server watch --noStart
+
+Für Adapter debug, allerdings ohne breakpoint support
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "default Launch ioBroker Adapter ",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.openligadb/openligadb.js",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+        },
+
+Für widget debug
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch my cool app",
+            "url": "http://127.0.0.1:8082/vis/index.html#main",
+            "trace": true,
+            "skipFiles": [
+                "socket.io.js",
+              ]            
+        },
+
+Bei Änderung in Terminal 2
+node .\node_modules\iobroker.js-controller\iobroker.js upload openligadb
+node .\node_modules\iobroker.js-controller\iobroker.js visdebug openligadb
+

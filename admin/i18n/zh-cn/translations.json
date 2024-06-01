@@ -1,5 +1,8 @@
 {
-    "openligadb1 adapter settings": "openligadb1的适配器设置",
-    "option1": "选项1",
-    "option2": "选项2"
+    "Default Refresh (min)": "默认刷新（分钟）",
+    "League": "联盟",
+    "Season": "季节",
+    "ID of the League taken from openligadb.de": "联赛 ID 取自 openligadb.de",
+    "Season of the League taken from openligadb.de": "联赛赛季取自 openligadb.de",
+    "": ""
 }
