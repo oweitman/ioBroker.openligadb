@@ -76,6 +76,12 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WOxRK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+* fix double qoutes
+
+
 ### 1.4.1 (2024-06-01)
 
 * update package and io-broker files
