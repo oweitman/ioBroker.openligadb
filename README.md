@@ -76,8 +76,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WOxRK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.4.2 (2024-06-01)
 
 * fix double qoutes
 * remove file from eslint check

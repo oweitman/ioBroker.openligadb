@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.1",
+    "version": "1.4.2",
     "news": {
+      "1.4.2": {
+        "en": "fix double qoutes\nremove file from eslint check",
+        "de": "doppelte qouts fixieren\ndatei von eslint überprüfen entfernen",
+        "ru": "фиксация двойной каут\nудалить файл из eslint",
+        "pt": "correção dupla qoutes\nremover arquivo da verificação eslint",
+        "nl": "fix dubbele qoutes\nbestand verwijderen uit eslint-controle",
+        "fr": "fixer les doubles qoutes\nsupprimer le fichier de vérification d'eslint",
+        "it": "fix doppi qoutes\nrimuovere il file dal controllo eslint",
+        "es": "arreglar doble qoutes\nremove file from eslint check",
+        "pl": "naprawić podwójne qouty\nusunąć plik z sprawdzania eslintu",
+        "uk": "виправити подвійний qoutes\nвидалити файл з перевірки eslint",
+        "zh-cn": "修补双qouts\n从 eslint 检查中删除文件"
+      },
       "1.4.1": {
         "en": "update package and io-broker files\nfix problems with vis2\nremove vis as a",
         "de": "update paket und io-broker dateien\nprobleme mit vis2 beheben\nvis als",
@@ -80,19 +93,6 @@
         "pl": "* napraw nazwę atrybutu w servcerpart dla groupOrderID",
         "uk": "* виправити назву атрибута в servcerpart для groupOrderID",
         "zh-cn": "* 修复 servcerpart 中 groupOrderID 的属性名称"
-      },
-      "1.3.0": {
-        "en": "* change api web-address * change property names",
-        "de": "* API-Webadresse ändern * Eigenschaftsnamen ändern",
-        "ru": "* изменить веб-адрес API * изменить имена свойств",
-        "pt": "* alterar o endereço da web da API * alterar nomes de propriedades",
-        "nl": "* wijzig het API-webadres * wijzig de namen van eigendommen",
-        "fr": "* changer l'adresse Web de l'API * changer les noms des propriétés",
-        "it": "* cambia l'indirizzo web dell'API * cambia i nomi delle proprietà",
-        "es": "* cambiar la dirección web de la API * cambiar los nombres de las propiedades",
-        "pl": "* zmień adres internetowy interfejsu API * zmień nazwy właściwości",
-        "uk": "* змінити веб-адресу API * змінити назви властивостей",
-        "zh-cn": "* 更改 api 网址 * 更改属性名称"
       }
     },
     "title": "OpenLigaDB",
