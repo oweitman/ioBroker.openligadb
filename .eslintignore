@@ -1,3 +1,4 @@
 .prettierrc.js
 **/.eslintrc.js
 admin/words.js
+widgets/openligadb/js/clipboard-polyfill.promise.js

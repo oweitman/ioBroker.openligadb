@@ -80,7 +80,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 ### **WORK IN PROGRESS**
 
 * fix double qoutes
-
+* remove file from eslint check
 
 ### 1.4.1 (2024-06-01)
 
