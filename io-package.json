@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.2",
+    "version": "1.4.3",
     "news": {
+      "1.4.3": {
+        "en": "remove files from eslint check",
+        "de": "dateien vom eslint-check entfernen",
+        "ru": "удалить файлы из eslint",
+        "pt": "remover arquivos da verificação eslint",
+        "nl": "bestanden verwijderen van eslint check",
+        "fr": "supprimer les fichiers de vérification eslint",
+        "it": "rimuovere i file dal controllo eslint",
+        "es": "quitar archivos de la comprobación de eslint",
+        "pl": "usunąć pliki z sprawdzania eslintu",
+        "uk": "видалити файли з перевірки eslint",
+        "zh-cn": "从 eslint 检查中删除文件"
+      },
       "1.4.2": {
         "en": "fix double qoutes\nremove file from eslint check",
         "de": "doppelte qouts fixieren\ndatei von eslint überprüfen entfernen",
@@ -80,19 +93,6 @@
         "pl": "* dodaj pole filtrujące dla widżetu tabeli",
         "uk": "* додати поле фільтра для віджета таблиці",
         "zh-cn": "* 为表格小部件添加过滤字段"
-      },
-      "1.3.1": {
-        "en": "* fix attributname in servcerpart for groupOrderID",
-        "de": "* Attributname im Servcerpart für GroupOrderID korrigiert",
-        "ru": "* исправлено имя атрибута в servcerpart для groupOrderID",
-        "pt": "* corrige o nome do atributo em servcerpart para groupOrderID",
-        "nl": "* attribuutnaam in servcerpart voor groupOrderID gerepareerd",
-        "fr": "* Correction du nom d'attribut dans servcerpart pour groupOrderID",
-        "it": "* corretto il nomeattributo in servcerpart per groupOrderID",
-        "es": "* corrige el nombre del atributo en servcerpart para groupOrderID",
-        "pl": "* napraw nazwę atrybutu w servcerpart dla groupOrderID",
-        "uk": "* виправити назву атрибута в servcerpart для groupOrderID",
-        "zh-cn": "* 修复 servcerpart 中 groupOrderID 的属性名称"
       }
     },
     "title": "OpenLigaDB",
