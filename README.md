@@ -76,6 +76,10 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WOxRK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* fix yml structure
+
 ### 1.4.4 (2024-06-01)
 
 * Enable NPM Publish
