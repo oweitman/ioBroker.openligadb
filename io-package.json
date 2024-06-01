@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "news": {
+      "1.4.5": {
+        "en": "fix yml structure",
+        "de": "yml-struktur",
+        "ru": "фиксация структуры yml",
+        "pt": "fixar estrutura yml",
+        "nl": "fix yml structuur",
+        "fr": "fixer la structure yml",
+        "it": "fissare la struttura yml",
+        "es": "estructura yml",
+        "pl": "naprawić strukturę yml",
+        "uk": "фіксована структура",
+        "zh-cn": "固定yml 结构"
+      },
       "1.4.4": {
         "en": "Enable NPM Publish\nEnable dependabot\nfix checks from adapter checker",
         "de": "NPM aktivieren Veröffentlichen\nErmöglichen zuverlässigen\nfix checks von adapter checker",
@@ -80,19 +93,6 @@
         "pl": "* napraw niektóre błędy widżetów * dodaj obracany obraz",
         "uk": "* виправлення деяких помилок віджетів * додавання поворотного зображення",
         "zh-cn": "* 修复一些小部件错误 * 添加数据透视表图像"
-      },
-      "1.3.3": {
-        "en": "* fix version number",
-        "de": "* Versionsnummer korrigieren",
-        "ru": "* исправить номер версии",
-        "pt": "* corrigir o número da versão",
-        "nl": "* versienummer repareren",
-        "fr": "* Correction du numéro de version",
-        "it": "* corretto il numero di versione",
-        "es": "* arreglar el número de versión",
-        "pl": "* popraw numer wersji",
-        "uk": "* виправити номер версії",
-        "zh-cn": "* 修复版本号"
       }
     },
     "titleLang": {
