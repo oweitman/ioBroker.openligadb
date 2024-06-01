@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.5",
+    "version": "1.4.6",
     "news": {
+      "1.4.6": {
+        "en": "fix yml structure",
+        "de": "yml-struktur",
+        "ru": "фиксация структуры yml",
+        "pt": "fixar estrutura yml",
+        "nl": "fix yml structuur",
+        "fr": "fixer la structure yml",
+        "it": "fissare la struttura yml",
+        "es": "estructura yml",
+        "pl": "naprawić strukturę yml",
+        "uk": "фіксована структура",
+        "zh-cn": "固定yml 结构"
+      },
       "1.4.5": {
         "en": "fix yml structure",
         "de": "yml-struktur",
@@ -80,19 +93,6 @@
         "pl": "* Aktualizacja i vis2",
         "uk": "* Оновлення та vis2",
         "zh-cn": "* 更新和vis2"
-      },
-      "1.3.4": {
-        "en": "* fix some widgets errors * add pivottable image",
-        "de": "* einige Widget-Fehler beheben * Pivottable-Bild hinzufügen",
-        "ru": "* исправлены некоторые ошибки виджетов * добавлено изображение сводной таблицы",
-        "pt": "* corrigir alguns erros de widgets * adicionar imagem pivotável",
-        "nl": "* enkele widgetfouten repareren * draaibare afbeelding toevoegen",
-        "fr": "* correction de certaines erreurs de widgets * ajout d'une image pivotante",
-        "it": "* correggi alcuni errori dei widget * aggiungi un'immagine pivotabile",
-        "es": "* corregir algunos errores de widgets * agregar una imagen pivotable",
-        "pl": "* napraw niektóre błędy widżetów * dodaj obracany obraz",
-        "uk": "* виправлення деяких помилок віджетів * додавання поворотного зображення",
-        "zh-cn": "* 修复一些小部件错误 * 添加数据透视表图像"
       }
     },
     "titleLang": {
