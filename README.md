@@ -74,7 +74,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 
 <!--
   Placeholder for the next version (at the beginning of the line):
-### **WORK IN PROGRESS**
+   ### **WOxRK IN PROGRESS**
 -->
 
 ### **WORK IN PROGRESS**
