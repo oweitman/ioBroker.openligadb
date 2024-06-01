@@ -55,7 +55,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
 
 * validation in widget if user didnt select the right datapoint
 * translation
-* documentation for new widgets pivottable and goalgetters
+* ~~documentation for new widgets pivottable and goalgetters~~
 * ~~extend table modes with 1st round,2nd round~~
 * ~~new widget pivot table of played games~~
 * ~~new widget goal getter ranking with sort function~~
@@ -76,6 +76,13 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WOxRK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+* Enable NPM Publish
+* Enable dependabot
+* fix checks from adapter checker
+
 ### 1.4.3 (2024-06-01)
 
 * remove files from eslint check

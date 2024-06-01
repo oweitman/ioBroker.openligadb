@@ -95,7 +95,6 @@
         "zh-cn": "* 为表格小部件添加过滤字段"
       }
     },
-    "title": "OpenLigaDB",
     "titleLang": {
       "en": "OpenLigaDB",
       "de": "OpenLigaDB",
@@ -126,8 +125,6 @@
       "oweitman <oweitman@gmx.de>"
     ],
     "keywords": [
-      "ioBroker",
-      "Smart Home",
       "home automation",
       "openligadb",
       "openliga",
@@ -143,7 +140,7 @@
     "main": "openligadb.js",
     "icon": "openligadb_n.png",
     "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_b.png",
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_n.png",
     "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/master/README.md",
     "loglevel": "debug",
     "tier": 3,
