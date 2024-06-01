@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "news": {
+      "1.4.4": {
+        "en": "Enable NPM Publish\nEnable dependabot\nfix checks from adapter checker",
+        "de": "NPM aktivieren Veröffentlichen\nErmöglichen zuverlässigen\nfix checks von adapter checker",
+        "ru": "Включить NPM Опубликовать\nВключить\nфиксации чеков адаптера",
+        "pt": "Habilitar NPM Publicar\nHabilitar o administrador\ncorrigir verificações do verificador do adaptador",
+        "nl": "NPM inschakelen Publiceren\nDependabot inschakelen\nfix controles van adaptercontrole",
+        "fr": "Activer NPM Publier\nActiver le moteur de dépendance\ncorriger les vérifications de l'adaptateur checker",
+        "it": "Abilitare NPM Pubblicazione\nAbilitare dipendeabot\ncorreggere i controlli dall'adattatore checker",
+        "es": "Activar el mecanismo nacional de prevención Publish\nPermitir dependeabot\ncheques de fijación desde el control de adaptador",
+        "pl": "Włącz NPM Publikuj\nWłącz zależny\npoprawianie kontroli z kontrolera adaptera",
+        "uk": "Увімкнути NPM Публікація\nУвімкнути залежності\nфіксувати перевірки з адаптера",
+        "zh-cn": "启用国家预防机制 发布\n启用依托保护\n适配器检查器的固定检查"
+      },
       "1.4.3": {
         "en": "remove files from eslint check",
         "de": "dateien vom eslint-check entfernen",
@@ -80,19 +93,6 @@
         "pl": "* popraw numer wersji",
         "uk": "* виправити номер версії",
         "zh-cn": "* 修复版本号"
-      },
-      "1.3.2": {
-        "en": "* add filter field for table widget",
-        "de": "* Filterfeld für Tabellen-Widget hinzufügen",
-        "ru": "* добавить поле фильтра для виджета таблицы",
-        "pt": "* adicionar campo de filtro para widget de tabela",
-        "nl": "* filterveld toevoegen voor tabelwidget",
-        "fr": "* ajouter un champ de filtre pour le widget de table",
-        "it": "* aggiungi campo filtro per widget tabella",
-        "es": "* agregar campo de filtro para el widget de tabla",
-        "pl": "* dodaj pole filtrujące dla widżetu tabeli",
-        "uk": "* додати поле фільтра для віджета таблиці",
-        "zh-cn": "* 为表格小部件添加过滤字段"
       }
     },
     "titleLang": {
