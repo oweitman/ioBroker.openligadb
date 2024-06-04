@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.6",
+    "version": "1.4.7",
     "news": {
+      "1.4.7": {
+        "en": "update dependencies",
+        "de": "aktualisierung der abhängigkeiten",
+        "ru": "обновление зависимостей",
+        "pt": "dependências",
+        "nl": "afhankelijkheden bijwerken",
+        "fr": "mettre à jour les dépendances",
+        "it": "aggiornamento dipendenze",
+        "es": "dependencias de actualización",
+        "pl": "aktualizacji zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "更新依赖关系"
+      },
       "1.4.6": {
         "en": "fix yml structure",
         "de": "yml-struktur",
@@ -80,19 +93,6 @@
         "pl": "aktualizację pakietów i plików brokera jo-\nrozwiązać problemy z vis2\nusunąć vis jako",
         "uk": "оновлення пакету і io-broker файлів\nвиправлення проблем з вісом2\nвидалення в'язнів як",
         "zh-cn": "更新软件包和 io 经纪人文件\n解决相对于2的问题\n相对于"
-      },
-      "1.4.0": {
-        "en": "* Update and vis2",
-        "de": "* Update und vis2",
-        "ru": "* Обновление и вис2",
-        "pt": "* Atualização e vis2",
-        "nl": "* Update en vis2",
-        "fr": "* Mise à jour et vis2",
-        "it": "* Aggiornamento e vis2",
-        "es": "* Actualización y vis2",
-        "pl": "* Aktualizacja i vis2",
-        "uk": "* Оновлення та vis2",
-        "zh-cn": "* 更新和vis2"
       }
     },
     "titleLang": {
