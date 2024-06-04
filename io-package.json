@@ -137,7 +137,6 @@
       "license": "MIT"
     },
     "platform": "Javascript/Node.js",
-    "main": "openligadb.js",
     "icon": "openligadb_n.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/master/admin/openligadb_n.png",
