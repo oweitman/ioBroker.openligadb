@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.7",
+    "version": "1.4.8",
     "news": {
+      "1.4.8": {
+        "en": "release",
+        "de": "release",
+        "ru": "релиз",
+        "pt": "lançamento",
+        "nl": "release",
+        "fr": "libération",
+        "it": "rilascio",
+        "es": "liberación",
+        "pl": "zwolnienie",
+        "uk": "видання",
+        "zh-cn": "释放"
+      },
       "1.4.7": {
         "en": "update dependencies",
         "de": "aktualisierung der abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "naprawić podwójne qouty\nusunąć plik z sprawdzania eslintu",
         "uk": "виправити подвійний qoutes\nвидалити файл з перевірки eslint",
         "zh-cn": "修补双qouts\n从 eslint 检查中删除文件"
-      },
-      "1.4.1": {
-        "en": "update package and io-broker files\nfix problems with vis2\nremove vis as a",
-        "de": "update paket und io-broker dateien\nprobleme mit vis2 beheben\nvis als",
-        "ru": "обновление пакетов и io-брокерных файлов\nисправить проблемы с vis2\nудалить vis как",
-        "pt": "pacote de atualização e arquivos io-broker\ncorrigir problemas com vis2\nremover vis como um",
-        "nl": "update pakket en io-makelaar bestanden\nproblemen oplossen met vis2\nverwijder vis als a",
-        "fr": "mettre à jour les fichiers paquet et io-broker\nrésoudre les problèmes avec vis2\nenlever comme un",
-        "it": "pacchetto di aggiornamento e file io-broker\nrisolvere problemi con vis2\nrimuovere vis come",
-        "es": "actualizar paquetes y archivos io-broker\nsolucionar problemas con vis2\nquitar vis como un",
-        "pl": "aktualizację pakietów i plików brokera jo-\nrozwiązać problemy z vis2\nusunąć vis jako",
-        "uk": "оновлення пакету і io-broker файлів\nвиправлення проблем з вісом2\nвидалення в'язнів як",
-        "zh-cn": "更新软件包和 io 经纪人文件\n解决相对于2的问题\n相对于"
       }
     },
     "titleLang": {
