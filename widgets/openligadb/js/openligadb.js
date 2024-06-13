@@ -350,8 +350,9 @@ vis.binds["openligadb"] = {
                         text += '           <td class=""></td>';
                         return;
                     }
-                    const result = pteam1.gamedays[team2.teamName].result;
-                    text += '           <td class="oldb-center oldb-result">'+result+"</td>";
+                    const result = pteam1.gamedays[team2.teamName] && pteam1.gamedays[team2.teamName].result || "-";
+
+                    text += '           <td class="oldb-center oldb-result">' + result + "</td>";
                 });
                 text += '           <td class="oldb-center oldb-goaldiff">'+team1.goalDiff+"</td>";
                 text += '           <td class="oldb-center oldb-points">'+team1.points+"</td>";
