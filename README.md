@@ -76,8 +76,7 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.4.9 (2024-06-13)
 
 -   fix if no game exist for team1/team2
 -   somme prettier changes

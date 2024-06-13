@@ -1,6 +1,6 @@
 {
   "name": "iobroker.openligadb",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "ioBroker Adapter to get soccer sport match results from OpenLigaDB",
   "author": {
     "name": "oweitman",

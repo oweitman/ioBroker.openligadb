@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.8",
+    "version": "1.4.9",
     "news": {
+      "1.4.9": {
+        "en": "fix if no game exist for team1/team2\nsomme prettier changes\nlaunch config for vscode",
+        "de": "fix, wenn kein spiel existiert für team1/team2\nsomme prettier änderungen\nstart config für vscode",
+        "ru": "исправить, если нет игры для team1/team2\nsomme красивее изменения\nнастройка запуска для vscode",
+        "pt": "corrigir se nenhum jogo existe para team1/team2\nmudanças mais bonitas\nlançamento de configuração para vscode",
+        "nl": "fix als er geen spel bestaat voor team1/team2\nsomme mooiere wijzigingen\nstartconfiguratie voor vscode",
+        "fr": "corriger si aucun jeu n'existe pour team1/team2\nsomme plus jolies modifications\nconfiguration de lancement pour vscode",
+        "it": "correzione se non esiste un gioco per team1/team2\ncambio somme più bello\nlanciare config per vscode",
+        "es": "arreglar si no hay juego para el equipo1/team2\ncambios más bonitos\nconfiguración de lanzamiento para vscode",
+        "pl": "naprawić, jeśli gra nie istnieje dla team1 / teamm2\nsomme pretier changes\nuruchom config dla vscode",
+        "uk": "виправити, якщо немає гри для команди1/team2\nsomme prettier зміни\njavascript licenses api веб-сайт",
+        "zh-cn": "如果小组1/ 团队2 不存在游戏, 则修复\n更美的改变\nvscode 的发射配置"
+      },
       "1.4.8": {
         "en": "release",
         "de": "release",
@@ -80,19 +93,6 @@
         "pl": "usunąć pliki z sprawdzania eslintu",
         "uk": "видалити файли з перевірки eslint",
         "zh-cn": "从 eslint 检查中删除文件"
-      },
-      "1.4.2": {
-        "en": "fix double qoutes\nremove file from eslint check",
-        "de": "doppelte qouts fixieren\ndatei von eslint überprüfen entfernen",
-        "ru": "фиксация двойной каут\nудалить файл из eslint",
-        "pt": "correção dupla qoutes\nremover arquivo da verificação eslint",
-        "nl": "fix dubbele qoutes\nbestand verwijderen uit eslint-controle",
-        "fr": "fixer les doubles qoutes\nsupprimer le fichier de vérification d'eslint",
-        "it": "fix doppi qoutes\nrimuovere il file dal controllo eslint",
-        "es": "arreglar doble qoutes\nremove file from eslint check",
-        "pl": "naprawić podwójne qouty\nusunąć plik z sprawdzania eslintu",
-        "uk": "виправити подвійний qoutes\nвидалити файл з перевірки eslint",
-        "zh-cn": "修补双qouts\n从 eslint 检查中删除文件"
       }
     },
     "titleLang": {
