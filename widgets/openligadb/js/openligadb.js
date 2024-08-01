@@ -5,7 +5,6 @@
 
 */
 "use strict";
-/* eslint-disable no-constant-condition */
 /* global vis, $, systemDictionary */
 /* eslint prefer-const: "error"*/
 /*eslint no-var: "error"*/
@@ -80,7 +79,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data.allmatches_oid && data.currgameday_oid) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates($div, [data.allmatches_oid, data.currgameday_oid], onChange);
                 }
             }
@@ -233,7 +232,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data["oid-allmatches"] && data["oid-currgameday"]) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates2($div, [data["oid-allmatches"], data["oid-currgameday"]], onChange);
                 }
             }
@@ -384,7 +383,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data.goalgetters_oid) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates($div, [data.goalgetters_oid], onChange);
                 }
             }
@@ -500,7 +499,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data["oid-goalgetters"]) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates2($div, [data["oid-goalgetters"]], onChange);
                 }
             }
@@ -638,13 +637,10 @@ vis.binds["openligadb"] = {
             }
 
             if (bound.length > 0) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates($div, bound, onChange);
                 }
             }
-
-
-
 
             favgames = this.sortFavGames(favgames);
 
@@ -793,7 +789,7 @@ vis.binds["openligadb"] = {
             }
 
             if (bound.length > 0) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates2($div, bound, onChange);
                 }
             }
@@ -929,7 +925,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data.allmatches_oid && data.currgameday_oid) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates($div, [data.allmatches_oid, data.currgameday_oid], onChange);
                 }
             }
@@ -1132,7 +1128,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data["oid-allmatches"] && data["oid-currgameday"]) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates2($div, [data["oid-allmatches"], data["oid-currgameday"]], onChange);
                 }
             }
@@ -1339,7 +1335,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data.allmatches_oid && data.currgameday_oid) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates($div, [data.allmatches_oid, data.currgameday_oid], onChange);
                 }
             }
@@ -1661,7 +1657,7 @@ vis.binds["openligadb"] = {
             }
 
             if (data["oid-allmatches"] && data["oid-currgameday"]) {
-                if (1 || !vis.editMode) {
+                if (!vis.editMode) {
                     vis.binds["openligadb"].bindStates2($div, [data["oid-allmatches"], data["oid-currgameday"]], onChange);
                 }
             }

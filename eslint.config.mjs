@@ -14,6 +14,7 @@ const compat = new FlatCompat({
 
 export default [{
     ignores: [
+        ".dev-server/*",
         "**/.prettierrc.js",
         "**/.eslintrc.js",
         "admin/words.js",
@@ -31,7 +32,7 @@ export default [{
         },
 
         ecmaVersion: "latest",
-        sourceType: "commonjs",
+        sourceType: "module",
     },
 
     rules: {

@@ -11,7 +11,7 @@ const utils = require("@iobroker/adapter-core");
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
-const IoOlServer = require(__dirname +"/lib/openligadbserver.js");
+const IoOlServer = require(__dirname + "/lib/openligadbserver.js");
 
 /**
  * The adapter instance
@@ -41,7 +41,7 @@ function startAdapter(options) {
                 openligadbServer.closeConnections();
                 adapter.log.info("openligadb unloaded");
                 callback();
-            } catch (e) {
+            } catch {
                 callback();
             }
         },
@@ -50,7 +50,7 @@ function startAdapter(options) {
         stateChange: (id, state) => {
             if (state) {
                 // The state was changed
-                if (openligadbServer) openligadbServer.stateChange(id,state);
+                if (openligadbServer) openligadbServer.stateChange(id, state);
             }
         },
 
