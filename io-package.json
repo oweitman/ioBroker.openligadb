@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.9",
+    "version": "1.4.10",
     "news": {
+      "1.4.10": {
+        "en": "switch to eslint 9\nadjust markdownlint settings to be compatible with prettier",
+        "de": "schalter zu eslint 9\nmarkdownlint-einstellungen anpassen, um kompatibel mit der prättier",
+        "ru": "переход на eslint 9\nнастроить настройки markdownlint, чтобы быть совместимым с prettier",
+        "pt": "mudar para eslint 9\najustar as configurações do markdownlint para ser compatível com mais",
+        "nl": "schakelen naar eslint 9\nmarkdownlintinstellingen aanpassen om compatibel te zijn met mooier",
+        "fr": "passer à eslint 9\najuster les paramètres de balisage pour être compatible avec le meilleur",
+        "it": "passare a eslint 9\nregolare le impostazioni di markdownlint per essere compatibili con le impostazioni più belle",
+        "es": "interruptor a eslint 9\najustar la configuración de marcado para ser compatible con",
+        "pl": "przełącz na eslint 9\ndostosować ustawienia markdownlint, aby były kompatybilne z ładniejszymi",
+        "uk": "вимикач до eslint 9\nналаштування відмітки, щоб бути сумісними з претензією",
+        "zh-cn": "切换到 eslint 9\n调整标记下lint 设置以与更美的设置兼容"
+      },
       "1.4.9": {
         "en": "fix if no game exist for team1/team2\nsomme prettier changes\nlaunch config for vscode",
         "de": "fix, wenn kein spiel existiert für team1/team2\nsomme prettier änderungen\nstart config für vscode",
@@ -80,19 +93,6 @@
         "pl": "Włącz NPM Publikuj\nWłącz zależny\npoprawianie kontroli z kontrolera adaptera",
         "uk": "Увімкнути NPM Публікація\nУвімкнути залежності\nфіксувати перевірки з адаптера",
         "zh-cn": "启用国家预防机制 发布\n启用依托保护\n适配器检查器的固定检查"
-      },
-      "1.4.3": {
-        "en": "remove files from eslint check",
-        "de": "dateien vom eslint-check entfernen",
-        "ru": "удалить файлы из eslint",
-        "pt": "remover arquivos da verificação eslint",
-        "nl": "bestanden verwijderen van eslint check",
-        "fr": "supprimer les fichiers de vérification eslint",
-        "it": "rimuovere i file dal controllo eslint",
-        "es": "quitar archivos de la comprobación de eslint",
-        "pl": "usunąć pliki z sprawdzania eslintu",
-        "uk": "видалити файли з перевірки eslint",
-        "zh-cn": "从 eslint 检查中删除文件"
       }
     },
     "titleLang": {

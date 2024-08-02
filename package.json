@@ -1,6 +1,6 @@
 {
   "name": "iobroker.openligadb",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "description": "ioBroker Adapter to get soccer sport match results from OpenLigaDB",
   "author": {
     "name": "oweitman",
@@ -76,7 +76,7 @@
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint .",
     "translate": "translate-adapter",
-    "release": "release-script"
+    "release": "release-script --all"
   },
   "bugs": {
     "url": "https://github.com/oweitman/ioBroker.openligadb/issues"
