@@ -79,6 +79,10 @@ Documentation for the vis-widgets are available inside vis or [Widget-Documentat
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
+### 1.4.11 (2024-08-09)
+
+-   fix issues from adapter checker
+
 ### 1.4.10 (2024-08-02)
 
 -   switch to eslint 9

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.10",
+    "version": "1.4.11",
     "news": {
+      "1.4.11": {
+        "en": "fix issues from adapter checker",
+        "de": "probleme von adapter checker beheben",
+        "ru": "проблемы с адаптером",
+        "pt": "corrigir problemas do verificador do adaptador",
+        "nl": "problemen oplossen van adaptercontrole",
+        "fr": "correction des problèmes de l'adaptateur checker",
+        "it": "risolvere problemi da adattatore checker",
+        "es": "solucionar problemas desde el control de adaptador",
+        "pl": "naprawianie problemów z sprawdzaczem adaptera",
+        "uk": "виправити проблеми з перевіркою адаптера",
+        "zh-cn": "从适配器检查器中校正问题"
+      },
       "1.4.10": {
         "en": "switch to eslint 9\nadjust markdownlint settings to be compatible with prettier",
         "de": "schalter zu eslint 9\nmarkdownlint-einstellungen anpassen, um kompatibel mit der prättier",
@@ -67,32 +80,6 @@
         "pl": "naprawić strukturę yml",
         "uk": "фіксована структура",
         "zh-cn": "固定yml 结构"
-      },
-      "1.4.5": {
-        "en": "fix yml structure",
-        "de": "yml-struktur",
-        "ru": "фиксация структуры yml",
-        "pt": "fixar estrutura yml",
-        "nl": "fix yml structuur",
-        "fr": "fixer la structure yml",
-        "it": "fissare la struttura yml",
-        "es": "estructura yml",
-        "pl": "naprawić strukturę yml",
-        "uk": "фіксована структура",
-        "zh-cn": "固定yml 结构"
-      },
-      "1.4.4": {
-        "en": "Enable NPM Publish\nEnable dependabot\nfix checks from adapter checker",
-        "de": "NPM aktivieren Veröffentlichen\nErmöglichen zuverlässigen\nfix checks von adapter checker",
-        "ru": "Включить NPM Опубликовать\nВключить\nфиксации чеков адаптера",
-        "pt": "Habilitar NPM Publicar\nHabilitar o administrador\ncorrigir verificações do verificador do adaptador",
-        "nl": "NPM inschakelen Publiceren\nDependabot inschakelen\nfix controles van adaptercontrole",
-        "fr": "Activer NPM Publier\nActiver le moteur de dépendance\ncorriger les vérifications de l'adaptateur checker",
-        "it": "Abilitare NPM Pubblicazione\nAbilitare dipendeabot\ncorreggere i controlli dall'adattatore checker",
-        "es": "Activar el mecanismo nacional de prevención Publish\nPermitir dependeabot\ncheques de fijación desde el control de adaptador",
-        "pl": "Włącz NPM Publikuj\nWłącz zależny\npoprawianie kontroli z kontrolera adaptera",
-        "uk": "Увімкнути NPM Публікація\nУвімкнути залежності\nфіксувати перевірки з адаптера",
-        "zh-cn": "启用国家预防机制 发布\n启用依托保护\n适配器检查器的固定检查"
       }
     },
     "titleLang": {
@@ -153,7 +140,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=3.3.22"
+        "js-controller": ">=4.0.24"
       }
     ],
     "globalDependencies": [
