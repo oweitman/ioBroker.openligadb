@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.4.11",
+    "version": "1.5.0",
     "news": {
+      "1.5.0": {
+        "en": "Addition of a CSS example for the Pivot Table widget\nadd `sendTo` command to getMatchData\nremove deprecated widgets\naddition widget option \"only logo\" to supress the teamname",
+        "de": "Addition eines CSS-Beispiels für das Pivot-Tabellen-Widget\n`send hinzufügen Um' Befehl zu erhaltenMatch Daten\ndeprecated widgets entfernen\nzusatz widget option \"nur logo\" um den teamnamen zu drücken",
+        "ru": "Добавление примера CSS для виджета Pivot Table\nдобавить `send Командовать, чтобы получить Данные\nудалить депрецированные виджеты\nдобавленная опция виджета «только логотип» для подавления названия команды",
+        "pt": "Adição de um exemplo CSS para o widget da tabela dinâmica\nadicionar `send Comando para obterMatch Dados\nremover widgets depreciados\nopção de widget de adição \"apenas logotipo\" para suprir o nome da equipe",
+        "nl": "Toevoeging van een CSS voorbeeld voor de Pivot Table widget\ntoevoegen Opdracht om Match te krijgen Gegevens\nverouderde widgets verwijderen\ntoevoegen widget optie \"alleen logo\" om de teamnaam onder druk te zetten",
+        "fr": "Ajout d'un exemple CSS pour le widget Pivot Table\najouter `send À la commande d'obtenirMatch Données\nsupprimer les widgets obsolètes\noption de widget supplémentaire \"seul logo\" pour supprimer le nom d'équipe",
+        "it": "Aggiunta di un esempio CSS per il widget Pivot Table\naggiungere `send A` comando per ottenereMatch Dati\nrimuovere widget deprecati\naggiunta widget opzione \"solo logo\" per suprimere il nome del team",
+        "es": "Adición de un ejemplo de CSS para el widget de la tabla Pivot\nadd `send A` comando to getMatch Datos\nremove deprecated widgets\nañadir widget opción \"sólo logotipo\" para suprimir el nombre del equipo",
+        "pl": "Dodanie przykładu CSS dla widżetu tabeli Pivot\nadd 'send Do' polecenia do getMatch Dane\nusunąć zdepregatowane widżety\ndodaj opcję widget \"tylko logo\", aby wysuszyć nazwę zespołu",
+        "uk": "Додаток для віджету Pivot Table\nдодати `send Щоб отриматиMatch Дані\nвидалити відхилені віджети\nдодатковий варіант віджету \"тільки логотип\" для натискання назви команди",
+        "zh-cn": "为关键表格部件添加 CSS 示例\n添加“端点” 命令获取Match 数据\n删除已贬值的部件\n添加“ 只有标识” 的部件选项以补充团队名称"
+      },
       "1.4.11": {
         "en": "fix issues from adapter checker",
         "de": "probleme von adapter checker beheben",
@@ -108,7 +121,9 @@
       "zh-cn": "OpenLigaDB",
       "uk": "OpenLigaDB"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
     "keywords": [
       "home automation",
       "openligadb",

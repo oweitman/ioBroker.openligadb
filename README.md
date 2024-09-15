@@ -112,8 +112,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.5.0 (2024-09-15)
 
 - Addition of a CSS example for the Pivot Table widget
 - add `sendTo` command to getMatchData
