@@ -117,6 +117,8 @@ sendTo(
 
 - Addition of a CSS example for the Pivot Table widget
 - add `sendTo` command to getMatchData
+- remove deprecated widgets
+- addition widget option "only logo" to supress the teamname
 
 ### 1.4.11 (2024-08-09)
 
