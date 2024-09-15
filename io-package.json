@@ -108,9 +108,7 @@
       "zh-cn": "OpenLigaDB",
       "uk": "OpenLigaDB"
     },
-    "authors": [
-      "oweitman <oweitman@gmx.de>"
-    ],
+    "authors": ["oweitman <oweitman@gmx.de>"],
     "keywords": [
       "home automation",
       "openligadb",
@@ -132,6 +130,7 @@
     "tier": 3,
     "mode": "daemon",
     "type": "misc-data",
+    "messagebox": true,
     "compact": true,
     "connectionType": "cloud",
     "dataSource": "poll",

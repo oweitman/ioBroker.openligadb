@@ -45,7 +45,11 @@ function startAdapter(options) {
                 callback();
             }
         },
-
+        message: (obj) => {
+            if (typeof obj === "object" && obj.message) {
+                openligadbServer.processMessages(obj);
+            }
+        },
         // is called if a subscribed state changes
         stateChange: (id, state) => {
             if (state) {
