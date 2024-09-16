@@ -1082,6 +1082,50 @@ vis.binds["openligadb"] = {
             adate.getMonth() == bdate.getMonth() &&
             adate.getYear() == bdate.getYear();
     },
+    checkTodayFavorite: function (oid, highlite) {
+        if (oid) {
+            const json = vis.states.attr(oid + '.val');
+            if ((json) && json != 'null') {
+                if (!vis.subscribing.IDs.includes(oid)) {
+                    vis.subscribing.IDs.push(oid);
+                    const a = [];
+                    a.push(oid);
+                    vis.conn.gettingStates = 0;
+                    vis.conn.getStates(a, function (error, data) {
+                        vis.updateStates(data);
+                        const a = [];
+                        a.push(oid);
+                        vis.conn.subscribe(a);
+                    });
+                }
+                const matches = JSON.parse(json);
+                if (matches) {
+                    const today = new Date();
+                    return matches.reduce(function (result, item) {
+                        const mdate = vis.binds["openligadb"].getDateFromJSON(item.matchDateTime);
+                        const test = vis.binds["openligadb"].compareDate(today, mdate) &&
+                            (vis.binds["openligadb"].checkHighlite(item.team1.teamName, highlite, ",") ||
+                                vis.binds["openligadb"].checkHighlite(item.team2.teamName, highlite, ","));
+                        if (test) {
+                        }
+                        return result || test;
+                    }, false);
+                }
+            } else {
+                if (!vis.subscribing.IDs.includes(oid)) vis.subscribing.IDs.push(oid);
+                const a = [];
+                a.push(oid);
+                vis.conn.gettingStates = 0;
+                vis.conn.getStates(a, function (error, data) {
+                    vis.updateStates(data);
+                    const a = [];
+                    a.push(oid);
+                    vis.conn.subscribe(a);
+                });
+            }
+        }
+        return false;
+    },
 };
 vis.binds["openligadb"].showVersion();
 

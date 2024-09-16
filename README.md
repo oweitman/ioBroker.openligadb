@@ -112,6 +112,10 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
+### 1.6.0 (2024-09-16)
+
+- reimplement checkTodayFavorite
+
 ### 1.5.0 (2024-09-15)
 
 - Addition of a CSS example for the Pivot Table widget

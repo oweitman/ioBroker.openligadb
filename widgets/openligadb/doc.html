@@ -90,22 +90,30 @@ Diese Funktion kann im Binding bspw. wie folgt verwendet werden.<br>
 Zum Test kann die folgende Notation in ein HTML-widget eingetragen werden. Als Ergebnis wird dann entweder ja oder nein ausgegeben,
 je nachdem ob am heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden wurde.<br>
 Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werden.
+<br><br>
+<b>Schema</b> 
 <pre>
 <code class="javascript hljs">
 {a:oid;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}
+</code>
+</pre>
+<b>Real life Example</b> 
+<pre>
+<code class="javascript hljs">
+{a:openligadb.0.bl1.2024.currgameday;vis.binds["openligadb"].checkTodayFavorite('openligadb.0.bl1.2024.allmatches','bayern')?'ja':'nein'}
 </code>
 </pre>
 <br>
 <b>Bedeutung der Parameter</b><br>
 <table>
 <tr>
-<td>oid</td><td>ein beliebiger Datenpunkt, der nur aufgrund der Notation des Bindings ausgewählt werden muss. Dieser Datenpunkt darf kein JSON zurückgeben.</td>
+<td>oid</td><td>ein beliebiger Datenpunkt, der die Aktualisierung triggert. Es empfiehlt sich bspw. currgameday zu wählen,<br>da dies gleichzeitig mit allmatches aktualisiert wird.</td>
 </tr>
 <tr>
 <td>oid_allmatches</td><td>Bezeichnung eines Datenpunktes allmatches der jeweiligen Liga/Saison.</td>
 </tr>
 <tr>
-<td>clubsucheX</td><td>ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten.<br>Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.</td>
+<td>clubsuche</td><td>ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten.<br>Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.</td>
 </tr>
 </table>
 <br>
