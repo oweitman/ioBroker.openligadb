@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "news": {
+      "1.7.0": {
+        "en": "fix quotes",
+        "de": "fixe zitate",
+        "ru": "исправить цитаты",
+        "pt": "corrigir citações",
+        "nl": "fix citaten",
+        "fr": "corriger les citations",
+        "it": "corretti i preventivi",
+        "es": "corrido citas",
+        "pl": "fix cudzysłówka",
+        "uk": "фіксувати котирування",
+        "zh-cn": "修补引用"
+      },
       "1.6.0": {
         "en": "reimplement checkTodayFavorite",
         "de": "reimplement CheckTodayFavorite",
@@ -80,19 +93,6 @@
         "pl": "zwolnienie",
         "uk": "видання",
         "zh-cn": "释放"
-      },
-      "1.4.7": {
-        "en": "update dependencies",
-        "de": "aktualisierung der abhängigkeiten",
-        "ru": "обновление зависимостей",
-        "pt": "dependências",
-        "nl": "afhankelijkheden bijwerken",
-        "fr": "mettre à jour les dépendances",
-        "it": "aggiornamento dipendenze",
-        "es": "dependencias de actualización",
-        "pl": "aktualizacji zależności",
-        "uk": "оновлення залежності",
-        "zh-cn": "更新依赖关系"
       }
     },
     "titleLang": {
