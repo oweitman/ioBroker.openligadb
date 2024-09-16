@@ -1084,8 +1084,8 @@ vis.binds["openligadb"] = {
     },
     checkTodayFavorite: function (oid, highlite) {
         if (oid) {
-            const json = vis.states.attr(oid + '.val');
-            if ((json) && json != 'null') {
+            const json = vis.states.attr(oid + ".val");
+            if ((json) && json != "null") {
                 if (!vis.subscribing.IDs.includes(oid)) {
                     vis.subscribing.IDs.push(oid);
                     const a = [];
@@ -1106,8 +1106,6 @@ vis.binds["openligadb"] = {
                         const test = vis.binds["openligadb"].compareDate(today, mdate) &&
                             (vis.binds["openligadb"].checkHighlite(item.team1.teamName, highlite, ",") ||
                                 vis.binds["openligadb"].checkHighlite(item.team2.teamName, highlite, ","));
-                        if (test) {
-                        }
                         return result || test;
                     }, false);
                 }
