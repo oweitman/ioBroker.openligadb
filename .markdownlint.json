@@ -1,10 +1,13 @@
 {
-    "list-marker-space": {
-        "ul_multi": 3,
-        "ul_single": 3
-    },
-    "ul-indent": {
-        "indent": 4
-    },
-    "first-line-heading": false
+  "list-marker-space": {
+    "ul_multi": 1,
+    "ul_single": 1
+  },
+  "ul-indent": {
+    "indent": 4
+  },
+  "first-line-heading": false,
+  "MD013": {
+    "tables": false
+  }
 }

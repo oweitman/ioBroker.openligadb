@@ -72,6 +72,8 @@ vis.binds["openligadb"] = {
             const shortname = data.shortname || false;
             const onlylogo = data.onlylogo || false;
             const highlight = data.highlight || "";
+            const preparedhighlight = vis.binds["openligadb"].prepareFilter(highlight);
+
             const sort = data.sort || "table";
             const highlightontop = data.highlightontop || false;
 
@@ -139,8 +141,8 @@ vis.binds["openligadb"] = {
                 });
             }
             if (highlightontop) {
-                if (highlight.trim() != "") {
-                    let tophighlight = highlight.split(";");
+                if (preparedhighlight.map(el => el.filter).join(";").trim() != "") {
+                    let tophighlight = preparedhighlight.map(el => el.filter).join(";").split(";");
                     tophighlight = tophighlight.reverse();
                     for (let i = 0; i < tophighlight.length; i++) {
                         const topindex = table.findIndex(function (item) {
@@ -183,7 +185,7 @@ vis.binds["openligadb"] = {
             table.forEach(function (team1) {
                 pteam1 = pivottable2[team1.teamName];
                 let team1name = shortname ? team1.shortName : team1.teamName;
-                if (vis.binds["openligadb"].checkHighlite(team1.teamName, highlight)) team1name = '<b class="favorite">' + team1name + "</b>";
+                if (vis.binds["openligadb"].checkHighlite(team1.teamName, preparedhighlight.map(el => el.filter).join(";"))) team1name = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(team1name, preparedhighlight) + '">' + team1name + "</b>";
                 text += "        <tr>";
                 text += '            <td class="oldb-center oldb-rank">';
                 text += team1.ranking[team1.ranking.length - 1];
@@ -363,8 +365,9 @@ vis.binds["openligadb"] = {
                 const abbreviation = data["abbreviation" + i] || "";
                 const shortname = data["shortname" + i] || false;
                 const filter = data["filter" + i] || "";
+                const preparedfilter = vis.binds["openligadb"].prepareFilter(filter);
 
-                favgames = favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, filter, shortname, abbreviation));
+                favgames = favgames.concat(this.filterFavGames(allmatches, showgameday, showgamedaycount, currgameday, preparedfilter, shortname, abbreviation));
                 if (filter == "") nohighlight += "group" + i + " ";
             }
 
@@ -421,8 +424,8 @@ vis.binds["openligadb"] = {
             favgames.forEach(function (match) {
                 let team1name = match.shortname ? match.team1.shortName : match.team1.teamName;
                 let team2name = match.shortname ? match.team2.shortName : match.team2.teamName;
-                if (vis.binds["openligadb"].checkHighlite(team1name, match.filter)) team1name = '<b class="favorite">' + team1name + "</b>";
-                if (vis.binds["openligadb"].checkHighlite(team2name, match.filter)) team2name = '<b class="favorite">' + team2name + "</b>";
+                if (vis.binds["openligadb"].checkHighlite(team1name, match.filter.map(el => el.filter).join(";"))) team1name = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(team1name, match.filter) + '">' + team1name + "</b>";
+                if (vis.binds["openligadb"].checkHighlite(team2name, match.filter.map(el => el.filter).join(";"))) team2name = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(team2name, match.filter) + '">' + team2name + "</b>";
                 const result = vis.binds["openligadb"].getResult(match.matchResults);
                 const team1result = Object.prototype.hasOwnProperty.call(result, "pointsTeam1") ? result.pointsTeam1 : "-";
                 const team2result = Object.prototype.hasOwnProperty.call(result, "pointsTeam2") ? result.pointsTeam2 : "-";
@@ -470,7 +473,7 @@ vis.binds["openligadb"] = {
                 if (gameday < 0 && item.group.groupOrderID >= currgameday + gameday && item.group.groupOrderID < currgameday + gameday + gamedaycount) found = item;
                 item.filter = filter;
                 item.shortname = shortname;
-                if (found && (vis.binds["openligadb"].checkHighlite(item.team1.teamName, filter) || vis.binds["openligadb"].checkHighlite(item.team2.teamName, filter))) result.push(item);
+                if (found && (vis.binds["openligadb"].checkHighlite(item.team1.teamName, filter.map(el => el.filter).join(";")) || vis.binds["openligadb"].checkHighlite(item.team2.teamName, filter.map(el => el.filter).join(";")))) result.push(item);
                 return result;
             }, []);
         },
@@ -508,6 +511,7 @@ vis.binds["openligadb"] = {
             const shortname = data.shortname || false;
             const onlylogo = data.onlylogo || false;
             const highlight = data.highlight || "";
+            const preparedhighlight = vis.binds["openligadb"].prepareFilter(highlight);
 
             function onChange() {
                 vis.binds["openligadb"].gameday2.createWidget(widgetID, view, data, style);
@@ -520,7 +524,7 @@ vis.binds["openligadb"] = {
             }
 
             const matches = this.filterGameDay(allmatches, showgameday || currgameday || "", showgamedaycount, currgameday);
-            const gamedays = this.groupGameDay(matches, shortname, highlight);
+            const gamedays = this.groupGameDay(matches, shortname, preparedhighlight.map(el => el.filter).join(";"));
 
             let text = "";
 
@@ -587,10 +591,10 @@ vis.binds["openligadb"] = {
                     let team1name = shortname ? match.team1.shortName : match.team1.teamName;
                     let team2name = shortname ? match.team2.shortName : match.team2.teamName;
                     if (match.team1.favorite) {
-                        team1name = '<b class="favorite">' + team1name + "</b>";
+                        team1name = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(team1name, preparedhighlight) + '">' + team1name + "</b>";
                     }
                     if (match.team2.favorite) {
-                        team2name = '<b class="favorite">' + team2name + "</b>";
+                        team2name = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(team2name, preparedhighlight) + '">' + team2name + "</b>";
                     }
                     if (onlylogo) {
                         team1name = "&nbsp;";
@@ -744,6 +748,8 @@ vis.binds["openligadb"] = {
             const shortname = data.shortname || false;
             const highlight = data.highlight || "";
             const filter = data.filter || "";
+            const preparedhighlight = vis.binds["openligadb"].prepareFilter(highlight);
+
             //test
 
             let text = "";
@@ -811,7 +817,7 @@ vis.binds["openligadb"] = {
 
                 let teamname = shortname ? team.shortName : team.teamName;
                 if (!(vis.binds["openligadb"].checkHighlite(teamname, filter) || filter == "")) return;
-                if (vis.binds["openligadb"].checkHighlite(teamname, highlight)) teamname = '<b class="favorite">' + teamname + "</b>";
+                if (vis.binds["openligadb"].checkHighlite(teamname, preparedhighlight.map(el => el.filter).join(";"))) teamname = '<b class="favorite ' + vis.binds["openligadb"].getCSSClass(teamname, preparedhighlight) + '">' + teamname + "</b>";
 
                 text += "        <tr>";
                 text += '            <td class="oldb-center oldb-rank">';
@@ -1009,7 +1015,22 @@ vis.binds["openligadb"] = {
         },
 
     },
-
+    prepareFilter: function (filter) {
+        try {
+            return filter.split(";").map((el => {
+                const m = /(.+)\[(.*)\]|(.+)/gm.exec(el);
+                if (!m) return { filter: "", color: "" };
+                const filter = m[1] || m[3] || "";
+                const cls = m[2] || "";
+                return ({
+                    "filter": filter,
+                    "class": cls
+                });
+            }));
+        } catch {
+            return [];
+        }
+    },
 
 
 
@@ -1062,6 +1083,9 @@ vis.binds["openligadb"] = {
             if (cur == "") return acc;
             return acc || value.toLowerCase().indexOf(cur.toLowerCase()) >= 0;
         }, false);
+    },
+    getCSSClass: function (value, highlights) {
+        return highlights.find(cur => value.toLowerCase().indexOf(cur.filter.toLowerCase()) >= 0).class;
     },
     getDateFromJSON: function (datestring) {
         const aDate = datestring.split("T")[0].split("-");

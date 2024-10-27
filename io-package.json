@@ -16,19 +16,6 @@
         "uk": "фіксувати котирування",
         "zh-cn": "修补引用"
       },
-      "1.6.0": {
-        "en": "reimplement checkTodayFavorite",
-        "de": "reimplement CheckTodayFavorite",
-        "ru": "реанимация шамплон",
-        "pt": "verificação de reimplementaçãoHojeFavorite",
-        "nl": "reimplement checkTodayFavoriet",
-        "fr": "check reimplementAujourd'huiFavorite",
-        "it": "controllo reimplementa OggiFavorite",
-        "es": "verificación de la implementaciónHoyFavorite",
-        "pl": "reimplementation checkTodayFavorite",
-        "uk": "реєстрація заїздуВесь деньФаворит",
-        "zh-cn": "重执行检查今天最爱"
-      },
       "1.5.0": {
         "en": "Addition of a CSS example for the Pivot Table widget\nadd `sendTo` command to getMatchData\nremove deprecated widgets\naddition widget option \"only logo\" to supress the teamname",
         "de": "Addition eines CSS-Beispiels für das Pivot-Tabellen-Widget\n`send hinzufügen Um' Befehl zu erhaltenMatch Daten\ndeprecated widgets entfernen\nzusatz widget option \"nur logo\" um den teamnamen zu drücken",
@@ -121,9 +108,7 @@
       "zh-cn": "OpenLigaDB",
       "uk": "OpenLigaDB"
     },
-    "authors": [
-      "oweitman <oweitman@gmx.de>"
-    ],
+    "authors": ["oweitman <oweitman@gmx.de>"],
     "keywords": [
       "home automation",
       "openligadb",
@@ -154,7 +139,7 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=4.0.24"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [

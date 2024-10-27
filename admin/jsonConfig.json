@@ -1,46 +1,58 @@
 {
-    "type": "tabs",
-    "i18n": true,
-    "items": {
-      "mainTab": {
-        "type": "panel",
-        "label": "Main settings",
-        "items": {
-          "refresh": {
-            "type": "number",
-            "min": 1,
-            "default":10,
-            "label": "Default Refresh (min)"
-          },
-          "leagues": {
-            "newLine": true,
-            "sm": 12,
-            "noDelete": false,
-            "type": "table",
-            "items": [
-                {
-                  "width": "20%",
-                  "type": "text",
-                  "attr": "league",
-                  "title": "League",
-                  "filter": true,
-                  "sort": true,
-                  "default":"",
-                  "tooltip":"ID of the League taken from openligadb.de"
-                },                
-                {
-                  "width": "15%",
-                  "type": "text",
-                  "attr": "season",
-                  "title": "Season",
-                  "filter": true,
-                  "sort": true,
-                  "default":"",
-                  "tooltip":"Season of the League taken from openligadb.de"                    
-                }
-            ]
-          }
+  "type": "tabs",
+  "i18n": true,
+  "tabsStyle": {
+    "width": "calc(100% - 100px)"
+  },
+  "items": {
+    "mainTab": {
+      "type": "panel",
+      "label": "Main settings",
+      "items": {
+        "refresh": {
+          "type": "number",
+          "min": 1,
+          "default": 10,
+          "xs": 12,
+          "sm": 12,
+          "md": 6,
+          "lg": 4,
+          "xl": 4,
+          "label": "Default Refresh (min)"
+        },
+        "leagues": {
+          "newLine": true,
+          "noDelete": false,
+          "type": "table",
+          "xs": 12,
+          "sm": 12,
+          "md": 6,
+          "lg": 4,
+          "xl": 4,
+          "items": [
+            {
+              "width": "20%",
+              "type": "text",
+              "attr": "league",
+              "title": "League",
+              "filter": true,
+              "sort": true,
+              "default": "",
+              "tooltip": "ID of the League taken from openligadb.de"
+            },
+            {
+              "width": "15%",
+              "type": "text",
+              "attr": "season",
+              "title": "Season",
+              "filter": true,
+              "sort": true,
+              "default": "",
+              "tooltip": "Season of the League taken from openligadb.de"
+            }
+          ]
         }
       }
     }
   }
+}
