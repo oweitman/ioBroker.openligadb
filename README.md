@@ -26,11 +26,9 @@ Example data for 1. German Bundliga is
 If you saved and closed the configuration, a short while after this there must
 be new datapoints for your league and season.
 
-## vis and Widgets
+## Widgets
 
 Actually there are 5 widgets available. Please enter openligadb in the widget filter
-
-## Widgets
 
 ### Table 4
 
@@ -145,7 +143,7 @@ Beispiele für relativ berechneten Spieltag: |
 Da das Binding nicht im vis editmode berechnet wird,
 wird bei Verwendung von Binding im editmode immer der aktuelle Spieltag angezeigt.
 
-#### Games of favorite clubs 2
+### Games of favorite clubs 2
 
 ![Favorite Games](/widgets/openligadb/img/favgames.png)  
 Diese Widget zeigt die nächsten Spiele deiner Lieblingsmannschaften aus ein oder
@@ -155,7 +153,7 @@ in der die folgenden Einstellungen vorgenommen werden können.
 Wenn das Spiel am heutigen Tag statt findet, dann wird das jeweilige
 Spiel (todaygame) mit CSS-Klassen versehen.
 
-##### Beispiel
+#### Beispiel
 
 ```css
 .todaygame {
@@ -167,7 +165,7 @@ Spiel (todaygame) mit CSS-Klassen versehen.
 }
 ```
 
-##### Attribute
+#### Attribute
 
 | Attribut         | Gruppe     | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ---------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -184,9 +182,9 @@ Spiel (todaygame) mit CSS-Klassen versehen.
 | abbreviation     | Liga       | Abkürzung die für diese Liga angezeigt werden soll, sofern showabbreviation ausgewählt wurde.                                                                                                                                                                                                                                                                                                                              |
 | highlight        | Liga       | Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, um die Lieblingsmanschaften zu finden. Die Suche erfolgt nur in den Mannschaftsnamen. Eine besondere Hervorhebung wie bei den anderen Widgets gibt es hier nicht.                                                                                                                                                                      |
 
-###### Beispiele Game of Favorite Clubs
+#### Beispiele Game of Favorite Clubs
 
-###### Beispiele für das Binding im Attribut showgameday Game of Favorite Clubs
+##### Beispiele für das Binding im Attribut showgameday Game of Favorite Clubs
 
 ggfs. kann dieses Feld auch über vis-binding berechnet und gefüllt werden.  
 Beispiele für einen relativ berechneten Spieltag:
@@ -201,7 +199,7 @@ Beispiele für einen relativ berechneten Spieltag:
 Da das Binding nicht im vis editmode berechnet wird, wird bei Verwendung
 von Binding im editmode immer der aktuelle Spieltag angezeigt.
 
-#### Pivot Table 2
+### Pivot Table 2
 
 Diese Widget zeigt die alle Spiele und Ergebnisse als Pivottabelle an
 
@@ -219,7 +217,7 @@ Diese Widget zeigt die alle Spiele und Ergebnisse als Pivottabelle an
 }
 ```
 
-##### Attribute Pivot Table
+#### Attribute Pivot Table
 
 | Attribut            | Gruppe    | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -231,11 +229,11 @@ Diese Widget zeigt die alle Spiele und Ergebnisse als Pivottabelle an
 | highlight am Anfang |           | Das highlight wird am Anfang der Tabelle angezeigt.                                                                                                                                                                                                                                                                                                                                                                        |
 | highlight           |           | Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen. Die Suche erfolgt nur in den Mannschaftsnamen. Der jeweilige Namen wird mit HTML-Tags `<b>` eingefasst. Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen.                                                                                                                |
 
-#### Goal getters 2
+### Goal getters 2
 
 Diese Widget zeigt die alle Torjäger an
 
-##### Attribute Goal getters
+#### Attribute Goal getters
 
 | Attribut        | Gruppe    | Beschreibung                                                                                                                                                                                                                                                                                            |
 | --------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -245,9 +243,9 @@ Diese Widget zeigt die alle Torjäger an
 | Nur Highlights  |           | Nur die Einträge zum Higlightfilter werden angezeigt.                                                                                                                                                                                                                                                   |
 | highlight       |           | Hier können ein oder mehrere Begriffe mit Semicolon (;) getrennt eingegeben werden, die hervorgehoben werden sollen. Die Suche erfolgt nur in den Spielernamen. Der jeweilige Namen wird mit HTML-Tags `<b>` eingefasst. Eine detailliertere Formatierung kann über die css-Klasse "favorite" erfolgen. |
 
-#### Rezepte zur Wiederverwendung
+## Rezepte zur Wiederverwendung
 
-##### Steuerung des Tabellenmodus über Knöpfe
+### Steuerung des Tabellenmodus über Knöpfe
 
 1. Ein Widgets table v2 anlegen. und wie hier in der Hilfe beschrieben konfigurieren
 2. Bei Widgeteinstellungen in der Gruppe Sichtbarkeit bei Datenpunkt deinen
@@ -267,7 +265,7 @@ Diese Widget zeigt die alle Torjäger an
 10. Wenn alles funktioniert zum Schluss noch die widgets exakt übereinander
     legen, so das es wie eines aussieht
 
-##### Laufschrift einer Widgetzeile
+### Laufschrift einer Widgetzeile
 
 sieht nur schön aus, wenn nur eine oder wenige Zeilen angezeigt werden bspw
 bei dem FavGame-widget
@@ -299,7 +297,7 @@ Expand
 }
 ```
 
-##### Spieltag über +/- Buttons steuern, sowie direkte Auswahl per Listbox
+### Spieltag über +/- Buttons steuern, sowie direkte Auswahl per Listbox
 
 ![Controlbuttons](/widgets/openligadb/img/controlbuttons.png)  
 Dazu ist für die Steuerung ein zusätzlicher Datenpunkt mit
@@ -314,7 +312,7 @@ Expand
     [{"tpl":"_tplGroup","data":{"members":["w00065","w00066","g00001"],"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","attrCount":"1","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"widgetSet":null,"style":{"top":38.28125,"left":"663px","width":"141px","height":"37px"}},{"tpl":"tplIconInc","data":{"oid":"javascript.0.bl1.spieltag","repeat_delay":"800","repeat_interval":"800","src":"","step":"-1","minmax":"1","text":"-","g_last_change":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"name":"spieltag_minus","g_visibility":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","g_gestures":false,"g_signals":false,"signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false},"style":{"left":"0%","top":"16.22%","background":"#303030","width":"17.73%","height":"67.57%","z-index":"50","font-family":"","background-color":"#303030","font-weight":"bolder","border-width":"2px","border-radius":"10px","box-shadow":"2px 2px 3px rgba(20, 20, 20, 50)","color":"white","border-style":"solid","border-color":"white","font-size":""},"widgetSet":"jqui","grouped":true,"groupName":"w00065"},{"tpl":"tplIconInc","data":{"oid":"javascript.0.bl1.spieltag","repeat_delay":"800","repeat_interval":"800","src":"","step":"+1","minmax":"34","text":"+","gestures-offsetX":0,"gestures-offsetY":"-1","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis.0/VIS/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis.0/VIS/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis.0/VIS/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"g_last_change":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"name":"spieltag_plus","g_visibility":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide"},"style":{"left":"82.27%","top":"16.22%","background":"#303030","width":"17.73%","height":"67.57%","z-index":"50","font-family":"","background-color":"#303030","font-weight":"bolder","border-width":"2px","border-radius":"10px","box-shadow":"2px 2px 3px rgba(20, 20, 20, 50)","color":"white","border-style":"solid","border-color":"white"},"widgetSet":"jqui","grouped":true,"groupName":"w00066"},{"tpl":"_tplGroup","data":{"members":["w00064","w00059"],"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","attrCount":"1","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"widgetSet":null,"style":{"top":"0%","left":"21.99%","width":"56.74%","height":"100%"},"grouped":true,"groupName":"g00001"},{"tpl":"tplJquiSelectList","data":{"oid":"javascript.0.bl1.spieltag","g_fixed":true,"g_visibility":false,"g_css_font_text":true,"g_css_background":true,"g_css_shadow_padding":true,"g_css_border":true,"g_gestures":false,"g_signals":false,"values":"1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30;31;32;33;34","texts":"1. Spieltag;2. Spieltag;3. Spieltag;4. Spieltag;5. Spieltag;6. Spieltag;7. Spieltag;8. Spieltag;9. Spieltag;10. Spieltag;11. Spieltag;12. Spieltag;13. Spieltag;14. Spieltag;15. Spieltag;16. Spieltag;17. Spieltag;18. Spieltag;19. Spieltag;20. Spieltag;21. Spieltag;22. Spieltag;23. Spieltag;24. Spieltag;25. Spieltag;26. Spieltag;27. Spieltag;28. Spieltag;29. Spieltag;30. Spieltag;31. Spieltag;32. Spieltag;33. Spieltag;34. Spieltag","height":"150","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"no_style":true,"class":"","lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"open":false,"name":"spieltag_liste","visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide"},"style":{"left":"0%","top":"54.77%","height":"45.95%","width":"100%","background":"","box-shadow":"","border-radius":"5px","padding-left":"","padding-right":"","margin-right":"","color":"","font-weight":"bolder","border-width":"2px","border-style":"solid","border-color":"white","background-color":""},"widgetSet":"jqui","grouped":true,"groupName":"w00064"},{"tpl":"tplIconState","data":{"oid":"javascript.0.bl1.spieltag","g_fixed":true,"g_visibility":false,"g_css_font_text":true,"g_css_background":true,"g_css_shadow_padding":false,"g_css_border":true,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"text":"Heute","invert_icon":false,"value":"{openligadb.0.bl1.2019.currgameday}"},"style":{"left":"0%","top":"0%","color":"white","background":"#303030","font-size":"small","font-weight":"normal","height":"45.95%","border-width":"2px","border-style":"solid","border-color":"white","width":"100%"},"widgetSet":"jqui","grouped":true,"groupName":"w00059"}]
 ```
 
-##### Anzeige von bestimmten Eigenschaften, falls eine der Lieblingsmannschaften am heutigen Tag spielen
+### Anzeige von bestimmten Eigenschaften, falls eine der Lieblingsmannschaften am heutigen Tag spielen
 
 **Beipiel 1** HTML-Widget erhält einen grünen Hintergrund,
 wenn bayern heute spielt.  
@@ -331,7 +329,7 @@ Expand
     [{"tpl":"tplHtml","data":{"g_fixed":false,"g_visibility":false,"g_css_font_text":false,"g_css_background":true,"g_css_shadow_padding":false,"g_css_border":true,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","refreshInterval":"0","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0},"style":{"left":"445px","top":"589px","background":"{a:openligadb.0.bl1.2019.currgameday;vis.binds[\"openligadb\"].checkTodayFavorite('openligadb.0.bl1.2019.allmatches','bayer')?'red':'green'}","width":"70px","height":"70px","border-radius":"10px"},"widgetSet":"basic"}]
 ```
 
-##### Auswahl des Tabellenmodus für das table widget
+### Auswahl des Tabellenmodus für das table widget
 
 ![Tabellenmodus](/widgets/openligadb/img/tableselect.png)  
 Mit diesem HTML-widget lässt sich der Modus des Tabellen widgets steuern.  
@@ -354,9 +352,9 @@ Expand
     [{"tpl":"tplJquiRadioList","data":{"oid":"javascript.0.tabellemodus","g_fixed":true,"g_visibility":false,"g_css_font_text":true,"g_css_background":true,"g_css_shadow_padding":false,"g_css_border":false,"g_gestures":false,"g_signals":false,"g_last_change":false,"visibility-cond":"==","visibility-val":1,"visibility-groups-action":"hide","values":"1total;2home;3away;4round1;5round2","texts":"Gesamt;Heim;Auswärts;Hinrunde;Rückrunde","signals-cond-0":"==","signals-val-0":true,"signals-icon-0":"/vis/signals/lowbattery.png","signals-icon-size-0":0,"signals-blink-0":false,"signals-horz-0":0,"signals-vert-0":0,"signals-hide-edit-0":false,"signals-cond-1":"==","signals-val-1":true,"signals-icon-1":"/vis/signals/lowbattery.png","signals-icon-size-1":0,"signals-blink-1":false,"signals-horz-1":0,"signals-vert-1":0,"signals-hide-edit-1":false,"signals-cond-2":"==","signals-val-2":true,"signals-icon-2":"/vis/signals/lowbattery.png","signals-icon-size-2":0,"signals-blink-2":false,"signals-horz-2":0,"signals-vert-2":0,"signals-hide-edit-2":false,"lc-type":"last-change","lc-is-interval":true,"lc-is-moment":false,"lc-format":"","lc-position-vert":"top","lc-position-horz":"right","lc-offset-vert":0,"lc-offset-horz":0,"lc-font-size":"12px","lc-font-family":"","lc-font-style":"","lc-bkg-color":"","lc-color":"","lc-border-width":"0","lc-border-style":"","lc-border-color":"","lc-border-radius":10,"lc-zindex":0,"class":""},"style":{"left":"54px","top":"356px","background":"black","font-size":"xx-small"},"widgetSet":"jqui"}]
 ```
 
-#### Besondere Funktionen
+## Besondere Funktionen
 
-##### vis.binds\["openligadb"\].checkTodayFavorite(ObjectID,Favorites)
+### vis.binds\["openligadb"\].checkTodayFavorite(ObjectID,Favorites)
 
 Javascript-Funktion zur Überprüfung, ob am heutigen Tag für ein oder
 mehrere Mannschaften ein Spiel statt findet. Diese Funktion kann über vis
@@ -369,19 +367,19 @@ Als Ergebnis wird dann entweder ja oder nein ausgegeben, je nachdem ob am
 heutigen Tag der Suchbegriff in den Mannschaftsnamen gefunden wurde.  
 Alle Anführungszeichen (einfache und doppelte) müssen exakt so eingegeben werden.
 
-###### Schema
+#### Schema
 
 ```text
     {a:oid;vis.binds["openligadb"].checkTodayFavorite('oid_allmatches','clubsuche1,clubsuche2')?'ja':'nein'}
 ```
 
-###### Real life Example
+#### Real life Example
 
 ```text
     {a:openligadb.0.bl1.2024.currgameday;vis.binds["openligadb"].checkTodayFavorite('openligadb.0.bl1.2024.allmatches','bayern')?'ja':'nein'}
 ```
 
-###### Bedeutung der Parameter
+#### Bedeutung der Parameter
 
 ```text
 <table><tbody><tr><td>oid</td><td>ein beliebiger Datenpunkt, der die Aktualisierung triggert. Es empfiehlt sich bspw. currgameday zu wählen,<br>da dies gleichzeitig mit allmatches aktualisiert wird.</td></tr><tr><td>oid_allmatches</td><td>Bezeichnung eines Datenpunktes allmatches der jeweiligen Liga/Saison.</td></tr><tr><td>clubsuche</td><td>ein oder mehrere Bezeichnungen (können auch Teilbezeichnungen sein), mit Komma (,) getrennt. Bitte beachten.<br>Diese Feld entspricht in den Widgets dem Feldt highlight. Mehrere Suchbegriffe müssen hier nur mit Komma getrennt werden und nicht mit Semikolon wie in den Widgets.</td></tr></tbody></table>
@@ -448,6 +446,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
+
 ### 1.8.0 (2024-10-27)
 
 - move widget documentation from html file to readme

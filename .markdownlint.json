@@ -8,6 +8,7 @@
   },
   "first-line-heading": false,
   "MD013": {
-    "tables": false
+    "tables": false,
+    "code_blocks": false
   }
 }
