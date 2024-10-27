@@ -1,6 +1,6 @@
 {
   "name": "iobroker.openligadb",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "ioBroker Adapter to get soccer sport match results from OpenLigaDB",
   "author": {
     "name": "oweitman",
@@ -56,7 +56,6 @@
     "typescript": "~5.5.2",
     "@iobroker/dev-server": "^0.7.3"
   },
-  
   "main": "openligadb.js",
   "files": [
     "admin{,/!(src)/**}/!(tsconfig|tsconfig.*|.eslintrc).{json,json5}",

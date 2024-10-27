@@ -448,8 +448,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.8.0 (2024-10-27)
 
 - move widget documentation from html file to readme
 - adjust and prove responsive design for jsonconfig

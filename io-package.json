@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "news": {
+      "1.8.0": {
+        "en": "move widget documentation from html file to readme\nadjust and prove responsive design for jsonconfig\nimplement individual color settings for highlite and filters for each widget",
+        "de": "widget-dokumentation von html-datei auf readme verschieben\njustieren und bewähren responsive design für jsonconfig\nindividuelle farbeinstellungen für highlite und filter für jedes widget implementieren",
+        "ru": "переместить документацию виджета из html файла в считывание\nнастроить и доказать отзывчивый дизайн для jsonconfig\nреализовать индивидуальные цветовые настройки для высокой щели и фильтров для каждого виджета",
+        "pt": "mover documentação do widget do arquivo html para readme\najustar e provar o design responsivo para jsonconfig\nimplementar configurações de cores individuais para highlite e filtros para cada widget",
+        "nl": "widget documentatie verplaatsen van html-bestand naar readme\npassen en bewijzen responsief ontwerp voor jsonconfig\nindividuele kleurinstellingen voor highlite en filters voor elke widget implementeren",
+        "fr": "déplacer la documentation de widget du fichier html vers readme\najuster et prouver un design réactif pour jsonconfig\nimplémenter les paramètres de couleur individuels pour highlite et filtres pour chaque widget",
+        "it": "spostare la documentazione del widget dal file html a readme\nregolare e dimostrare il design reattivo per jsonconfig\nimplementare singole impostazioni di colore per highlite e filtri per ogni widget",
+        "es": "mover la documentación del widget del archivo html a readme\najustar y probar el diseño sensible para jsonconfig\nimplementa la configuración de color individual para altalite y filtros para cada widget",
+        "pl": "przenieść dokumentację widget z pliku html do readme\ndostosować i udowodnić responsywny projekt dla jsonconfig\nimplementuj indywidualne ustawienia kolorów dla highlite i filtrów dla każdego widget",
+        "uk": "перемістити документацію віджетів з html-файлу для читанняme\nналаштування та довести чуйний дизайн для jsonconfig\nреалізовувати індивідуальні параметри кольору для високоліття та фільтрів для кожного віджету",
+        "zh-cn": "从 html 文件移动部件文档到 readme\n调整并证明 jsonconfig 的响应性设计\n执行每个部件的高升和过滤器的单个颜色设置"
+      },
       "1.7.0": {
         "en": "fix quotes",
         "de": "fixe zitate",
@@ -108,7 +121,9 @@
       "zh-cn": "OpenLigaDB",
       "uk": "OpenLigaDB"
     },
-    "authors": ["oweitman <oweitman@gmx.de>"],
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
     "keywords": [
       "home automation",
       "openligadb",
