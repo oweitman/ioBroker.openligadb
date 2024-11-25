@@ -23,7 +23,6 @@ class Openligadb extends utils.Adapter {
         });
         this.on('ready', this.onReady.bind(this));
         // @ts-expect-error statechange doesnt exist
-        this.on('stateChange', this.onStateChange.bind(this));
         this.on('unload', this.onUnload.bind(this));
         this.on('message', this.onMessage.bind(this));
     }
@@ -66,24 +65,16 @@ class Openligadb extends utils.Adapter {
         }
     }
     /**
-     * Is called if a subscribed state changes
+     * Handle messages from other adapters.
      *
-     * @param id {string} The subscribed ID
-     * @param state {string|number|boolean} The new state
+     * @param obj {object}
+     * @param obj.message {string} 'getMatchData'
+     * @param obj.data {object}
+     * @param obj.data.shortcut {string}
+     * @param obj.data.season {string}
+     * @param obj.data.datefrom {string} ISO notation
+     * @param obj.data.datetill {string} ISO notation
      */
-    onStateChange(id, state) {
-        if (state) {
-            // The state was changed
-            // @ts-expect-error val dont exist
-            this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-            if (openligadbserver) {
-                openligadbserver.doStateChange(id, state);
-            }
-        } else {
-            // The state was deleted
-            this.log.debug(`state ${id} deleted`);
-        }
-    }
     onMessage(obj) {
         if (typeof obj === 'object' && obj.message) {
             openligadbserver.processMessages(obj);
