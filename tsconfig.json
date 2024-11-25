@@ -23,8 +23,9 @@
     "noImplicitAny": false,
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,
-    "useUnknownInCatchVariables": false
+    "useUnknownInCatchVariables": false,
+    "sourceMap": true
   },
-  "include": ["**/*.js", "**/*.d.ts"],
+  "include": ["lib/**/*.js", "lib/**/*.d.ts", "openligadb.js"],
   "exclude": ["node_modules/**", "widgets/**"]
 }
