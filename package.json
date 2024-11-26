@@ -70,8 +70,9 @@
         "test:integration": "mocha test/integration --exit",
         "test": "npm run test:js && npm run test:package",
         "check": "tsc --noEmit -p tsconfig.check.json",
-        "lint": "eslint --debug -c eslint.config.mjs .|more",
+        "lint": "eslint -c eslint.config.mjs .|more",
         "build": "cd widgets/openligadb && npm run build && cd ../..",
+        "repochecker": "npx github:oweitman/ioBroker.repochecker https://github.com/oweitman/ioBroker.openligadb --local",
         "translate": "translate-adapter",
         "translate-widgets": "node ./bin/translate.js --source widgets/openligadb/i18n/en.json --format single",
         "release": "release-script --all"

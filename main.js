@@ -22,8 +22,8 @@ class Openligadb extends utils.Adapter {
             name: 'openligadb',
         });
         this.on('ready', this.onReady.bind(this));
-        // @ts-expect-error statechange doesnt exist
         this.on('unload', this.onUnload.bind(this));
+        // @ts-expect-error no overload error
         this.on('message', this.onMessage.bind(this));
     }
 
