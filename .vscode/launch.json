@@ -7,7 +7,7 @@
             "name": "Launch ioBroker Adapter ",
             "skipFiles": ["<node_internals>/**"],
             "args": ["--debug", "0"],
-            "program": "node_modules/iobroker.openligadb/openligadb.js",
+            "program": "node_modules/iobroker.openligadb/main.js",
             "cwd": "${workspaceFolder}/.dev-server/default",
             "runtimeExecutable": "c:/Users/oweit/AppData/Roaming/fnm/aliases/default/node.exe",
             "stopOnEntry": true,

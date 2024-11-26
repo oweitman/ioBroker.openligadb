@@ -26,6 +26,6 @@
     "useUnknownInCatchVariables": false,
     "sourceMap": true
   },
-  "include": ["lib/**/*.js", "lib/**/*.d.ts", "openligadb.js"],
+  "include": ["lib/**/*.js", "lib/**/*.d.ts", "main.js"],
   "exclude": ["node_modules/**", "widgets/**"]
 }

@@ -73,6 +73,7 @@
         "lint": "eslint --debug -c eslint.config.mjs .|more",
         "build": "cd widgets/openligadb && npm run build && cd ../..",
         "translate": "translate-adapter",
+        "translate-widgets": "node ./bin/translate.js --source widgets/openligadb/i18n/en.json --format single",
         "release": "release-script --all"
     },
     "bugs": {
