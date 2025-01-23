@@ -446,7 +446,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.8.1 (2025-01-23)
 
 - adjust breakpoints in jsonConfig as a workaround for the new table/card-elements
 

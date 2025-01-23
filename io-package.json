@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.8.0",
+    "version": "1.8.1",
     "news": {
+      "1.8.1": {
+        "en": "adjust breakpoints in jsonConfig as a workaround for the new table/card-elements",
+        "de": "breakpoints in jsonConfig als Workaround für die neuen Tisch-/Kartenelemente einstellen",
+        "ru": "настроить точки разлома в jsonConfig как обход для нового стола / карт-элементов",
+        "pt": "ajustar pontos de interrupção em jsonConfig como uma solução para a nova tabela / cartões-elementos",
+        "nl": "breekpunten in jsonConfig aanpassen als een oplossing voor de nieuwe tafel/kaartelementen",
+        "fr": "ajuster les points d'arrêt dans jsonConfig comme solution de rechange pour les nouveaux éléments de tableau/carte",
+        "it": "regolare i punti di rottura in jsonConfig come una soluzione di lavoro per la nuova tabella / elementi della scheda",
+        "es": "ajustar puntos de rotura en jsonConfig como una solución para los nuevos elementos de mesa/tarjeta",
+        "pl": "dostosowanie punktów grawitacyjnych w jsonConfig jako workaround dla nowych elementów tabeli / karty",
+        "uk": "регульовані точки розбиття в jsonConfig як робота для нового столу/карток-елементів",
+        "zh-cn": "调整jsonConfig中的断点,作为新表格/卡片内容的变通工作"
+      },
       "1.8.0": {
         "en": "move widget documentation from html file to readme\nadjust and prove responsive design for jsonconfig\nimplement individual color settings for highlite and filters for each widget",
         "de": "widget-dokumentation von html-datei auf readme verschieben\njustieren und bewähren responsive design für jsonconfig\nindividuelle farbeinstellungen für highlite und filter für jedes widget implementieren",
@@ -80,19 +93,6 @@
         "pl": "naprawić, jeśli gra nie istnieje dla team1 / teamm2\nsomme pretier changes\nuruchom config dla vscode",
         "uk": "виправити, якщо немає гри для команди1/team2\nsomme prettier зміни\njavascript licenses api веб-сайт",
         "zh-cn": "如果小组1/ 团队2 不存在游戏, 则修复\n更美的改变\nvscode 的发射配置"
-      },
-      "1.4.8": {
-        "en": "release",
-        "de": "release",
-        "ru": "релиз",
-        "pt": "lançamento",
-        "nl": "release",
-        "fr": "libération",
-        "it": "rilascio",
-        "es": "liberación",
-        "pl": "zwolnienie",
-        "uk": "видання",
-        "zh-cn": "释放"
       }
     },
     "titleLang": {
