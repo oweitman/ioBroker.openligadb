@@ -449,6 +449,9 @@ sendTo(
 ### **WORK IN PROGRESS**
 
 - revert to node 18
+- move to axios
+- use ioUtils
+- move to class
 
 ### 1.8.1 (2025-01-23)
 
