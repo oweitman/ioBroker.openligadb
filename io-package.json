@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.8.1",
+    "version": "1.9.0",
     "news": {
+      "1.9.0": {
+        "en": "revert to node 18\nmove to axios\nuse ioUtils\nmove to class\nimprove currgameday calc if the season didnt start",
+        "de": "zurück zum knoten 183\numzug nach axios\nioUtils\numzug in die klasse\ncurrgameday calc verbessern, wenn die saison nicht gestartet wurde",
+        "ru": "вернуться в нод 18\nперейти в axios\nиспользуйте ioUtils\nперейти в класс\nулучшить кальк, если сезон не начался",
+        "pt": "reverter para o nó 18\nmover para axios\nutilizar ioUtils\nmover para a classe\nmelhorar o cálculo currgameday se a temporada não começou",
+        "nl": "terug naar knooppunt 18\nverplaatsen naar axios\nioUtils gebruiken\nnaar klasse verplaatsen\ncurrgameday calc verbeteren als het seizoen niet begon",
+        "fr": "retour au nœud 18\npasser à axios\nutilisation\npasser à la classe\naméliorer currgameday calc si la saison ne commence pas",
+        "it": "tornare al nodo 18\npassare all'assios\nuso di ioUtili\nandare a lezione\nmigliorare currgameday calc se la stagione non è iniziata",
+        "es": "revertir a los nodos 18\npasar a axios\nuse ioUtils\npasar a clase\nmejorar currgameday calc si la temporada no comenzó",
+        "pl": "powrót do węzła 18\nprzejść do axios\nstosować joUtils\nprzejść do klasy\npoprawić currgameday calc jeśli sezon nie rozpoczął",
+        "uk": "перевернутися до вузла 18 років\nперейти в axios\nвикористання ioUtils\nпереїзд до класу\nполіпшити кальмарів, якщо сезон не почав",
+        "zh-cn": "返回节点 第 18 条\n移动到轴\n使用 ioUtils\n移动到类\n如果赛季不开始的话, 提高赛季的成绩"
+      },
       "1.8.1": {
         "en": "adjust breakpoints in jsonConfig as a workaround for the new table/card-elements",
         "de": "breakpoints in jsonConfig als Workaround für die neuen Tisch-/Kartenelemente einstellen",
@@ -80,19 +93,6 @@
         "pl": "przełącz na eslint 9\ndostosować ustawienia markdownlint, aby były kompatybilne z ładniejszymi",
         "uk": "вимикач до eslint 9\nналаштування відмітки, щоб бути сумісними з претензією",
         "zh-cn": "切换到 eslint 9\n调整标记下lint 设置以与更美的设置兼容"
-      },
-      "1.4.9": {
-        "en": "fix if no game exist for team1/team2\nsomme prettier changes\nlaunch config for vscode",
-        "de": "fix, wenn kein spiel existiert für team1/team2\nsomme prettier änderungen\nstart config für vscode",
-        "ru": "исправить, если нет игры для team1/team2\nsomme красивее изменения\nнастройка запуска для vscode",
-        "pt": "corrigir se nenhum jogo existe para team1/team2\nmudanças mais bonitas\nlançamento de configuração para vscode",
-        "nl": "fix als er geen spel bestaat voor team1/team2\nsomme mooiere wijzigingen\nstartconfiguratie voor vscode",
-        "fr": "corriger si aucun jeu n'existe pour team1/team2\nsomme plus jolies modifications\nconfiguration de lancement pour vscode",
-        "it": "correzione se non esiste un gioco per team1/team2\ncambio somme più bello\nlanciare config per vscode",
-        "es": "arreglar si no hay juego para el equipo1/team2\ncambios más bonitos\nconfiguración de lanzamiento para vscode",
-        "pl": "naprawić, jeśli gra nie istnieje dla team1 / teamm2\nsomme pretier changes\nuruchom config dla vscode",
-        "uk": "виправити, якщо немає гри для команди1/team2\nsomme prettier зміни\njavascript licenses api веб-сайт",
-        "zh-cn": "如果小组1/ 团队2 不存在游戏, 则修复\n更美的改变\nvscode 的发射配置"
       }
     },
     "titleLang": {
