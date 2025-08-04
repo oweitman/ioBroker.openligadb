@@ -452,6 +452,7 @@ sendTo(
 - move to axios
 - use ioUtils
 - move to class
+- improve currgameday calc if the season didnt start
 
 ### 1.8.1 (2025-01-23)
 
