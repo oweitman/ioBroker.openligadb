@@ -23,10 +23,10 @@
     "url": "https://github.com/oweitman/ioBroker.openligadb"
   },
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.2.3",
+    "@iobroker/adapter-core": "^3.3.1",
     "axios": "^1.11.0"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "@types/chai": "^4.3.16",
     "@types/chai-as-promised": "^8.0.2",
     "@types/mocha": "^10.0.8",
-    "@types/node": "^24.1.0",
+    "@types/node": "^24.2.0",
     "@types/proxyquire": "^1.3.31",
     "@types/sinon": "^17.0.4",
     "@types/sinon-chai": "^3.2.12",
@@ -69,7 +69,7 @@
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
-    "test": "npm run test:js && npm run test:package",
+    "test": "npm run test:package && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .|more",
     "build": "cd widgets/openligadb && npm run build && cd ../..",
