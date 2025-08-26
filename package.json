@@ -1,6 +1,6 @@
 {
   "name": "iobroker.openligadb",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "ioBroker Adapter to get soccer sport match results from OpenLigaDB",
   "author": {
     "name": "oweitman",
@@ -59,7 +59,7 @@
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
-    "test": "npm run test:package && npm run test:package",
+    "test": "npm run test:integration && npm run test:package",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .|more",
     "build": "cd widgets/openligadb && npm run build && cd ../..",

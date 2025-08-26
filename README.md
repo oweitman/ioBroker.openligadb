@@ -446,9 +446,10 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.9.1 (2025-08-26)
 
 - test remove node 18,extend to node 24
+- fix calcCurrentGameDay if games array is empty
 
 ### 1.9.0 (2025-08-04)
 

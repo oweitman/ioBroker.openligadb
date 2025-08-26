@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.9.0",
+    "version": "1.9.1",
     "news": {
+      "1.9.1": {
+        "en": "test remove node 18,extend to node 24\nfix calcCurrentGameDay if games array is empty",
+        "de": "test entfernen node 18,extend to node 24\ncalcCurrentGame Tag, wenn Spiele Array leer ist",
+        "ru": "тест удалить узел 18, расширить узел 24\nобсуждение CalcCurrentGame День, когда игровой массив пуст",
+        "pt": "teste remover o nó 18, extend ao nó 24\ncorrigir calcCurrentGame Dia se o array de jogos estiver vazio",
+        "nl": "test verwijder node 18, extend naar node 24\nfix calcCurrentGame Dag als games array leeg is",
+        "fr": "test enlever le noeud 18,extendre au noeud 24\ncorrection calcCurrentGame Jour si le tableau de jeux est vide",
+        "it": "prova rimuovere nodo 18, estend to node 24\ncalcCurrentGame Giorno se l'array di giochi è vuoto",
+        "es": "prueba eliminar nodo 18,extender a nodo 24\ncalcCurrentGame Día si la matriz de juegos está vacía",
+        "pl": "test usunąć węzeł 18, rozszerzyć na węzeł 24\nnaprawić calcCurrentGame Dzień, jeśli tablica gier jest pusta",
+        "uk": "test remove node 18,потенд в вузол 24\nзасупу 10 ток День, якщо масив гри порожній",
+        "zh-cn": "测试去除节点 18, 延伸至节点 24\n修补当前卡片 游戏阵列为空的天数"
+      },
       "1.9.0": {
         "en": "revert to node 18\nmove to axios\nuse ioUtils\nmove to class\nimprove currgameday calc if the season didnt start",
         "de": "zurück zum knoten 183\numzug nach axios\nioUtils\numzug in die klasse\ncurrgameday calc verbessern, wenn die saison nicht gestartet wurde",
@@ -80,19 +93,6 @@
         "pl": "naprawianie problemów z sprawdzaczem adaptera",
         "uk": "виправити проблеми з перевіркою адаптера",
         "zh-cn": "从适配器检查器中校正问题"
-      },
-      "1.4.10": {
-        "en": "switch to eslint 9\nadjust markdownlint settings to be compatible with prettier",
-        "de": "schalter zu eslint 9\nmarkdownlint-einstellungen anpassen, um kompatibel mit der prättier",
-        "ru": "переход на eslint 9\nнастроить настройки markdownlint, чтобы быть совместимым с prettier",
-        "pt": "mudar para eslint 9\najustar as configurações do markdownlint para ser compatível com mais",
-        "nl": "schakelen naar eslint 9\nmarkdownlintinstellingen aanpassen om compatibel te zijn met mooier",
-        "fr": "passer à eslint 9\najuster les paramètres de balisage pour être compatible avec le meilleur",
-        "it": "passare a eslint 9\nregolare le impostazioni di markdownlint per essere compatibili con le impostazioni più belle",
-        "es": "interruptor a eslint 9\najustar la configuración de marcado para ser compatible con",
-        "pl": "przełącz na eslint 9\ndostosować ustawienia markdownlint, aby były kompatybilne z ładniejszymi",
-        "uk": "вимикач до eslint 9\nналаштування відмітки, щоб бути сумісними з претензією",
-        "zh-cn": "切换到 eslint 9\n调整标记下lint 设置以与更美的设置兼容"
       }
     },
     "titleLang": {
