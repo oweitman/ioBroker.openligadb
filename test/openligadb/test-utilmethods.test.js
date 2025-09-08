@@ -82,8 +82,8 @@ describe('openligadbserver utility methods', () => {
         const clock = sinon.useFakeTimers(new Date('2023-01-10T00:00:00Z').getTime());
         try {
             const matches = [
-                { matchDateTime: '2023-01-05T00:00:00Z', groupOrderID: 2 },
-                { matchDateTime: '2023-01-08T00:00:00Z', groupOrderID: 5 },
+                { matchDateTime: '2023-01-05T00:00:00Z', group: {  groupOrderID: 2}},
+                { matchDateTime: '2023-01-08T00:00:00Z', group: { groupOrderID: 5 }},
             ];
             const current = { groupOrderID: 7 };
             const result = server.calcCurrentGameDay(matches, current);
@@ -97,13 +97,29 @@ describe('openligadbserver utility methods', () => {
         // Freeze time before earliest match
         const clock = sinon.useFakeTimers(new Date('2023-01-01T00:00:00Z').getTime());
         try {
-            const matches = [ { matchDateTime: '2023-01-05T00:00:00Z', groupOrderID: 3 } ];
+            const matches = [ { matchDateTime: '2023-01-05T00:00:00Z', group: { groupOrderID: 3 }} ];
             const current = { groupOrderID: 10 };
             const result = server.calcCurrentGameDay(matches, current);
             // Due to implementation, the earliest match detection returns the initial
             // object rather than the first element.  Therefore the function
             // returns current.groupOrderID (10) instead of 1.
-            expect(result).to.equal(10);
+            expect(result).to.equal(3);
+        } finally {
+            clock.restore();
+        }
+    });
+
+        it('calcCurrentGameDay returns 1 when no games', () => {
+        // Freeze time before earliest match
+        const clock = sinon.useFakeTimers(new Date('2023-01-01T00:00:00Z').getTime());
+        try {
+            const matches = [  ];
+            const current = { groupOrderID: 10 };
+            const result = server.calcCurrentGameDay(matches, current);
+            // Due to implementation, the earliest match detection returns the initial
+            // object rather than the first element.  Therefore the function
+            // returns current.groupOrderID (10) instead of 1.
+            expect(result).to.equal(1);
         } finally {
             clock.restore();
         }

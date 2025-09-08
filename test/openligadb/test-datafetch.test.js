@@ -114,12 +114,45 @@ describe('openligadbserver data fetching', () => {
         expect(reqStub.getCall(0).args[0]).to.equal(url);
     });
 
-    it('getData iterates leagues and sets states for each', async () => {
+    it('getData iterates leagues and sets states for each - string', async () => {
         // Configure two leagues
         adapter.config.leagues = JSON.stringify([
             { league: 'BL1', season: '2022' },
             { league: 'BL2', season: '2023' },
         ]);
+        // stub internal data functions to return simple values
+        sinon.stub(server, 'getTable').resolves({ table: 'data' });
+        sinon.stub(server, 'getAllMatches').resolves([{ matchDateTime: '2022-01-01T00:00:00Z' }]);
+        sinon.stub(server, 'getCurrentGroup').resolves({ groupOrderID: 3 });
+        sinon.stub(server, 'calcCurrentGameDay').callsFake((matches, current) => current.groupOrderID);
+        sinon.stub(server, 'getGoalgetter').resolves({ list: [] });
+        // stub ioUtil methods to record calls
+        const coStub = sinon.stub(server.ioUtil, 'createObjectNotExistsAsync').resolves();
+        const ssStub = sinon.stub(server.ioUtil, 'setStateAsync').resolves();
+        await server.getData();
+        // Wait for all asynchronous forEach callbacks to complete.  Without
+        // this delay the test may finish before async operations run.
+        await new Promise(resolve => setImmediate(resolve));
+        // Two leagues * four data points = 8 calls
+        expect(coStub.callCount).to.equal(8);
+        expect(ssStub.callCount).to.equal(8);
+        // Check first league calls
+        const firstTableCall = coStub.getCall(0);
+        expect(firstTableCall.args[0]).to.equal(server.stateTemplate.table);
+        expect(firstTableCall.args[1]).to.equal('BL1');
+        expect(firstTableCall.args[2]).to.equal('2022');
+        const firstStateCall = ssStub.getCall(0);
+        expect(firstStateCall.args[0]).to.equal('table');
+        expect(firstStateCall.args[1]).to.equal(JSON.stringify({ table: 'data' }));
+        expect(firstStateCall.args[2]).to.equal('BL1');
+        expect(firstStateCall.args[3]).to.equal('2022');
+    });
+    it('getData iterates leagues and sets states for each - object', async () => {
+        // Configure two leagues
+        adapter.config.leagues = [
+            { league: 'BL1', season: '2022' },
+            { league: 'BL2', season: '2023' },
+        ];
         // stub internal data functions to return simple values
         sinon.stub(server, 'getTable').resolves({ table: 'data' });
         sinon.stub(server, 'getAllMatches').resolves([{ matchDateTime: '2022-01-01T00:00:00Z' }]);
