@@ -31,7 +31,7 @@ describe('openligadbserver data fetching', () => {
                 goalgetters:  { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
             };
             const { ioUtil } = require('../../lib/ioUtil');
-            this.ioUtil = new ioUtil(this.adapter);
+            this.ioUtil = new ioUtil(adapter);
             return Promise.resolve();
         });
         server = new OpenLigaServer(adapter);

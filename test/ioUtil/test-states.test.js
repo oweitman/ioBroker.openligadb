@@ -37,7 +37,7 @@ describe('ioUtil state operations', () => {
     it('setStateNack defaults ack=true when no callback', () => {
         const adapter = createAdapterStub();
         const util = new ioUtil(adapter);
-        util.setStateNack('temp', 'val', 'x', 'y');
+        util.setStateNack('temp', 'val', 'x', 'y',undefined);
         sinon.assert.calledOnce(adapter.setState);
         const [fullName, value, ack] = adapter.setState.getCall(0).args;
         expect(fullName).to.equal('x.y.temp');

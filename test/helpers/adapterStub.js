@@ -22,15 +22,15 @@ function createAdapterStub() {
         config: { leagues: JSON.stringify([]), refresh: 0 },
         log,
         // Async object creation
-        setObjectAsync: sinon.fake.resolves(),
-        setObjectNotExistsAsync: sinon.fake.resolves(),
+        setObjectAsync: sinon.fake.resolves(undefined),
+        setObjectNotExistsAsync: sinon.fake.resolves(undefined),
         // Sync object creation
         setObject: sinon.fake((name, obj, cb) => { if (cb) cb(); }),
         // getObject uses internal flag _objectExists
         getObject: sinon.stub(),
         // deletion
         delObject: sinon.fake((name, options, cb) => { if (typeof options === 'function') { options(); } else if (cb) { cb(); } }),
-        extendObjectAsync: sinon.fake.resolves(),
+        extendObjectAsync: sinon.fake.resolves(undefined),
         setState: sinon.fake((name, value, ack, cb) => { if (typeof cb === 'function') cb(); }),
         createState: sinon.fake((level1, level2, name, stateTemplate, cb) => { if (cb) cb(); }),
         getObjectListAsync: sinon.stub(),
@@ -39,7 +39,7 @@ function createAdapterStub() {
         // Use a stub instead of fake here so that callsFake can be used to
         // override its behaviour.  A sinon.fake does not expose callsFake.
         getStateAsync: sinon.stub(),
-        delay: sinon.fake.resolves(),
+        delay: sinon.fake.resolves(undefined),
         // timers
         // Use plain functions for timers so that tests can stub them without
         // encountering "already spied on" errors.  clearTimeout and clearInterval
