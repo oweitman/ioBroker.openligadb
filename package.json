@@ -61,7 +61,7 @@
     "test:package": "mocha test/package --exit",
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:js && npm run test:integration && npm run test:package",
-    "coverage": "nyc npm run test:js",
+    "coverage": "nyc npm run test:js && nyc report --reporter=html",
     "check": "tsc --noEmit -p tsconfig.check.json",
     "lint": "eslint -c eslint.config.mjs .|more",
     "build": "cd widgets/openligadb && npm run build && cd ../..",
