@@ -6,6 +6,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.openligadb.svg)](https://www.npmjs.com/package/iobroker.openligadb)
 ![Number of Installations](https://iobroker.live/badges/openligadb-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/openligadb-stable.svg)
+[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/iobroker.openligadb?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.openligadb/blob/main/coverage/index.html)
 
 [![NPM](https://nodei.co/npm/iobroker.openligadb.png?downloads=true)](https://nodei.co/npm/iobroker.openligadb/)
 
