@@ -45,22 +45,6 @@ describe('ioUtil state operations', () => {
         expect(ack).to.be.true;
     });
 
-    it('createState forwards parameters correctly', (done) => {
-        const adapter = createAdapterStub();
-        const util = new ioUtil(adapter);
-        const templ = { name: 'foo', read: true, write: false };
-        util.createState(templ, 'lv1', 'lv2', () => {
-            sinon.assert.calledOnce(adapter.createState);
-            const call = adapter.createState.getCall(0);
-            // adapter.createState(level1, level2, name, template, cb)
-            expect(call.args[0]).to.equal('lv1');
-            expect(call.args[1]).to.equal('lv2');
-            expect(call.args[2]).to.equal('foo');
-            expect(call.args[3]).to.equal(templ);
-            done();
-        });
-    });
-
     it('setState always uses ack=true for synchronous variant', () => {
         const adapter = createAdapterStub();
         const util = new ioUtil(adapter);

@@ -2,7 +2,7 @@
   "all": true,
   "reporter": ["text-summary", "html"],
   "include": ["lib/**/*.js"],
-  "exclude": ["test/**", "node_modules/**","lib/tools.js"],
+  "exclude": ["test/**", "node_modules/**"],
   "check-coverage": false,
   "lines": 80,
   "branches": 60,
