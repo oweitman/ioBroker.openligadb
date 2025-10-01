@@ -19,3 +19,4 @@ admin/i18n/*/flat.txt
 .vscode/secrets
 .vscode/info.txt
 xxx.prettierrc.js
+.commitinfo 
