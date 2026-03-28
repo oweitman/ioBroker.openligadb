@@ -85,7 +85,7 @@ für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:
 
 ```css
 .oldb-tt tr.favorite {
-  color: yellow;
+    color: yellow;
 }
 ```
 
@@ -93,7 +93,7 @@ für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:
 
 ```css
 .oldb-tt b.favorite {
-  color: blue;
+    color: blue;
 }
 ```
 
@@ -101,7 +101,7 @@ für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:
 
 ```css
 .oldb-tt .todaygame {
-  color: red;
+    color: red;
 }
 ```
 
@@ -109,7 +109,7 @@ für die dann beliebig eine bestimmte Formatierung festgelegt werden kann:
 
 ```css
 .oldb-tt .todaygameheader {
-  color: lightgreen;
+    color: lightgreen;
 }
 ```
 
@@ -158,11 +158,11 @@ Spiel (todaygame) mit CSS-Klassen versehen.
 
 ```css
 .todaygame {
-  color: red;
+    color: red;
 }
 
 .todaygameheader {
-  color: yellow;
+    color: yellow;
 }
 ```
 
@@ -214,7 +214,7 @@ Diese Widget zeigt die alle Spiele und Ergebnisse als Pivottabelle an
 
 ```css
 .oldb-tt .favorite {
-  color: yellow;
+    color: yellow;
 }
 ```
 
@@ -277,24 +277,24 @@ Expand
 
 ```css
 #w00000 .oldb-tt {
-  max-width: 100vw; /* iOS braucht das */
-  overflow: hidden;
+    max-width: 100vw; /* iOS braucht das */
+    overflow: hidden;
 }
 
 #w00000 .oldb-tt tbody {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 10s linear infinite;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 10s linear infinite;
 }
 
 /* Make it move */
 @keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 ```
 
@@ -407,17 +407,17 @@ Request the data from OpenLigaDB by league,season and a time range.
 
 ```javascript
 sendTo(
-  "openligadb.0",
-  "getMatchData",
-  {
-    league: "bl1",
-    season: "2024",
-    datefrom: "2024-09-01T00:00",
-    datetill: "2024-09-10T00:00",
-  },
-  function (matches) {
-    console.log(matches);
-  }
+    'openligadb.0',
+    'getMatchData',
+    {
+        league: 'bl1',
+        season: '2024',
+        datefrom: '2024-09-01T00:00',
+        datetill: '2024-09-10T00:00',
+    },
+    function (matches) {
+        console.log(matches);
+    },
 );
 ```
 
@@ -447,6 +447,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
+
 ### 1.9.1 (2025-08-26)
 
 - test remove node 18,extend to node 24

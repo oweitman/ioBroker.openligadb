@@ -14,6 +14,7 @@ fetch('widgets/openligadb/i18n/translations.json').then(async res => {
     const i18n = await res.json();
 
     $.extend(true, systemDictionary, i18n);
+    //translateWord('test');
 });
 
 vis.binds['openligadb'] = {
