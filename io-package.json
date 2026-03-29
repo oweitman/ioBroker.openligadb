@@ -1,185 +1,194 @@
 {
-    "common": {
-        "name": "openligadb",
-        "version": "1.9.1",
-        "news": {
-            "1.9.1": {
-                "en": "test remove node 18,extend to node 24\nfix calcCurrentGameDay if games array is empty",
-                "de": "test entfernen node 18,extend to node 24\ncalcCurrentGame Tag, wenn Spiele Array leer ist",
-                "ru": "тест удалить узел 18, расширить узел 24\nобсуждение CalcCurrentGame День, когда игровой массив пуст",
-                "pt": "teste remover o nó 18, extend ao nó 24\ncorrigir calcCurrentGame Dia se o array de jogos estiver vazio",
-                "nl": "test verwijder node 18, extend naar node 24\nfix calcCurrentGame Dag als games array leeg is",
-                "fr": "test enlever le noeud 18,extendre au noeud 24\ncorrection calcCurrentGame Jour si le tableau de jeux est vide",
-                "it": "prova rimuovere nodo 18, estend to node 24\ncalcCurrentGame Giorno se l'array di giochi è vuoto",
-                "es": "prueba eliminar nodo 18,extender a nodo 24\ncalcCurrentGame Día si la matriz de juegos está vacía",
-                "pl": "test usunąć węzeł 18, rozszerzyć na węzeł 24\nnaprawić calcCurrentGame Dzień, jeśli tablica gier jest pusta",
-                "uk": "test remove node 18,потенд в вузол 24\nзасупу 10 ток День, якщо масив гри порожній",
-                "zh-cn": "测试去除节点 18, 延伸至节点 24\n修补当前卡片 游戏阵列为空的天数"
-            },
-            "1.9.0": {
-                "en": "revert to node 18\nmove to axios\nuse ioUtils\nmove to class\nimprove currgameday calc if the season didnt start",
-                "de": "zurück zum knoten 183\numzug nach axios\nioUtils\numzug in die klasse\ncurrgameday calc verbessern, wenn die saison nicht gestartet wurde",
-                "ru": "вернуться в нод 18\nперейти в axios\nиспользуйте ioUtils\nперейти в класс\nулучшить кальк, если сезон не начался",
-                "pt": "reverter para o nó 18\nmover para axios\nutilizar ioUtils\nmover para a classe\nmelhorar o cálculo currgameday se a temporada não começou",
-                "nl": "terug naar knooppunt 18\nverplaatsen naar axios\nioUtils gebruiken\nnaar klasse verplaatsen\ncurrgameday calc verbeteren als het seizoen niet begon",
-                "fr": "retour au nœud 18\npasser à axios\nutilisation\npasser à la classe\naméliorer currgameday calc si la saison ne commence pas",
-                "it": "tornare al nodo 18\npassare all'assios\nuso di ioUtili\nandare a lezione\nmigliorare currgameday calc se la stagione non è iniziata",
-                "es": "revertir a los nodos 18\npasar a axios\nuse ioUtils\npasar a clase\nmejorar currgameday calc si la temporada no comenzó",
-                "pl": "powrót do węzła 18\nprzejść do axios\nstosować joUtils\nprzejść do klasy\npoprawić currgameday calc jeśli sezon nie rozpoczął",
-                "uk": "перевернутися до вузла 18 років\nперейти в axios\nвикористання ioUtils\nпереїзд до класу\nполіпшити кальмарів, якщо сезон не почав",
-                "zh-cn": "返回节点 第 18 条\n移动到轴\n使用 ioUtils\n移动到类\n如果赛季不开始的话, 提高赛季的成绩"
-            },
-            "1.8.1": {
-                "en": "adjust breakpoints in jsonConfig as a workaround for the new table/card-elements",
-                "de": "breakpoints in jsonConfig als Workaround für die neuen Tisch-/Kartenelemente einstellen",
-                "ru": "настроить точки разлома в jsonConfig как обход для нового стола / карт-элементов",
-                "pt": "ajustar pontos de interrupção em jsonConfig como uma solução para a nova tabela / cartões-elementos",
-                "nl": "breekpunten in jsonConfig aanpassen als een oplossing voor de nieuwe tafel/kaartelementen",
-                "fr": "ajuster les points d'arrêt dans jsonConfig comme solution de rechange pour les nouveaux éléments de tableau/carte",
-                "it": "regolare i punti di rottura in jsonConfig come una soluzione di lavoro per la nuova tabella / elementi della scheda",
-                "es": "ajustar puntos de rotura en jsonConfig como una solución para los nuevos elementos de mesa/tarjeta",
-                "pl": "dostosowanie punktów grawitacyjnych w jsonConfig jako workaround dla nowych elementów tabeli / karty",
-                "uk": "регульовані точки розбиття в jsonConfig як робота для нового столу/карток-елементів",
-                "zh-cn": "调整jsonConfig中的断点,作为新表格/卡片内容的变通工作"
-            },
-            "1.8.0": {
-                "en": "move widget documentation from html file to readme\nadjust and prove responsive design for jsonconfig\nimplement individual color settings for highlite and filters for each widget",
-                "de": "widget-dokumentation von html-datei auf readme verschieben\njustieren und bewähren responsive design für jsonconfig\nindividuelle farbeinstellungen für highlite und filter für jedes widget implementieren",
-                "ru": "переместить документацию виджета из html файла в считывание\nнастроить и доказать отзывчивый дизайн для jsonconfig\nреализовать индивидуальные цветовые настройки для высокой щели и фильтров для каждого виджета",
-                "pt": "mover documentação do widget do arquivo html para readme\najustar e provar o design responsivo para jsonconfig\nimplementar configurações de cores individuais para highlite e filtros para cada widget",
-                "nl": "widget documentatie verplaatsen van html-bestand naar readme\npassen en bewijzen responsief ontwerp voor jsonconfig\nindividuele kleurinstellingen voor highlite en filters voor elke widget implementeren",
-                "fr": "déplacer la documentation de widget du fichier html vers readme\najuster et prouver un design réactif pour jsonconfig\nimplémenter les paramètres de couleur individuels pour highlite et filtres pour chaque widget",
-                "it": "spostare la documentazione del widget dal file html a readme\nregolare e dimostrare il design reattivo per jsonconfig\nimplementare singole impostazioni di colore per highlite e filtri per ogni widget",
-                "es": "mover la documentación del widget del archivo html a readme\najustar y probar el diseño sensible para jsonconfig\nimplementa la configuración de color individual para altalite y filtros para cada widget",
-                "pl": "przenieść dokumentację widget z pliku html do readme\ndostosować i udowodnić responsywny projekt dla jsonconfig\nimplementuj indywidualne ustawienia kolorów dla highlite i filtrów dla każdego widget",
-                "uk": "перемістити документацію віджетів з html-файлу для читанняme\nналаштування та довести чуйний дизайн для jsonconfig\nреалізовувати індивідуальні параметри кольору для високоліття та фільтрів для кожного віджету",
-                "zh-cn": "从 html 文件移动部件文档到 readme\n调整并证明 jsonconfig 的响应性设计\n执行每个部件的高升和过滤器的单个颜色设置"
-            },
-            "1.7.0": {
-                "en": "fix quotes",
-                "de": "fixe zitate",
-                "ru": "исправить цитаты",
-                "pt": "corrigir citações",
-                "nl": "fix citaten",
-                "fr": "corriger les citations",
-                "it": "corretti i preventivi",
-                "es": "corrido citas",
-                "pl": "fix cudzysłówka",
-                "uk": "фіксувати котирування",
-                "zh-cn": "修补引用"
-            },
-            "1.5.0": {
-                "en": "Addition of a CSS example for the Pivot Table widget\nadd `sendTo` command to getMatchData\nremove deprecated widgets\naddition widget option \"only logo\" to supress the teamname",
-                "de": "Addition eines CSS-Beispiels für das Pivot-Tabellen-Widget\n`send hinzufügen Um' Befehl zu erhaltenMatch Daten\ndeprecated widgets entfernen\nzusatz widget option \"nur logo\" um den teamnamen zu drücken",
-                "ru": "Добавление примера CSS для виджета Pivot Table\nдобавить `send Командовать, чтобы получить Данные\nудалить депрецированные виджеты\nдобавленная опция виджета «только логотип» для подавления названия команды",
-                "pt": "Adição de um exemplo CSS para o widget da tabela dinâmica\nadicionar `send Comando para obterMatch Dados\nremover widgets depreciados\nopção de widget de adição \"apenas logotipo\" para suprir o nome da equipe",
-                "nl": "Toevoeging van een CSS voorbeeld voor de Pivot Table widget\ntoevoegen Opdracht om Match te krijgen Gegevens\nverouderde widgets verwijderen\ntoevoegen widget optie \"alleen logo\" om de teamnaam onder druk te zetten",
-                "fr": "Ajout d'un exemple CSS pour le widget Pivot Table\najouter `send À la commande d'obtenirMatch Données\nsupprimer les widgets obsolètes\noption de widget supplémentaire \"seul logo\" pour supprimer le nom d'équipe",
-                "it": "Aggiunta di un esempio CSS per il widget Pivot Table\naggiungere `send A` comando per ottenereMatch Dati\nrimuovere widget deprecati\naggiunta widget opzione \"solo logo\" per suprimere il nome del team",
-                "es": "Adición de un ejemplo de CSS para el widget de la tabla Pivot\nadd `send A` comando to getMatch Datos\nremove deprecated widgets\nañadir widget opción \"sólo logotipo\" para suprimir el nombre del equipo",
-                "pl": "Dodanie przykładu CSS dla widżetu tabeli Pivot\nadd 'send Do' polecenia do getMatch Dane\nusunąć zdepregatowane widżety\ndodaj opcję widget \"tylko logo\", aby wysuszyć nazwę zespołu",
-                "uk": "Додаток для віджету Pivot Table\nдодати `send Щоб отриматиMatch Дані\nвидалити відхилені віджети\nдодатковий варіант віджету \"тільки логотип\" для натискання назви команди",
-                "zh-cn": "为关键表格部件添加 CSS 示例\n添加“端点” 命令获取Match 数据\n删除已贬值的部件\n添加“ 只有标识” 的部件选项以补充团队名称"
-            },
-            "1.4.11": {
-                "en": "fix issues from adapter checker",
-                "de": "probleme von adapter checker beheben",
-                "ru": "проблемы с адаптером",
-                "pt": "corrigir problemas do verificador do adaptador",
-                "nl": "problemen oplossen van adaptercontrole",
-                "fr": "correction des problèmes de l'adaptateur checker",
-                "it": "risolvere problemi da adattatore checker",
-                "es": "solucionar problemas desde el control de adaptador",
-                "pl": "naprawianie problemów z sprawdzaczem adaptera",
-                "uk": "виправити проблеми з перевіркою адаптера",
-                "zh-cn": "从适配器检查器中校正问题"
-            }
-        },
-        "titleLang": {
-            "en": "OpenLigaDB",
-            "de": "OpenLigaDB",
-            "ru": "OpenLigaDB",
-            "pt": "OpenLigaDB",
-            "nl": "OpenLigaDB",
-            "fr": "OpenLigaDB",
-            "it": "OpenLigaDB",
-            "es": "OpenLigaDB",
-            "pl": "OpenLigaDB",
-            "zh-cn": "OpenLigaDB",
-            "uk": "OpenLigaDB"
-        },
-        "desc": {
-            "en": "OpenLigaDB",
-            "de": "OpenLigaDB",
-            "ru": "OpenLigaDB",
-            "pt": "OpenLigaDB",
-            "nl": "OpenLigaDB",
-            "fr": "OpenLigaDB",
-            "it": "OpenLigaDB",
-            "es": "OpenLigaDB",
-            "pl": "OpenLigaDB",
-            "zh-cn": "OpenLigaDB",
-            "uk": "OpenLigaDB"
-        },
-        "authors": ["oweitman <oweitman@gmx.de>"],
-        "keywords": ["home automation", "openligadb", "openliga", "football", "fussball", "bundesliga"],
-        "licenseInformation": {
-            "type": "free",
-            "license": "MIT"
-        },
-        "platform": "Javascript/Node.js",
-        "icon": "openligadb_n.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/main/admin/openligadb_n.png",
-        "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/main/README.md",
-        "loglevel": "debug",
-        "tier": 3,
-        "mode": "daemon",
-        "type": "misc-data",
-        "messagebox": true,
-        "compact": true,
-        "connectionType": "cloud",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.6.17"
-            }
-        ]
+  "common": {
+    "name": "openligadb",
+    "version": "1.9.2",
+    "news": {
+      "1.9.2": {
+        "en": "translate widgets\ntranslate readme\nmove widgetscript to dist folder\nremove unused scripts\nrelease",
+        "de": "übersetzen widgets\nübersetzen sie das wort\nwidgetscript verschieben, um den ordner zu deaktivieren\nungenutzte skripte entfernen\nrelease",
+        "ru": "переводить виджеты\nпереводить readme\nпереместить виджетскрипт в папку dist\nудалить неиспользованные скрипты\nосвобождение",
+        "pt": "traduzir widgets\ntranslate readme\nmover o widget para a pasta dist\nremover scripts não utilizados\nlançamento",
+        "nl": "widgets vertalen\nvertalen readme\nwidgetscript verplaatsen naar map verplaatsen\nongebruikte scripts verwijderen\nrelease",
+        "fr": "traduire les widgets\ntraduire readme\ndéplacer le widgetscript dans le dossier dist\nsupprimer les scripts inutilisés\nlibération",
+        "it": "tradurre widgets\ntradurre readme\nspostare widgetscript nella cartella dist\nrimuovere gli script non utilizzati\nrilascio",
+        "es": "traducido widgets\ntraducir readme\nmover widgetscript para desactivar la carpeta\neliminar scripts no utilizados\nliberación",
+        "pl": "przetłumaczyć widżety\nprzetłumacz readme\nprzenieść widgetscript do katalogu dist\nusuń niewykorzystane skrypty\nzwolnienie",
+        "uk": "переклад віджетів\nпереклад читме\nперемістити javascript для папки dist\nвидалити невикористані скрипти\nвидання",
+        "zh-cn": "翻译部件\n翻译读取器\n将部件标记移动到剪贴板文件夹\n删除未使用的脚本\n释放"
+      },
+      "1.9.1": {
+        "en": "test remove node 18,extend to node 24\nfix calcCurrentGameDay if games array is empty",
+        "de": "test entfernen node 18,extend to node 24\ncalcCurrentGame Tag, wenn Spiele Array leer ist",
+        "ru": "тест удалить узел 18, расширить узел 24\nобсуждение CalcCurrentGame День, когда игровой массив пуст",
+        "pt": "teste remover o nó 18, extend ao nó 24\ncorrigir calcCurrentGame Dia se o array de jogos estiver vazio",
+        "nl": "test verwijder node 18, extend naar node 24\nfix calcCurrentGame Dag als games array leeg is",
+        "fr": "test enlever le noeud 18,extendre au noeud 24\ncorrection calcCurrentGame Jour si le tableau de jeux est vide",
+        "it": "prova rimuovere nodo 18, estend to node 24\ncalcCurrentGame Giorno se l'array di giochi è vuoto",
+        "es": "prueba eliminar nodo 18,extender a nodo 24\ncalcCurrentGame Día si la matriz de juegos está vacía",
+        "pl": "test usunąć węzeł 18, rozszerzyć na węzeł 24\nnaprawić calcCurrentGame Dzień, jeśli tablica gier jest pusta",
+        "uk": "test remove node 18,потенд в вузол 24\nзасупу 10 ток День, якщо масив гри порожній",
+        "zh-cn": "测试去除节点 18, 延伸至节点 24\n修补当前卡片 游戏阵列为空的天数"
+      },
+      "1.9.0": {
+        "en": "revert to node 18\nmove to axios\nuse ioUtils\nmove to class\nimprove currgameday calc if the season didnt start",
+        "de": "zurück zum knoten 183\numzug nach axios\nioUtils\numzug in die klasse\ncurrgameday calc verbessern, wenn die saison nicht gestartet wurde",
+        "ru": "вернуться в нод 18\nперейти в axios\nиспользуйте ioUtils\nперейти в класс\nулучшить кальк, если сезон не начался",
+        "pt": "reverter para o nó 18\nmover para axios\nutilizar ioUtils\nmover para a classe\nmelhorar o cálculo currgameday se a temporada não começou",
+        "nl": "terug naar knooppunt 18\nverplaatsen naar axios\nioUtils gebruiken\nnaar klasse verplaatsen\ncurrgameday calc verbeteren als het seizoen niet begon",
+        "fr": "retour au nœud 18\npasser à axios\nutilisation\npasser à la classe\naméliorer currgameday calc si la saison ne commence pas",
+        "it": "tornare al nodo 18\npassare all'assios\nuso di ioUtili\nandare a lezione\nmigliorare currgameday calc se la stagione non è iniziata",
+        "es": "revertir a los nodos 18\npasar a axios\nuse ioUtils\npasar a clase\nmejorar currgameday calc si la temporada no comenzó",
+        "pl": "powrót do węzła 18\nprzejść do axios\nstosować joUtils\nprzejść do klasy\npoprawić currgameday calc jeśli sezon nie rozpoczął",
+        "uk": "перевернутися до вузла 18 років\nперейти в axios\nвикористання ioUtils\nпереїзд до класу\nполіпшити кальмарів, якщо сезон не почав",
+        "zh-cn": "返回节点 第 18 条\n移动到轴\n使用 ioUtils\n移动到类\n如果赛季不开始的话, 提高赛季的成绩"
+      },
+      "1.8.1": {
+        "en": "adjust breakpoints in jsonConfig as a workaround for the new table/card-elements",
+        "de": "breakpoints in jsonConfig als Workaround für die neuen Tisch-/Kartenelemente einstellen",
+        "ru": "настроить точки разлома в jsonConfig как обход для нового стола / карт-элементов",
+        "pt": "ajustar pontos de interrupção em jsonConfig como uma solução para a nova tabela / cartões-elementos",
+        "nl": "breekpunten in jsonConfig aanpassen als een oplossing voor de nieuwe tafel/kaartelementen",
+        "fr": "ajuster les points d'arrêt dans jsonConfig comme solution de rechange pour les nouveaux éléments de tableau/carte",
+        "it": "regolare i punti di rottura in jsonConfig come una soluzione di lavoro per la nuova tabella / elementi della scheda",
+        "es": "ajustar puntos de rotura en jsonConfig como una solución para los nuevos elementos de mesa/tarjeta",
+        "pl": "dostosowanie punktów grawitacyjnych w jsonConfig jako workaround dla nowych elementów tabeli / karty",
+        "uk": "регульовані точки розбиття в jsonConfig як робота для нового столу/карток-елементів",
+        "zh-cn": "调整jsonConfig中的断点,作为新表格/卡片内容的变通工作"
+      },
+      "1.8.0": {
+        "en": "move widget documentation from html file to readme\nadjust and prove responsive design for jsonconfig\nimplement individual color settings for highlite and filters for each widget",
+        "de": "widget-dokumentation von html-datei auf readme verschieben\njustieren und bewähren responsive design für jsonconfig\nindividuelle farbeinstellungen für highlite und filter für jedes widget implementieren",
+        "ru": "переместить документацию виджета из html файла в считывание\nнастроить и доказать отзывчивый дизайн для jsonconfig\nреализовать индивидуальные цветовые настройки для высокой щели и фильтров для каждого виджета",
+        "pt": "mover documentação do widget do arquivo html para readme\najustar e provar o design responsivo para jsonconfig\nimplementar configurações de cores individuais para highlite e filtros para cada widget",
+        "nl": "widget documentatie verplaatsen van html-bestand naar readme\npassen en bewijzen responsief ontwerp voor jsonconfig\nindividuele kleurinstellingen voor highlite en filters voor elke widget implementeren",
+        "fr": "déplacer la documentation de widget du fichier html vers readme\najuster et prouver un design réactif pour jsonconfig\nimplémenter les paramètres de couleur individuels pour highlite et filtres pour chaque widget",
+        "it": "spostare la documentazione del widget dal file html a readme\nregolare e dimostrare il design reattivo per jsonconfig\nimplementare singole impostazioni di colore per highlite e filtri per ogni widget",
+        "es": "mover la documentación del widget del archivo html a readme\najustar y probar el diseño sensible para jsonconfig\nimplementa la configuración de color individual para altalite y filtros para cada widget",
+        "pl": "przenieść dokumentację widget z pliku html do readme\ndostosować i udowodnić responsywny projekt dla jsonconfig\nimplementuj indywidualne ustawienia kolorów dla highlite i filtrów dla każdego widget",
+        "uk": "перемістити документацію віджетів з html-файлу для читанняme\nналаштування та довести чуйний дизайн для jsonconfig\nреалізовувати індивідуальні параметри кольору для високоліття та фільтрів для кожного віджету",
+        "zh-cn": "从 html 文件移动部件文档到 readme\n调整并证明 jsonconfig 的响应性设计\n执行每个部件的高升和过滤器的单个颜色设置"
+      },
+      "1.7.0": {
+        "en": "fix quotes",
+        "de": "fixe zitate",
+        "ru": "исправить цитаты",
+        "pt": "corrigir citações",
+        "nl": "fix citaten",
+        "fr": "corriger les citations",
+        "it": "corretti i preventivi",
+        "es": "corrido citas",
+        "pl": "fix cudzysłówka",
+        "uk": "фіксувати котирування",
+        "zh-cn": "修补引用"
+      },
+      "1.5.0": {
+        "en": "Addition of a CSS example for the Pivot Table widget\nadd `sendTo` command to getMatchData\nremove deprecated widgets\naddition widget option \"only logo\" to supress the teamname",
+        "de": "Addition eines CSS-Beispiels für das Pivot-Tabellen-Widget\n`send hinzufügen Um' Befehl zu erhaltenMatch Daten\ndeprecated widgets entfernen\nzusatz widget option \"nur logo\" um den teamnamen zu drücken",
+        "ru": "Добавление примера CSS для виджета Pivot Table\nдобавить `send Командовать, чтобы получить Данные\nудалить депрецированные виджеты\nдобавленная опция виджета «только логотип» для подавления названия команды",
+        "pt": "Adição de um exemplo CSS para o widget da tabela dinâmica\nadicionar `send Comando para obterMatch Dados\nremover widgets depreciados\nopção de widget de adição \"apenas logotipo\" para suprir o nome da equipe",
+        "nl": "Toevoeging van een CSS voorbeeld voor de Pivot Table widget\ntoevoegen Opdracht om Match te krijgen Gegevens\nverouderde widgets verwijderen\ntoevoegen widget optie \"alleen logo\" om de teamnaam onder druk te zetten",
+        "fr": "Ajout d'un exemple CSS pour le widget Pivot Table\najouter `send À la commande d'obtenirMatch Données\nsupprimer les widgets obsolètes\noption de widget supplémentaire \"seul logo\" pour supprimer le nom d'équipe",
+        "it": "Aggiunta di un esempio CSS per il widget Pivot Table\naggiungere `send A` comando per ottenereMatch Dati\nrimuovere widget deprecati\naggiunta widget opzione \"solo logo\" per suprimere il nome del team",
+        "es": "Adición de un ejemplo de CSS para el widget de la tabla Pivot\nadd `send A` comando to getMatch Datos\nremove deprecated widgets\nañadir widget opción \"sólo logotipo\" para suprimir el nombre del equipo",
+        "pl": "Dodanie przykładu CSS dla widżetu tabeli Pivot\nadd 'send Do' polecenia do getMatch Dane\nusunąć zdepregatowane widżety\ndodaj opcję widget \"tylko logo\", aby wysuszyć nazwę zespołu",
+        "uk": "Додаток для віджету Pivot Table\nдодати `send Щоб отриматиMatch Дані\nвидалити відхилені віджети\nдодатковий варіант віджету \"тільки логотип\" для натискання назви команди",
+        "zh-cn": "为关键表格部件添加 CSS 示例\n添加“端点” 命令获取Match 数据\n删除已贬值的部件\n添加“ 只有标识” 的部件选项以补充团队名称"
+      }
     },
-    "native": {
-        "leagues": "[]",
-        "refresh": 10
+    "titleLang": {
+      "en": "OpenLigaDB",
+      "de": "OpenLigaDB",
+      "ru": "OpenLigaDB",
+      "pt": "OpenLigaDB",
+      "nl": "OpenLigaDB",
+      "fr": "OpenLigaDB",
+      "it": "OpenLigaDB",
+      "es": "OpenLigaDB",
+      "pl": "OpenLigaDB",
+      "zh-cn": "OpenLigaDB",
+      "uk": "OpenLigaDB"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "OpenLigaDB",
+      "de": "OpenLigaDB",
+      "ru": "OpenLigaDB",
+      "pt": "OpenLigaDB",
+      "nl": "OpenLigaDB",
+      "fr": "OpenLigaDB",
+      "it": "OpenLigaDB",
+      "es": "OpenLigaDB",
+      "pl": "OpenLigaDB",
+      "zh-cn": "OpenLigaDB",
+      "uk": "OpenLigaDB"
+    },
+    "authors": [
+      "oweitman <oweitman@gmx.de>"
+    ],
+    "keywords": [
+      "home automation",
+      "openligadb",
+      "openliga",
+      "football",
+      "fussball",
+      "bundesliga"
+    ],
+    "licenseInformation": {
+      "type": "free",
+      "license": "MIT"
+    },
+    "platform": "Javascript/Node.js",
+    "icon": "openligadb_n.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/oweitman/ioBroker.openligadb/main/admin/openligadb_n.png",
+    "readme": "https://github.com/oweitman/ioBroker.openligadb/blob/main/README.md",
+    "loglevel": "debug",
+    "tier": 3,
+    "mode": "daemon",
+    "type": "misc-data",
+    "messagebox": true,
+    "compact": true,
+    "connectionType": "cloud",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.17"
+      }
     ]
+  },
+  "native": {
+    "leagues": "[]",
+    "refresh": 10
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
