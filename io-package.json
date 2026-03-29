@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.9.2",
+    "version": "1.9.3",
     "news": {
-      "1.9.2": {
-        "en": "translate widgets\ntranslate readme\nmove widgetscript to dist folder\nremove unused scripts\nrelease",
-        "de": "übersetzen widgets\nübersetzen sie das wort\nwidgetscript verschieben, um den ordner zu deaktivieren\nungenutzte skripte entfernen\nrelease",
-        "ru": "переводить виджеты\nпереводить readme\nпереместить виджетскрипт в папку dist\nудалить неиспользованные скрипты\nосвобождение",
-        "pt": "traduzir widgets\ntranslate readme\nmover o widget para a pasta dist\nremover scripts não utilizados\nlançamento",
-        "nl": "widgets vertalen\nvertalen readme\nwidgetscript verplaatsen naar map verplaatsen\nongebruikte scripts verwijderen\nrelease",
-        "fr": "traduire les widgets\ntraduire readme\ndéplacer le widgetscript dans le dossier dist\nsupprimer les scripts inutilisés\nlibération",
-        "it": "tradurre widgets\ntradurre readme\nspostare widgetscript nella cartella dist\nrimuovere gli script non utilizzati\nrilascio",
-        "es": "traducido widgets\ntraducir readme\nmover widgetscript para desactivar la carpeta\neliminar scripts no utilizados\nliberación",
-        "pl": "przetłumaczyć widżety\nprzetłumacz readme\nprzenieść widgetscript do katalogu dist\nusuń niewykorzystane skrypty\nzwolnienie",
-        "uk": "переклад віджетів\nпереклад читме\nперемістити javascript для папки dist\nвидалити невикористані скрипти\nвидання",
-        "zh-cn": "翻译部件\n翻译读取器\n将部件标记移动到剪贴板文件夹\n删除未使用的脚本\n释放"
+      "1.9.3": {
+        "en": "translate widgets\ntranslate readme\nmove widgetscript to dist folder\nremove unused scripts\nrelease\nfix workflow",
+        "de": "übersetzen widgets\nübersetzen sie das wort\nwidgetscript verschieben, um den ordner zu deaktivieren\nungenutzte skripte entfernen\nrelease\nfixer workflow",
+        "ru": "переводить виджеты\nпереводить readme\nпереместить виджетскрипт в папку dist\nудалить неиспользованные скрипты\nосвобождение\nисправить рабочий процесс",
+        "pt": "traduzir widgets\ntranslate readme\nmover o widget para a pasta dist\nremover scripts não utilizados\nlançamento\ncorrigir o fluxo de trabalho",
+        "nl": "widgets vertalen\nvertalen readme\nwidgetscript verplaatsen naar map verplaatsen\nongebruikte scripts verwijderen\nrelease\nworkflow herstellen",
+        "fr": "traduire les widgets\ntraduire readme\ndéplacer le widgetscript dans le dossier dist\nsupprimer les scripts inutilisés\nlibération\ncorriger le flux de travail",
+        "it": "tradurre widgets\ntradurre readme\nspostare widgetscript nella cartella dist\nrimuovere gli script non utilizzati\nrilascio\ncorrezione del flusso di lavoro",
+        "es": "traducido widgets\ntraducir readme\nmover widgetscript para desactivar la carpeta\neliminar scripts no utilizados\nliberación\ncorrección de flujo de trabajo",
+        "pl": "przetłumaczyć widżety\nprzetłumacz readme\nprzenieść widgetscript do katalogu dist\nusuń niewykorzystane skrypty\nzwolnienie\nnaprawić przepływ pracy",
+        "uk": "переклад віджетів\nпереклад читме\nперемістити javascript для папки dist\nвидалити невикористані скрипти\nвидання\nфіксувати робочий процес",
+        "zh-cn": "翻译部件\n翻译读取器\n将部件标记移动到剪贴板文件夹\n删除未使用的脚本\n释放\n固定工作流程"
       },
       "1.9.1": {
         "en": "test remove node 18,extend to node 24\nfix calcCurrentGameDay if games array is empty",
