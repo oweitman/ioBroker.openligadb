@@ -8,10 +8,7 @@ export default [
     {
         // specify files to exclude from linting here
         ignores: [
-            'widgets/openligadb/js/openligadb-dist.js',
-            'widgets/openligadb/js/clipboard-polyfill.promise.js',
-            'widgets/openligadb/js/highlight.pack.js',
-            'widgets/openligadb/js/jquery-3.2.1.min.js',
+            'widgets/openligadb/dist/openligadb-dist.js',
             '.dev-server/**',
             'backup/**',
             '*.test.js',
