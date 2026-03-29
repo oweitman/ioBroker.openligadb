@@ -5,7 +5,7 @@
 
 */
 'use strict';
-/* global vis, $, systemDictionary */
+/* global vis, $, systemDictionary, _ */
 
 // add translations for edit mode
 import { version as pkgVersion } from '../../../package.json';
@@ -178,8 +178,7 @@ vis.binds['openligadb'] = {
                 text += `              <img class="oldb-icon" src="${team.teamIconUrl}">`;
                 text += '           </th>';
             });
-            text +=
-                '           <th class="oldb-center oldb-goaldiff">Diff</th><th class="oldb-center oldb-points">Punkte</th>';
+            text += `           <th class="oldb-center oldb-goaldiff"  title="${_('Diff_tooltip')}">${_('Diff')}</th><th class="oldb-center oldb-points"  title="${_('Punkte_tooltip')}">${_('Punkte')}</th>`;
             text += '        </tr>';
             let pteam1;
             table.forEach(function (team1) {
@@ -274,8 +273,8 @@ vis.binds['openligadb'] = {
 
             text += '<table class="oldb-gg">';
             text += '        <tr>';
-            text += '           <th class="oldb-left">Name</td>';
-            text += '           <th class="oldb-left">Tore</td>';
+            text += `           <th class="oldb-left" title="${_('Name_tooltip')}">${_('Name')}</td>`;
+            text += `           <th class="oldb-left" title="${_('Tore_tooltip')}">${_('Tore')}</td>`;
             text += '        </tr>';
             let count = 0;
             goalgetters.forEach(function (goalgetter) {
@@ -923,39 +922,39 @@ vis.binds['openligadb'] = {
             text += '<table class="oldb-tt">';
             text += '    <thead>';
             text += '    <tr >';
-            text += '        <th class="oldb-center oldb-rank">';
+            text += `        <th class="oldb-center oldb-rank" >`;
             text += '            #';
             text += '        </th>';
-            text += '        <th colspan="2" class="oldb-clubheader" style="text-align: left;">';
-            text += '            Club';
+            text += `        <th colspan="2" class="oldb-clubheader" style="text-align: left;" title="${_('Club_tooltip')}">`;
+            text += `            ${_('Club')}`;
             text += '        </th>';
             text += '';
-            text += '        <th class="oldb-center oldb-games">';
-            text += '            Sp';
+            text += `        <th class="oldb-center oldb-games" title="${_('Sp_tooltip')}">`;
+            text += `            ${_('Sp')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-won">';
-            text += '            S';
+            text += `        <th class="oldb-center oldb-won" title="${_('S_tooltip')}">`;
+            text += `            ${_('S')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-draw">';
-            text += '            U';
+            text += `        <th class="oldb-center oldb-draw" title="${_('U_tooltip')}">`;
+            text += `            ${_('U')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-lost">';
-            text += '            N';
+            text += `        <th class="oldb-center oldb-lost" title="${_('N_tooltip')}">`;
+            text += `            ${_('N')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-goals">';
-            text += '            Tore';
+            text += `        <th class="oldb-center oldb-goals" title="${_('Tore_tooltip')}">`;
+            text += `            ${_('Tore')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-goaldiff">';
-            text += '            Diff';
+            text += `        <th class="oldb-center oldb-goaldiff" title="${_('Diff_tooltip')}">`;
+            text += `            ${_('Diff')}`;
             text += '        </th>';
-            text += '        <th class="oldb-center oldb-points">';
-            text += '            Punkte';
+            text += `        <th class="oldb-center oldb-points" title="${_('Punkte_tooltip')}">`;
+            text += `            ${_('Punkte')}`;
             text += '        </th>';
             if (showtrend) {
-                text += '        <th class="oldb-center oldb-trend">';
+                text += `        <th class="oldb-center oldb-trend" title="${_('T_tooltip')}">`;
             }
             if (showtrend) {
-                text += '            T';
+                text += `            ${_('T')}`;
             }
             if (showtrend) {
                 text += '        </th>';
