@@ -460,6 +460,7 @@ sendTo(
 
 - add old changelog
 - update worklfow
+- remove word.js
 
 ### 1.9.3 (2026-03-29)
 
