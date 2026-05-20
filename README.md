@@ -457,6 +457,9 @@ sendTo(
 -->
 
 ### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
+### **WORK IN PROGRESS**
 
 - add old changelog
 - update worklfow
