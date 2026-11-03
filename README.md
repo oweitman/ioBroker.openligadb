@@ -457,6 +457,7 @@ sendTo(
 -->
 
 ### **WORK IN PROGRESS**
+- (iobroker-bot) Adapter requires node.js >= 22 now.
 
 - add old changelog
 - update worklfow
