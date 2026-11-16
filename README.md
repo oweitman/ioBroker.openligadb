@@ -455,8 +455,9 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-### 1.9.4 (2026-11-16)
+### 1.9.5 (2026-11-16)
 
+- remove 27.x from test matrix
 - add old changelog
 - update worklfow
 - remove word.js

@@ -1,20 +1,20 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.9.4",
+    "version": "1.9.5",
     "news": {
-      "1.9.4": {
-        "en": "add old changelog\nupdate worklfow\nremove word.js\nimprove error handling in requests\nupdate packages",
-        "de": "Altes Changelog hinzufügen\nWorkflow updaten\nlösche word.js\nFehlerbehandlung bei Anfragen verbessern\nPakete updaten",
-        "ru": "добавить старый список изменений\nобновить рабочий процесс\nудалить файл word.js\nулучшить обработку ошибок в запросах\nпакеты обновлений",
-        "pt": "add old changelog\natualizar fluxo\nremove word.js\nmelhore os erros em pedidos\natualizar pacotes",
-        "nl": "oude changelog toevoegen\nworkflow bijwerken\nword.js verwijderen\nde foutafhandeling in verzoeken verbeteren\npakketten bijwerken",
-        "fr": "ajouter un ancien log\nflux de mise à jour\nremove word.js\naméliorer la gestion des requêtes\npacks de mise à jour",
-        "it": "aggiungi vecchio\naggiorna\nrimuovi word.js\ngestire meglio le richieste\nupdate pack",
-        "es": "añadir un viejo changelog\nactualizar flujo\nquitar word.js\nmejorar la gestión de errores en los pedidos\nactualizar paquetes",
-        "pl": "dodaj stary dziennik zmian\nzaktualizuj worklfow\nusuń word.js\npoprawa obsługi błędów w żądaniach\naktualizuj pakiety",
-        "uk": "додати старий журнал змін\nоновити робоче поле\nвидалити word.js\nпокращити обробку помилок у запитах\nоновлення пакетів",
-        "zh-cn": "添加旧的更新日志\n更新工作流程\n移除 word.js\n改进请求中的错误处理\n更新软件包"
+      "1.9.5": {
+        "en": "remove 27.x from test matrix\nadd old changelog\nupdate worklfow\nremove word.js\nimprove error handling in requests\nupdate packages",
+        "de": "27.x aus Testmatrix entfernen\nAltes Changelog hinzufügen\nWorkflow updaten\nlösche word.js\nFehlerbehandlung bei Anfragen verbessern\nPakete updaten",
+        "ru": "удалить 27.x из тестовой матрицы\nдобавить старый список изменений\nобновить рабочий процесс\nудалить файл word.js\nулучшить обработку ошибок в запросах\nпакеты обновлений",
+        "pt": "remove 27.x da matriz de teste\nadd old changelog\natualizar fluxo\nremove word.js\nmelhore os erros em pedidos\natualizar pacotes",
+        "nl": "27.x uit de testmatrix verwijderen\noude changelog toevoegen\nworkflow bijwerken\nword.js verwijderen\nde foutafhandeling in verzoeken verbeteren\npakketten bijwerken",
+        "fr": "supprimer 27.x de la matrice de test\najouter un ancien log\nflux de mise à jour\nremove word.js\naméliorer la gestion des requêtes\npacks de mise à jour",
+        "it": "rimuova 27.x da test matrix\naggiungi vecchio\naggiorna\nrimuovi word.js\ngestire meglio le richieste\nupdate pack",
+        "es": "quitar 27x de la matriz de test\nañadir un viejo changelog\nactualizar flujo\nquitar word.js\nmejorar la gestión de errores en los pedidos\nactualizar paquetes",
+        "pl": "usuń 27.x z matrycy testowej\ndodaj stary dziennik zmian\nzaktualizuj worklfow\nusuń word.js\npoprawa obsługi błędów w żądaniach\naktualizuj pakiety",
+        "uk": "видалити 27.x з тестової матриці\nдодати старий журнал змін\nоновити робоче поле\nвидалити word.js\nпокращити обробку помилок у запитах\nоновлення пакетів",
+        "zh-cn": "从测试矩阵中删除 27.x\n添加旧的更新日志\n更新工作流程\n移除 word.js\n改进请求中的错误处理\n更新软件包"
       },
       "1.9.3": {
         "en": "translate widgets\ntranslate readme\nmove widgetscript to dist folder\nremove unused scripts\nrelease\nfix workflow",
