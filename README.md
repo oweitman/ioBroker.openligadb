@@ -455,8 +455,7 @@ sendTo(
   Placeholder for the next version (at the beginning of the line):
    ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.9.4 (2026-11-16)
 
 - add old changelog
 - update worklfow
@@ -562,6 +561,7 @@ sendTo(
 - update package and io-broker files
 - fix problems with vis2
 - remove vis as a
+
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

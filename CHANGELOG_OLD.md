@@ -2,7 +2,6 @@
 
 This file contains older changes of ioBroker.poolcontrol.  
 Recent changes can be found in the README.md.
-
 ## 1.2.4
 
 - fix problems reported by adapter-checker

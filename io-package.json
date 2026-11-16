@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "openligadb",
-    "version": "1.9.3",
+    "version": "1.9.4",
     "news": {
+      "1.9.4": {
+        "en": "add old changelog\nupdate worklfow\nremove word.js\nimprove error handling in requests\nupdate packages",
+        "de": "Altes Changelog hinzufügen\nWorkflow updaten\nlösche word.js\nFehlerbehandlung bei Anfragen verbessern\nPakete updaten",
+        "ru": "добавить старый список изменений\nобновить рабочий процесс\nудалить файл word.js\nулучшить обработку ошибок в запросах\nпакеты обновлений",
+        "pt": "add old changelog\natualizar fluxo\nremove word.js\nmelhore os erros em pedidos\natualizar pacotes",
+        "nl": "oude changelog toevoegen\nworkflow bijwerken\nword.js verwijderen\nde foutafhandeling in verzoeken verbeteren\npakketten bijwerken",
+        "fr": "ajouter un ancien log\nflux de mise à jour\nremove word.js\naméliorer la gestion des requêtes\npacks de mise à jour",
+        "it": "aggiungi vecchio\naggiorna\nrimuovi word.js\ngestire meglio le richieste\nupdate pack",
+        "es": "añadir un viejo changelog\nactualizar flujo\nquitar word.js\nmejorar la gestión de errores en los pedidos\nactualizar paquetes",
+        "pl": "dodaj stary dziennik zmian\nzaktualizuj worklfow\nusuń word.js\npoprawa obsługi błędów w żądaniach\naktualizuj pakiety",
+        "uk": "додати старий журнал змін\nоновити робоче поле\nвидалити word.js\nпокращити обробку помилок у запитах\nоновлення пакетів",
+        "zh-cn": "添加旧的更新日志\n更新工作流程\n移除 word.js\n改进请求中的错误处理\n更新软件包"
+      },
       "1.9.3": {
         "en": "translate widgets\ntranslate readme\nmove widgetscript to dist folder\nremove unused scripts\nrelease\nfix workflow",
         "de": "übersetzen widgets\nübersetzen sie das wort\nwidgetscript verschieben, um den ordner zu deaktivieren\nungenutzte skripte entfernen\nrelease\nfixer workflow",
@@ -80,19 +93,6 @@
         "pl": "fix cudzysłówka",
         "uk": "фіксувати котирування",
         "zh-cn": "修补引用"
-      },
-      "1.5.0": {
-        "en": "Addition of a CSS example for the Pivot Table widget\nadd `sendTo` command to getMatchData\nremove deprecated widgets\naddition widget option \"only logo\" to supress the teamname",
-        "de": "Addition eines CSS-Beispiels für das Pivot-Tabellen-Widget\n`send hinzufügen Um' Befehl zu erhaltenMatch Daten\ndeprecated widgets entfernen\nzusatz widget option \"nur logo\" um den teamnamen zu drücken",
-        "ru": "Добавление примера CSS для виджета Pivot Table\nдобавить `send Командовать, чтобы получить Данные\nудалить депрецированные виджеты\nдобавленная опция виджета «только логотип» для подавления названия команды",
-        "pt": "Adição de um exemplo CSS para o widget da tabela dinâmica\nadicionar `send Comando para obterMatch Dados\nremover widgets depreciados\nopção de widget de adição \"apenas logotipo\" para suprir o nome da equipe",
-        "nl": "Toevoeging van een CSS voorbeeld voor de Pivot Table widget\ntoevoegen Opdracht om Match te krijgen Gegevens\nverouderde widgets verwijderen\ntoevoegen widget optie \"alleen logo\" om de teamnaam onder druk te zetten",
-        "fr": "Ajout d'un exemple CSS pour le widget Pivot Table\najouter `send À la commande d'obtenirMatch Données\nsupprimer les widgets obsolètes\noption de widget supplémentaire \"seul logo\" pour supprimer le nom d'équipe",
-        "it": "Aggiunta di un esempio CSS per il widget Pivot Table\naggiungere `send A` comando per ottenereMatch Dati\nrimuovere widget deprecati\naggiunta widget opzione \"solo logo\" per suprimere il nome del team",
-        "es": "Adición de un ejemplo de CSS para el widget de la tabla Pivot\nadd `send A` comando to getMatch Datos\nremove deprecated widgets\nañadir widget opción \"sólo logotipo\" para suprimir el nombre del equipo",
-        "pl": "Dodanie przykładu CSS dla widżetu tabeli Pivot\nadd 'send Do' polecenia do getMatch Dane\nusunąć zdepregatowane widżety\ndodaj opcję widget \"tylko logo\", aby wysuszyć nazwę zespołu",
-        "uk": "Додаток для віджету Pivot Table\nдодати `send Щоб отриматиMatch Дані\nвидалити відхилені віджети\nдодатковий варіант віджету \"тільки логотип\" для натискання назви команди",
-        "zh-cn": "为关键表格部件添加 CSS 示例\n添加“端点” 命令获取Match 数据\n删除已贬值的部件\n添加“ 只有标识” 的部件选项以补充团队名称"
       }
     },
     "titleLang": {
