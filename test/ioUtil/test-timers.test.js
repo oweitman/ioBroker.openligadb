@@ -53,9 +53,9 @@ describe('ioUtil timers and observer management', () => {
         const adapter = createAdapterStub();
         // stub setTimeout to always return a token
         const token1 = { fn: null, time: null, arg1: null, arg2: null, id: 'tok' };
-        const setTimeoutStub = sinon.stub(adapter, 'setTimeout').returns(token1);
+        sinon.stub(adapter, 'setTimeout').returns(token1);
         const util = new ioUtil(adapter);
-        util.setTimeout('abc', () => {}, 0);        const token2 = { fn: null, time: null, arg1: null, arg2: null, id: 'tok' };
+        util.setTimeout('abc', () => {}, 0);
         expect(util.observers['abc']).to.equal(token1);
         util.clearTimeout('abc');
         sinon.assert.calledOnce(adapter.clearTimeout);
@@ -66,7 +66,7 @@ describe('ioUtil timers and observer management', () => {
     it('clearInterval clears timer and removes observer entry', () => {
         const adapter = createAdapterStub();
         const token1 = { fn: null, time: null, arg1: null, arg2: null, id: 'tokInt' };
-        const setTimeoutStub = sinon.stub(adapter, 'setTimeout').returns(token1);
+        sinon.stub(adapter, 'setTimeout').returns(token1);
         const util = new ioUtil(adapter);
         util.setTimeout('interval', () => {}, 0);
         util.clearInterval('interval');

@@ -7,7 +7,7 @@ export default {
     overrides: [
         ...(prettierConfig.overrides ?? []),
         {
-            files: ['*.json', '*.json5', '*.jsonc'],
+            files: ['*.json', '*.json5', '*.jsonc', '*.nycrc', '*.yml'],
             options: {
                 tabWidth: 2,
             },

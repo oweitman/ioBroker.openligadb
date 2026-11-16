@@ -6,7 +6,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.openligadb.svg)](https://www.npmjs.com/package/iobroker.openligadb)
 ![Number of Installations](https://iobroker.live/badges/openligadb-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/openligadb-stable.svg)
-[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/iobroker.openligadb?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.openligadb/blob/main/coverage/index.html)
+[![nycrc config on GitHub](https://img.shields.io/nycrc/oweitman/iobroker.openligadb?preferredThreshold=functions)](https://html-preview.github.io/?url=https://github.com/oweitman/ioBroker.openligadb/blob/main/docs/coverage/index.html)
 
 [![NPM](https://nodei.co/npm/iobroker.openligadb.png?downloads=true)](https://nodei.co/npm/iobroker.openligadb/)
 
@@ -461,6 +461,8 @@ sendTo(
 - add old changelog
 - update worklfow
 - remove word.js
+- improve error handling in requests
+- update packages
 
 ### 1.9.3 (2026-03-29)
 
@@ -561,11 +563,13 @@ sendTo(
 - fix problems with vis2
 - remove vis as a
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
 
-Copyright (c) 2025-2026 oweitman
+Copyright (c) 2025-2026 oweitman@gmx.de
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const { createAdapterStub } = require('../helpers/adapterStub');
-const OpenLigaServer = require('../../lib/openligadbserver');
+const { createServerStub } = require('../helpers/serverStub');
 
 /**
  * Tests verifying that the high-level data fetching functions compose URLs
@@ -15,28 +15,7 @@ describe('openligadbserver data fetching', () => {
 
     beforeEach(() => {
         adapter = createAdapterStub();
-        // Stub init to avoid asynchronous observer loops.  We replicate
-        // the essential initialisation (endpoints and state templates) and
-        // instantiate ioUtil manually.  This stub is removed in afterEach.
-        sinon.stub(OpenLigaServer.prototype, 'init').callsFake(function () {
-            this.api_ep_gettable = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
-            this.api_ep_actplayday = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
-            this.api_ep_allmatches = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
-            this.api_ep_actgroup = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
-            this.api_ep_goalgetter = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
-            this.stateTemplate = {
-                table: { name: 'table', read: true, write: false, type: 'string', role: 'value' },
-                currgameday: { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
-                allmatches: { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
-                goalgetters: { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
-            };
-            const { ioUtil } = require('../../lib/ioUtil');
-            this.ioUtil = new ioUtil(adapter);
-            return Promise.resolve();
-        });
-        server = new OpenLigaServer(adapter);
-        // ensure no timeouts are scheduled in tests
-        sinon.stub(server.ioUtil, 'setTimeout');
+        server = createServerStub(adapter);
     });
 
     afterEach(() => {
@@ -124,15 +103,12 @@ describe('openligadbserver data fetching', () => {
         sinon.stub(server, 'getTable').resolves({ table: 'data' });
         sinon.stub(server, 'getAllMatches').resolves([{ matchDateTime: '2022-01-01T00:00:00Z' }]);
         sinon.stub(server, 'getCurrentGroup').resolves({ groupOrderID: 3 });
-        sinon.stub(server, 'calcCurrentGameDay').callsFake((matches, current) => current.groupOrderID);
+        sinon.stub(server, 'calcCurrentGameDay').returns(3);
         sinon.stub(server, 'getGoalgetter').resolves({ list: [] });
         // stub ioUtil methods to record calls
         const coStub = sinon.stub(server.ioUtil, 'createObjectNotExistsAsync').resolves();
         const ssStub = sinon.stub(server.ioUtil, 'setStateAsync').resolves();
         await server.getData();
-        // Wait for all asynchronous forEach callbacks to complete.  Without
-        // this delay the test may finish before async operations run.
-        await new Promise(resolve => setImmediate(resolve));
         // Two leagues * four data points = 8 calls
         expect(coStub.callCount).to.equal(8);
         expect(ssStub.callCount).to.equal(8);
@@ -157,15 +133,12 @@ describe('openligadbserver data fetching', () => {
         sinon.stub(server, 'getTable').resolves({ table: 'data' });
         sinon.stub(server, 'getAllMatches').resolves([{ matchDateTime: '2022-01-01T00:00:00Z' }]);
         sinon.stub(server, 'getCurrentGroup').resolves({ groupOrderID: 3 });
-        sinon.stub(server, 'calcCurrentGameDay').callsFake((matches, current) => current.groupOrderID);
+        sinon.stub(server, 'calcCurrentGameDay').returns(3);
         sinon.stub(server, 'getGoalgetter').resolves({ list: [] });
         // stub ioUtil methods to record calls
         const coStub = sinon.stub(server.ioUtil, 'createObjectNotExistsAsync').resolves();
         const ssStub = sinon.stub(server.ioUtil, 'setStateAsync').resolves();
         await server.getData();
-        // Wait for all asynchronous forEach callbacks to complete.  Without
-        // this delay the test may finish before async operations run.
-        await new Promise(resolve => setImmediate(resolve));
         // Two leagues * four data points = 8 calls
         expect(coStub.callCount).to.equal(8);
         expect(ssStub.callCount).to.equal(8);
@@ -179,5 +152,28 @@ describe('openligadbserver data fetching', () => {
         expect(firstStateCall.args[1]).to.equal(JSON.stringify({ table: 'data' }));
         expect(firstStateCall.args[2]).to.equal('BL1');
         expect(firstStateCall.args[3]).to.equal('2022');
+    });
+
+    it('keeps existing states on a failed refresh and succeeds on the next refresh', async () => {
+        adapter.config.leagues = [{ league: 'BL1', season: '2022' }];
+        const requestError = new Error('network down');
+        const getTable = sinon.stub(server, 'getTable');
+        getTable.onFirstCall().rejects(requestError);
+        getTable.onSecondCall().resolves([]);
+        sinon.stub(server, 'getAllMatches').resolves([]);
+        sinon.stub(server, 'getCurrentGroup').resolves({ groupOrderID: 1 });
+        sinon.stub(server, 'getGoalgetter').resolves([]);
+        const setState = sinon.stub(server.ioUtil, 'setStateAsync').resolves();
+
+        server.doObserver();
+        await new Promise(resolve => setImmediate(resolve));
+        sinon.assert.notCalled(setState);
+        sinon.assert.calledWithExactly(adapter.log.error, 'Update failed: network down');
+        sinon.assert.calledOnce(server.ioUtil.setTimeout);
+
+        server.doObserver();
+        await new Promise(resolve => setImmediate(resolve));
+        expect(setState.callCount).to.equal(4);
+        sinon.assert.calledTwice(server.ioUtil.setTimeout);
     });
 });
