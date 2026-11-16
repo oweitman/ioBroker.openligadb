@@ -13,7 +13,7 @@
 
     // This is necessary for the automatic typing of the adapter config
     "resolveJsonModule": true,
-
+    "types": ["node", "mocha", "chai"],
     // If you want to disable the stricter type checks (not recommended), uncomment the following line
     // "strict": false,
     // And enable some of those features for more fine-grained control

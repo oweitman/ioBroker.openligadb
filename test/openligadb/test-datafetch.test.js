@@ -19,16 +19,16 @@ describe('openligadbserver data fetching', () => {
         // the essential initialisation (endpoints and state templates) and
         // instantiate ioUtil manually.  This stub is removed in afterEach.
         sinon.stub(OpenLigaServer.prototype, 'init').callsFake(function () {
-            this.api_ep_gettable    = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
-            this.api_ep_actplayday  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
-            this.api_ep_allmatches  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
-            this.api_ep_actgroup    = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
-            this.api_ep_goalgetter  = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
+            this.api_ep_gettable = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
+            this.api_ep_actplayday = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
+            this.api_ep_allmatches = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
+            this.api_ep_actgroup = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
+            this.api_ep_goalgetter = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
             this.stateTemplate = {
-                table:        { name: 'table', read: true, write: false, type: 'string', role: 'value' },
-                currgameday:  { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
-                allmatches:   { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
-                goalgetters:  { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
+                table: { name: 'table', read: true, write: false, type: 'string', role: 'value' },
+                currgameday: { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
+                allmatches: { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
+                goalgetters: { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
             };
             const { ioUtil } = require('../../lib/ioUtil');
             this.ioUtil = new ioUtil(adapter);
