@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const { createAdapterStub } = require('../helpers/adapterStub');
-const OpenLigaServer = require('../../lib/openligadbserver');
+const { createServerStub } = require('../helpers/serverStub');
 
 /**
  * Tests covering message processing and match data retrieval.  The
@@ -15,26 +15,7 @@ describe('openligadbserver message processing', () => {
 
     beforeEach(() => {
         adapter = createAdapterStub();
-        // stub init to prevent auto observer and set endpoints/state templates
-        sinon.stub(OpenLigaServer.prototype, 'init').callsFake(function () {
-            this.api_ep_gettable    = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
-            this.api_ep_actplayday  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
-            this.api_ep_allmatches  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
-            this.api_ep_actgroup    = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
-            this.api_ep_goalgetter  = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
-            this.stateTemplate = {
-                table:        { name: 'table', read: true, write: false, type: 'string', role: 'value' },
-                currgameday:  { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
-                allmatches:   { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
-                goalgetters:  { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
-            };
-            const { ioUtil } = require('../../lib/ioUtil');
-            this.ioUtil = new ioUtil(adapter);
-            return Promise.resolve();
-        });
-        server = new OpenLigaServer(adapter);
-        // suppress observer loops by stubbing setTimeout
-        sinon.stub(server.ioUtil, 'setTimeout');
+        server = createServerStub(adapter);
     });
 
     afterEach(() => {
@@ -43,10 +24,23 @@ describe('openligadbserver message processing', () => {
 
     it('processMessages forwards getMatchData command', () => {
         const msg = { command: 'getMatchData', message: {} };
-        const stub = sinon.stub(server, 'getMatchData');
+        const stub = sinon.stub(server, 'getMatchData').resolves();
         server.processMessages(msg);
         sinon.assert.calledOnce(stub);
         expect(stub.getCall(0).args[0]).to.equal(msg);
+    });
+
+    it('reports message request failures to the caller', async () => {
+        const error = new Error('network down');
+        sinon.stub(server, 'getAllMatches').rejects(error);
+        const msg = {
+            command: 'getMatchData', from: 'client1', callback: 'cb',
+            message: { league: 'BL1', season: '2022', datefrom: '2023-01-01', datetill: '2023-12-31' },
+        };
+        server.processMessages(msg);
+        await new Promise(resolve => setImmediate(resolve));
+        sinon.assert.calledWithExactly(adapter.sendTo, 'client1', 'getMatchData', 'error: network down', 'cb');
+        sinon.assert.calledWithExactly(adapter.log.error, 'getMatchData failed: network down');
     });
 
     it('getMatchData filters matches by date and sends result', async () => {

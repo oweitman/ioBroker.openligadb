@@ -32,7 +32,7 @@
   var version;
   var init_package = __esm({
     "../package.json"() {
-      version = "1.9.1";
+      version = "1.9.3";
     }
   });
 
@@ -40,7 +40,7 @@
   var require_openligadb = __commonJS({
     "openligadb/js/openligadb.js"(exports) {
       init_package();
-      fetch("widgets/openligadb/i18n/translations.json").then((res) => __async(null, null, function* () {
+      fetch("widgets/openligadb/myi18n/translations.json").then((res) => __async(null, null, function* () {
         const i18n = yield res.json();
         $.extend(true, systemDictionary, i18n);
       }));

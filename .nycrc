@@ -1,6 +1,7 @@
 {
   "all": true,
   "reporter": ["text-summary", "html"],
+  "report-dir": "docs/coverage",
   "include": ["lib/**/*.js"],
   "exclude": ["test/**", "node_modules/**"],
   "check-coverage": false,

@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const { createAdapterStub } = require('../helpers/adapterStub');
-const OpenLigaServer = require('../../lib/openligadbserver');
+const { createServerStub } = require('../helpers/serverStub');
 
 /**
  * Tests covering standalone helper methods on the OpenLiga server.  These
@@ -15,26 +15,7 @@ describe('openligadbserver utility methods', () => {
 
     beforeEach(() => {
         adapter = createAdapterStub();
-        // Stub init to avoid asynchronous observer loops and set basic props
-        sinon.stub(OpenLigaServer.prototype, 'init').callsFake(function () {
-            this.api_ep_gettable    = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
-            this.api_ep_actplayday  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
-            this.api_ep_allmatches  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
-            this.api_ep_actgroup    = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
-            this.api_ep_goalgetter  = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
-            this.stateTemplate = {
-                table:        { name: 'table', read: true, write: false, type: 'string', role: 'value' },
-                currgameday:  { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
-                allmatches:   { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
-                goalgetters:  { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
-            };
-            const { ioUtil } = require('../../lib/ioUtil');
-            this.ioUtil = new ioUtil(adapter);
-            return Promise.resolve();
-        });
-        server = new OpenLigaServer(adapter);
-        // Prevent automatic observer loops from running during tests
-        sinon.stub(server.ioUtil, 'setTimeout');
+        server = createServerStub(adapter);
     });
 
     afterEach(() => {

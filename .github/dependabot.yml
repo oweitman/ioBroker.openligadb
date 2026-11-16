@@ -4,7 +4,6 @@
 # Reference: https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference
 version: 2
 updates:
-
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
@@ -15,6 +14,20 @@ updates:
   - package-ecosystem: 'npm'
     directories:
       - '**/*'
+    schedule:
+      interval: 'weekly'
+      time: '09:00'
+      timezone: 'Europe/Berlin'
+    open-pull-requests-limit: 15
+    versioning-strategy: 'increase'
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: '@types/node'
+        update-types:
+          - 'version-update:semver-major'
+  - package-ecosystem: 'npm'
+    directory: '/widgets'
     schedule:
       interval: 'weekly'
       time: '09:00'

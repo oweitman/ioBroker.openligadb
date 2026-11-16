@@ -1,13 +1,13 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 const { createAdapterStub } = require('../helpers/adapterStub');
-const OpenLigaServer = require('../../lib/openligadbserver');
+const { createServerStub } = require('../helpers/serverStub');
 
 /**
  * Tests for the internal request helper on the OpenLiga server.  The server
  * delegates HTTP GET requests to axios and returns the response data.  On
- * error the request function should log the error message and return
- * undefined.  The axios module is stubbed to avoid real network calls.
+ * error the request function should log the URL and reject. The axios module
+ * is stubbed to avoid real network calls.
  */
 describe('openligadbserver request helper', () => {
     let adapter;
@@ -16,26 +16,7 @@ describe('openligadbserver request helper', () => {
 
     beforeEach(() => {
         adapter = createAdapterStub();
-        // Stub init to prevent automatic observer creation and to initialise
-        sinon.stub(OpenLigaServer.prototype, 'init').callsFake(function () {
-            this.api_ep_gettable    = 'https://api.openligadb.de/getbltable/%LEAGUE%/%SEASON%';
-            this.api_ep_actplayday  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%';
-            this.api_ep_allmatches  = 'https://api.openligadb.de/getmatchdata/%LEAGUE%/%SEASON%';
-            this.api_ep_actgroup    = 'https://api.openligadb.de/getcurrentgroup/%LEAGUE%';
-            this.api_ep_goalgetter  = 'https://api.openligadb.de/getgoalgetters/%LEAGUE%/%SEASON%';
-            this.stateTemplate = {
-                table:        { name: 'table', read: true, write: false, type: 'string', role: 'value' },
-                currgameday:  { name: 'currgameday', read: true, write: false, type: 'string', role: 'value' },
-                allmatches:   { name: 'allmatches', read: true, write: false, type: 'string', role: 'value' },
-                goalgetters:  { name: 'goalgetters', read: true, write: false, type: 'string', role: 'value' },
-            };
-            const { ioUtil } = require('../../lib/ioUtil');
-            this.ioUtil = new ioUtil(adapter);
-            return Promise.resolve();
-        });
-        server = new OpenLigaServer(adapter);
-        // Prevent observers from scheduling timeouts during tests
-        sinon.stub(server.ioUtil, 'setTimeout');
+        server = createServerStub(adapter);
         // Retrieve axios from node_modules so that we can stub get on it
         axios = require('axios');
     });
@@ -54,12 +35,16 @@ describe('openligadbserver request helper', () => {
         sinon.assert.notCalled(adapter.log.error);
     });
 
-    it('logs error and returns undefined on request failure', async () => {
+    it('logs URL and propagates request failure', async () => {
         const error = new Error('network down');
         sinon.stub(axios, 'get').rejects(error);
-        const result = await server.request('http://fail');
-        expect(result).to.be.undefined;
+        try {
+            await server.request('http://fail');
+            expect.fail('request should reject');
+        } catch (caught) {
+            expect(caught).to.equal(error);
+        }
         sinon.assert.calledOnce(adapter.log.error);
-        expect(adapter.log.error.getCall(0).args[0]).to.equal('network down');
+        expect(adapter.log.error.getCall(0).args[0]).to.equal('API error http://fail: network down');
     });
 });

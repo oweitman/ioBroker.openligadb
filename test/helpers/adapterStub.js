@@ -9,6 +9,7 @@
 
 const sinon = require('sinon');
 
+/** Create an adapter stub for unit tests. */
 function createAdapterStub() {
     const log = {
         silly: sinon.spy(),
@@ -25,16 +26,34 @@ function createAdapterStub() {
         setObjectAsync: sinon.fake.resolves(undefined),
         setObjectNotExistsAsync: sinon.fake.resolves(undefined),
         // Sync object creation
-        setObject: sinon.fake((name, obj, cb) => { if (cb) cb(); }),
+        setObject: sinon.fake((name, obj, cb) => {
+            if (cb) {
+                cb();
+            }
+        }),
         // getObject uses internal flag _objectExists
         getObject: sinon.stub(),
         // deletion
-        delObject: sinon.fake((name, options, cb) => { if (typeof options === 'function') { options(); } else if (cb) { cb(); } }),
+        delObject: sinon.fake((name, options, cb) => {
+            if (typeof options === 'function') {
+                options();
+            } else if (cb) {
+                cb();
+            }
+        }),
         extendObjectAsync: sinon.fake.resolves(undefined),
-        setState: sinon.fake((name, value, ack, cb) => { if (typeof cb === 'function') cb(); }),
+        setState: sinon.fake((name, value, ack, cb) => {
+            if (typeof cb === 'function') {
+                cb();
+            }
+        }),
         getObjectListAsync: sinon.stub(),
         getStatesAsync: sinon.stub(),
-        getState: sinon.fake((name, cb) => { if (cb) cb(null, adapter._stateValue || null); }),
+        getState: sinon.fake((name, cb) => {
+            if (cb) {
+                cb(null, adapter._stateValue || null);
+            }
+        }),
         // Use a stub instead of fake here so that callsFake can be used to
         // override its behaviour.  A sinon.fake does not expose callsFake.
         getStateAsync: sinon.stub(),
@@ -43,7 +62,9 @@ function createAdapterStub() {
         // Use plain functions for timers so that tests can stub them without
         // encountering "already spied on" errors.  clearTimeout and clearInterval
         // remain fakes to allow call count assertions when not stubbed.
-        setTimeout: function (fn, time, arg1, arg2) { return { fn, time, arg1, arg2 }; },
+        setTimeout: function (fn, time, arg1, arg2) {
+            return { fn, time, arg1, arg2 };
+        },
         clearTimeout: sinon.fake(),
         clearInterval: sinon.fake(),
         sendTo: sinon.fake(),
@@ -52,13 +73,13 @@ function createAdapterStub() {
     adapter.getObject.callsFake((name, cb) => {
         cb(null, adapter._objectExists ? { id: name } : null);
     });
-    adapter.getObjectListAsync.callsFake(async (opts) => {
+    adapter.getObjectListAsync.callsFake(async () => {
         return adapter._objectList || { rows: [] };
     });
-    adapter.getStatesAsync.callsFake(async (pattern) => {
+    adapter.getStatesAsync.callsFake(async () => {
         return adapter._states || {};
     });
-    adapter.getStateAsync.callsFake(async (name) => {
+    adapter.getStateAsync.callsFake(async () => {
         return adapter._stateValue || null;
     });
     return adapter;

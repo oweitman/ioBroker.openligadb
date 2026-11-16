@@ -11,15 +11,32 @@ export default [
             'widgets/openligadb/dist/openligadb-dist.js',
             '.dev-server/**',
             'backup/**',
-            '*.test.js',
-            'test/**/*.js',
             '*.config.mjs',
             'build',
+            'docs/coverage/**',
             'admin/build',
             'admin/words.js',
             'admin/admin.d.ts',
-            '**/adapter-config.d.ts'
-        ]
+            '**/adapter-config.d.ts',
+        ],
+    },
+
+    {
+        files: ['*.test.js', 'test/**/*.js'],
+        languageOptions: {
+            globals: {
+                describe: 'readonly',
+                it: 'readonly',
+                before: 'readonly',
+                after: 'readonly',
+                beforeEach: 'readonly',
+                afterEach: 'readonly',
+            },
+        },
+        rules: {
+            // Existing tests have inconsistent formatting; keep lint focused on code errors.
+            'prettier/prettier': 'off',
+        },
     },
 
     {
@@ -29,5 +46,4 @@ export default [
             // 'jsdoc/require-jsdoc': 'off',
         },
     },
-
 ];
